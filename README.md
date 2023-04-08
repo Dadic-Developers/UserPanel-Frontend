@@ -1,6 +1,12 @@
 # UserPanel-Frontend
 Public and free project available to Dadik users
+<<<<<<< HEAD
+
+This is a change 
+
+=======
 efit by Jwan
+>>>>>>> 240208f4659a645a16efecbb3c2c46895584807c
 ## How to use 
 1) npm install (npm install --legacy-peer-deps)
 2) export NODE_OPTIONS=--openssl-legacy-provider
