@@ -43,7 +43,7 @@ module.exports = {
 	'unauthorized.detail': 'شما مجاز به مشاهده صفحه موردنظر برای دسترسی به آن نیستید.',
 
 	/* 02.User Login, Logout, Register */
-	'user.login-title': 'ورود',
+	'user.login-title': 'ورود کاربر',
 	'user.register': 'ثبت نام',
 	'user.forgot-password': 'فراموشی رمز عبور',
 	'user.email': 'پست الکترونیک',

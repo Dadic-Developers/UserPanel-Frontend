@@ -36,7 +36,14 @@ const Login = ({ history, loading, error, loginUserAction }) => {
 
   useEffect(() => {
     if (error) {
-      NotificationManager.warning(error, 'ارور ورود به سایت', 3000, null, null, '');
+      NotificationManager.warning(
+        error,
+        'ارور ورود به سایت',
+        3000,
+        null,
+        null,
+        ''
+      );
     }
   }, [error]);
 
@@ -55,21 +62,18 @@ const Login = ({ history, loading, error, loginUserAction }) => {
       <Colxx xxs="12" md="10" className="mx-auto my-auto m-all-outo">
         <Card className="auth-card">
           <div className="position-relative image-side ">
-            <p className="text-white h2">جادوی کاره مارو توی جزئیاتش ببین</p>
-            <p className="white mb-0">
-              برای ورود به سیستم نام کاربری و رمز خود را وارد کنید
-              <br />
-              اگه حساب کاربری نداری نگران نباش، از {' '}
+            <p className="text-white h4 text-theme-1">همه به یک دستیار هوشمند نیاز داریم</p>
+            <p className="text-white mb-0 text-theme-1">
+              اگه حساب کاربری نداری نگران نباش، از{' '}
               <NavLink to="/user/register" className="white">
                 اینجا
-              </NavLink>
-              {' '}
+              </NavLink>{' '}
               میتونی تو سایت اسمتو بویسی
             </p>
           </div>
           <div className="form-side">
             <NavLink to="/" className="white">
-              <span className="logo-single" />
+              <span className="logo-single" ></span>
             </NavLink>
             <CardTitle className="mb-4">
               <IntlMessages id="user.login-title" />
