@@ -6,7 +6,7 @@ const data = [
     icon: 'iconsminds-shop-4',
     label: 'menu.dashboards',
     to: `${adminRoot}/dashboards`,
-    // roles: [UserRole.Admin, UserRole.Editor],
+    // roles: [UserRole.Admin, UserRole.Operator],
     subs: [
       {
         icon: 'simple-icon-briefcase',
@@ -24,13 +24,13 @@ const data = [
         icon: 'simple-icon-basket-loaded',
         label: 'menu.ecommerce',
         to: `${adminRoot}/dashboards/ecommerce`,
-        // roles: [UserRole.Editor],
+        // roles: [UserRole.Operator],
       },
       {
         icon: 'simple-icon-doc',
         label: 'menu.content',
         to: `${adminRoot}/dashboards/content`,
-        // roles: [UserRole.Editor],
+        // roles: [UserRole.Operator],
       },
     ],
   },

@@ -463,7 +463,7 @@ const Home = () => {
                       href={adminRoot}
                       target="_blank"
                     >
-                      دیدنه قالب <i className="simple-icon-arrow-right" />
+                      ورود به سامانه<i className="simple-icon-arrow-right" />
                     </a>
                   </div>
                 </div>
@@ -767,7 +767,7 @@ const Home = () => {
               <div className="row">
                 <div className="col-12" />
                 <div className="col-12 text-center">
-                  <p className="mb-0">2021 © فاطمه کاظمی زاده</p>
+                  <p className="mb-0">2021 ©ایده‌پردازان هوش مصنوعی عصر جدید</p>
                 </div>
               </div>
             </div>

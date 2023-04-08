@@ -49,12 +49,12 @@ const Dashboards = ({ match }) => (
       <ProtectedRoute
         path={`${match.url}/ecommerce`}
         component={EcommerceDefault}
-        roles={[UserRole.Editor]}
+        roles={[UserRole.Operator]}
       />
       <ProtectedRoute
         path={`${match.url}/analytics`}
         component={AnalyticsDefault}
-        roles={[UserRole.Editor]}
+        roles={[UserRole.Operator]}
       />
       */}
 
