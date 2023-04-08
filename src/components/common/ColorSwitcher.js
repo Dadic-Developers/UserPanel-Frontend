@@ -143,7 +143,7 @@ const ColorSwitcher = () => {
           </div>
         </FormGroup>
       </div>
-
+{/* 
       <a
         href="#section"
         className="theme-button"
@@ -154,7 +154,7 @@ const ColorSwitcher = () => {
       >
         {' '}
         <i className="simple-icon-magic-wand" />{' '}
-      </a>
+      </a> */}
     </div>
   );
 };

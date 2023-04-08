@@ -15,6 +15,7 @@ const ResetPassword = React.lazy(() =>
   import(/* webpackChunkName: "user-reset-password" */ './reset-password')
 );
 
+
 const User = ({ match }) => {
   return (
     <UserLayout>

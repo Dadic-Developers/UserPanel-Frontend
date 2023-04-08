@@ -8,6 +8,7 @@ Public and free project available to Dadik users
 2) export NODE_OPTIONS=--openssl-legacy-provider
 3) npm start
 
+
 ## Available Scripts
 
 In the project directory, you can run:

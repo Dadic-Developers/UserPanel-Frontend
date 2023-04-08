@@ -1,6 +1,6 @@
 export const UserRole = {
   Admin: 0,
-  Editor: 1,
+  Operator: 1,
 };
 
 /* 
@@ -36,14 +36,15 @@ export const currentUser = {
   role: UserRole.Admin,
 };
 
-export const adminRoot = '/app';
+export const adminRoot = '/app'; // /app
 export const buyUrl = 'https://www.rtl-theme.com/?p=94491';
 export const searchPath = `${adminRoot}/pages/miscellaneous/search`;
 export const servicePath = 'https://api.coloredstrategies.com';
 
 export const themeColorStorageKey = '__theme_selected_color';
 export const isMultiColorActive = true;
-export const defaultColor = 'light.purplemonster';
+// export const defaultColor = 'light.purplemonster';
+export const defaultColor = 'light.blueyale';
 export const isDarkSwitchActive = true;
 export const defaultDirection = 'rtl';
 export const themeRadiusStorageKey = '__theme_radius';
