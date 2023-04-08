@@ -3,12 +3,16 @@ import { Row, Card, CardTitle, Label, FormGroup, Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+
+
 import { Formik, Form, Field } from 'formik';
 import { NotificationManager } from 'components/common/react-notifications';
 
 import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { loginUser } from 'redux/actions';
+
+
 
 const validatePassword = (value) => {
   let error;
@@ -62,7 +66,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
       <Colxx xxs="12" md="10" className="mx-auto my-auto m-all-outo">
         <Card className="auth-card">
           <div className="position-relative image-side ">
-            <p className="text-white h4 text-theme-1">همه به یک دستیار هوشمند نیاز داریم</p>
+            <p className="text-white h5 text-theme-1 ">همه به یک دستیار هوشمند نیاز داریم</p>
             <p className="text-white mb-0 text-theme-1">
               اگه حساب کاربری نداری نگران نباش، از{' '}
               <NavLink to="/user/register" className="white">
@@ -73,7 +77,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
           </div>
           <div className="form-side">
             <NavLink to="/" className="white">
-              <span className="logo-single" ></span>
+              <span className="logo-single" />
             </NavLink>
             <CardTitle className="mb-4">
               <IntlMessages id="user.login-title" />
@@ -151,3 +155,6 @@ const mapStateToProps = ({ authUser }) => {
 export default connect(mapStateToProps, {
   loginUserAction: loginUser,
 })(Login);
+
+
+
