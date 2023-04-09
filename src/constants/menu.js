@@ -14,12 +14,12 @@ const data = [
         to: `${adminRoot}/dashboards/default`,
         // roles: [UserRole.Admin],
       },
-      {
-        icon: 'simple-icon-pie-chart',
-        label: 'menu.analytics',
-        to: `${adminRoot}/dashboards/analytics`,
-        // roles: [UserRole.Admin],
-      },
+      // {
+      //   icon: 'simple-icon-pie-chart',
+      //   label: 'menu.analytics',
+      //   to: `${adminRoot}/dashboards/analytics`,
+      //   // roles: [UserRole.Admin],
+      // },
       {
         icon: 'simple-icon-basket-loaded',
         label: 'menu.ecommerce',
@@ -27,12 +27,23 @@ const data = [
         // roles: [UserRole.Operator],
       },
       {
-        icon: 'simple-icon-doc',
-        label: 'menu.content',
-        to: `${adminRoot}/dashboards/content`,
-        // roles: [UserRole.Operator],
+        icon: 'simple-icon-check',
+        label: 'menu.todo',
+        to: `${adminRoot}/applications/todo`,
       },
+      // {
+      //   icon: 'simple-icon-doc',
+      //   label: 'menu.content',
+      //   to: `${adminRoot}/dashboards/content`,
+      //   // roles: [UserRole.Operator],
+      // },
     ],
+  },
+  {
+    id: 'search',
+    icon: 'iconsminds-magnifi-glass',
+    label: 'menu.search',
+    to: `${adminRoot}/blank-page`,
   },
   {
     id: 'pages',

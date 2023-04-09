@@ -460,7 +460,8 @@ const Home = () => {
                     {/* eslint-disable-next-line react/jsx-no-target-blank */}
                     <a
                       className="btn btn-light btn-xl mr-2 mb-2"
-                      href={adminRoot}
+                      // href={adminRoot}
+                      href="/user/login"
                       target="_blank"
                     >
                       ورود به سامانه<i className="simple-icon-arrow-right" />
