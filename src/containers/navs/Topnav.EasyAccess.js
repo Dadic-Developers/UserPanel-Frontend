@@ -47,7 +47,7 @@ const TopnavEasyAccess = () => {
             <IntlMessages id="menu.survey" />
           </NavLink>
           <NavLink
-            to={`${adminRoot}/applications/todo`}
+            to={`${adminRoot}/dashboards/todo`}
             className="icon-menu-item"
           >
             <i className="iconsminds-check d-block" />{' '}

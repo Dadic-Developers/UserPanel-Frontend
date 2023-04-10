@@ -21,12 +21,12 @@ const Footer = () => {
                 </li>
                 <li className="breadcrumb-item mb-0">
                   <Link className="btn-link" href="https://www.rtl-theme.com/?p=94491" >
-                    خرید قالب
+                    افزایش اعتبار
                   </Link>
                 </li>
                 <li className="breadcrumb-item mb-0">
                   <Link className="btn-link" href="https://www.rtl-theme.com/gogo-react-bootstrap-4-admin-dashboard/" >
-                    داکیومنت
+                    راهنما
                   </Link>
                 </li>
               </ul>

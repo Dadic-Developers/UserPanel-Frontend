@@ -29,106 +29,144 @@ const data = [
       {
         icon: 'simple-icon-check',
         label: 'menu.todo',
-        to: `${adminRoot}/applications/todo`,
+        to: `${adminRoot}/dashboards/todo`,
       },
-      // {
-      //   icon: 'simple-icon-doc',
-      //   label: 'menu.content',
-      //   to: `${adminRoot}/dashboards/content`,
-      //   // roles: [UserRole.Operator],
-      // },
+      {
+        icon: 'simple-icon-doc',
+        label: 'menu.profile',
+        to: `${adminRoot}/dashboards/content`,
+        // roles: [UserRole.Operator],
+      },
     ],
   },
-  {
-    id: 'search',
-    icon: 'iconsminds-magnifi-glass',
-    label: 'menu.search',
-    to: `${adminRoot}/blank-page`,
-  },
+  // {
+  //   id: 'search',
+  //   icon: 'iconsminds-magnifi-glass',
+  //   label: 'menu.search',
+  //   to: `${adminRoot}/blank-page`,
+  // },
+  // {
+  //   id: 'layehe',
+  //   icon: 'iconsminds-open-book',
+  //   label: 'menu.layehe',
+  //   to: `${adminRoot}/blank-page`,
+  // },
   {
     id: 'pages',
-    icon: 'iconsminds-digital-drawing',
+    icon: 'iconsminds-library',
     label: 'menu.pages',
     to: `${adminRoot}/pages`,
     subs: [
-      {
-        id: 'pages-authorization',
-        label: 'menu.authorization',
-        to: '/user',
-        subs: [
-          {
-            icon: 'simple-icon-user-following',
-            label: 'menu.login',
-            to: '/user/login',
-            newWindow: true,
-          },
-          {
-            icon: 'simple-icon-user-follow',
-            label: 'menu.register',
-            to: '/user/register',
-            newWindow: true,
-          },
-          {
-            icon: 'simple-icon-user-following',
-            label: 'menu.forgot-password',
-            to: '/user/forgot-password',
-            newWindow: true,
-          },
-          {
-            icon: 'simple-icon-user-unfollow',
-            label: 'menu.reset-password',
-            to: '/user/reset-password',
-            newWindow: true,
-          },
-        ],
-      },
+      // {
+      //   id: 'pages-authorization',
+      //   label: 'menu.authorization',
+      //   to: '/user',
+      //   subs: [
+      //     {
+      //       icon: 'simple-icon-user-following',
+      //       label: 'menu.login',
+      //       to: '/user/login',
+      //       newWindow: true,
+      //     },
+      //     {
+      //       icon: 'simple-icon-user-follow',
+      //       label: 'menu.register',
+      //       to: '/user/register',
+      //       newWindow: true,
+      //     },
+      //     {
+      //       icon: 'simple-icon-user-following',
+      //       label: 'menu.forgot-password',
+      //       to: '/user/forgot-password',
+      //       newWindow: true,
+      //     },
+      //     {
+      //       icon: 'simple-icon-user-unfollow',
+      //       label: 'menu.reset-password',
+      //       to: '/user/reset-password',
+      //       newWindow: true,
+      //     },
+      //   ],
+      // },
       {
         id: 'pages-product',
         label: 'menu.product',
         to: `${adminRoot}/pages/product`,
         subs: [
           {
-            icon: 'simple-icon-credit-card',
-            label: 'menu.data-list',
-            to: `${adminRoot}/pages/product/data-list`,
-          },
-          {
-            icon: 'simple-icon-list',
-            label: 'menu.thumb-list',
-            to: `${adminRoot}/pages/product/thumb-list`,
-          },
-          {
-            icon: 'simple-icon-grid',
-            label: 'menu.image-list',
-            to: `${adminRoot}/pages/product/image-list`,
-          },
-          {
-            icon: 'simple-icon-picture',
-            label: 'menu.details',
-            to: `${adminRoot}/pages/product/details`,
+            icon: 'simple-icon-magnifier',
+            label: 'menu.search',
+            to: `${adminRoot}/pages/miscellaneous/search`,
           },
           {
             icon: 'simple-icon-book-open',
-            label: 'menu.details-alt',
-            to: `${adminRoot}/pages/product/details-alt`,
+            label: 'menu.wizard',
+            to: `${adminRoot}/ui/forms/wizard`,
           },
+          {
+            icon: 'simple-icon-bag',
+            label: 'menu.invoice',
+            to: `${adminRoot}/pages/miscellaneous/invoice`,
+          },
+          // {
+          //   icon: 'simple-icon-credit-card',
+          //   label: 'menu.data-list',
+          //   to: `${adminRoot}/pages/product/data-list`,
+          // },
+          // {
+          //   icon: 'simple-icon-list',
+          //   label: 'menu.thumb-list',
+          //   to: `${adminRoot}/pages/product/thumb-list`,
+          // },
+          // {
+          //   icon: 'simple-icon-grid',
+          //   label: 'menu.image-list',
+          //   to: `${adminRoot}/pages/product/image-list`,
+          // },
+          // {
+          //   icon: 'simple-icon-picture',
+          //   label: 'menu.details',
+          //   to: `${adminRoot}/pages/product/details`,
+          // },
+          // {
+          //   icon: 'simple-icon-book-open',
+          //   label: 'menu.details-alt',
+          //   to: `${adminRoot}/pages/product/details-alt`,
+          // },
         ],
       },
       {
-        id: 'pages-profile',
-        label: 'menu.profile',
+        id: 'pages-history',
+        label: 'menu.history',
         to: `${adminRoot}/pages/profile`,
         subs: [
+        
           {
-            icon: 'simple-icon-share',
-            label: 'menu.social',
-            to: `${adminRoot}/pages/profile/social`,
+            icon: 'simple-icon-arrow-right',
+            label: 'menu.historysearch',
+            to: `${adminRoot}/ui/components/tables`,
           },
           {
-            icon: 'simple-icon-link',
-            label: 'menu.portfolio',
-            to: `${adminRoot}/pages/profile/portfolio`,
+            icon: 'simple-icon-arrow-right',
+            label: 'menu.historylayehe',
+            to: `${adminRoot}/ui/components/tables`,
           },
+          {
+            icon: 'simple-icon-arrow-right',
+            label: 'menu.historydownload',
+            to: `${adminRoot}/ui/components/tables`,
+          },
+     
+          // {
+          //   icon: 'simple-icon-share',
+          //   label: 'menu.social',
+          //   to: `${adminRoot}/pages/profile/social`,
+          // },
+          // {
+          //   icon: 'simple-icon-link',
+          //   label: 'menu.portfolio',
+          //   to: `${adminRoot}/pages/profile/portfolio`,
+          // },
         ],
       },
       {
@@ -169,21 +207,17 @@ const data = [
             label: 'menu.prices',
             to: `${adminRoot}/pages/miscellaneous/prices`,
           },
-          {
-            icon: 'simple-icon-magnifier',
-            label: 'menu.search',
-            to: `${adminRoot}/pages/miscellaneous/search`,
-          },
+      
           {
             icon: 'simple-icon-envelope-open',
             label: 'menu.mailing',
             to: `${adminRoot}/pages/miscellaneous/mailing`,
           },
-          {
-            icon: 'simple-icon-bag',
-            label: 'menu.invoice',
-            to: `${adminRoot}/pages/miscellaneous/invoice`,
-          },
+          // {
+          //   icon: 'simple-icon-bag',
+          //   label: 'menu.invoice',
+          //   to: `${adminRoot}/pages/miscellaneous/invoice`,
+          // },
 
           {
             icon: 'simple-icon-exclamation',
@@ -196,16 +230,22 @@ const data = [
     ],
   },
   {
+    id: 'blankpage',
+    icon: 'iconsminds-three-arrow-fork',
+    label: 'menu.tree',
+    to: `${adminRoot}/blank-page`,
+  },
+  {
     id: 'applications',
     icon: 'iconsminds-air-balloon-1',
     label: 'menu.applications',
     to: `${adminRoot}/applications`,
     subs: [
-      {
-        icon: 'simple-icon-check',
-        label: 'menu.todo',
-        to: `${adminRoot}/applications/todo`,
-      },
+      // {
+      //   icon: 'simple-icon-check',
+      //   label: 'menu.todo',
+      //   to: `${adminRoot}/applications/todo`,
+      // },
       {
         icon: 'simple-icon-calculator',
         label: 'menu.survey',
@@ -218,186 +258,187 @@ const data = [
       },
     ],
   },
-  {
-    id: 'ui',
-    icon: 'iconsminds-pantone',
-    label: 'menu.ui',
-    to: `${adminRoot}/ui`,
-    subs: [
-      {
-        id: 'ui-forms',
-        label: 'menu.forms',
-        to: `${adminRoot}/ui/forms`,
-        subs: [
-          {
-            icon: 'simple-icon-notebook',
-            label: 'menu.layouts',
-            to: `${adminRoot}/ui/forms/layouts`,
-          },
-          {
-            icon: 'simple-icon-puzzle',
-            label: 'menu.components',
-            to: `${adminRoot}/ui/forms/components`,
-          },
-          {
-            icon: 'simple-icon-check',
-            label: 'menu.validations',
-            to: `${adminRoot}/ui/forms/validations`,
-          },
-          {
-            icon: 'simple-icon-magic-wand',
-            label: 'menu.wizard',
-            to: `${adminRoot}/ui/forms/wizard`,
-          },
-        ],
-      },
-      {
-        id: 'ui-components',
-        label: 'menu.components',
-        to: `${adminRoot}/ui/components`,
-        subs: [
-          {
-            icon: 'simple-icon-bell',
-            label: 'menu.alerts',
-            to: `${adminRoot}/ui/components/alerts`,
-          },
-          {
-            icon: 'simple-icon-badge',
-            label: 'menu.badges',
-            to: `${adminRoot}/ui/components/badges`,
-          },
-          {
-            icon: 'simple-icon-control-play',
-            label: 'menu.buttons',
-            to: `${adminRoot}/ui/components/buttons`,
-          },
-          {
-            icon: 'simple-icon-layers',
-            label: 'menu.cards',
-            to: `${adminRoot}/ui/components/cards`,
-          },
-          {
-            icon: 'simple-icon-picture',
-            label: 'menu.carousel',
-            to: `${adminRoot}/ui/components/carousel`,
-          },
-          {
-            icon: 'simple-icon-chart',
-            label: 'menu.charts',
-            to: `${adminRoot}/ui/components/charts`,
-          },
-          {
-            icon: 'simple-icon-arrow-up',
-            label: 'menu.collapse',
-            to: `${adminRoot}/ui/components/collapse`,
-          },
-          {
-            icon: 'simple-icon-arrow-down',
-            label: 'menu.dropdowns',
-            to: `${adminRoot}/ui/components/dropdowns`,
-          },
-          {
-            icon: 'simple-icon-book-open',
-            label: 'menu.editors',
-            to: `${adminRoot}/ui/components/editors`,
-          },
+  // {
+  //   id: 'ui',
+  //   icon: 'iconsminds-pantone',
+  //   label: 'menu.ui',
+  //   to: `${adminRoot}/ui`,
+  //   subs: [
+  //     {
+  //       id: 'ui-forms',
+  //       label: 'menu.forms',
+  //       to: `${adminRoot}/ui/forms`,
+  //       subs: [
+  //         {
+  //           icon: 'simple-icon-notebook',
+  //           label: 'menu.layouts',
+  //           to: `${adminRoot}/ui/forms/layouts`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-puzzle',
+  //           label: 'menu.components',
+  //           to: `${adminRoot}/ui/forms/components`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-check',
+  //           label: 'menu.validations',
+  //           to: `${adminRoot}/ui/forms/validations`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-magic-wand',
+  //           label: 'menu.wizard',
+  //           to: `${adminRoot}/ui/forms/wizard`,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: 'ui-components',
+  //       label: 'menu.components',
+  //       to: `${adminRoot}/ui/components`,
+  //       subs: [
+  //         {
+  //           icon: 'simple-icon-bell',
+  //           label: 'menu.alerts',
+  //           to: `${adminRoot}/ui/components/alerts`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-badge',
+  //           label: 'menu.badges',
+  //           to: `${adminRoot}/ui/components/badges`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-control-play',
+  //           label: 'menu.buttons',
+  //           to: `${adminRoot}/ui/components/buttons`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-layers',
+  //           label: 'menu.cards',
+  //           to: `${adminRoot}/ui/components/cards`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-picture',
+  //           label: 'menu.carousel',
+  //           to: `${adminRoot}/ui/components/carousel`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-chart',
+  //           label: 'menu.charts',
+  //           to: `${adminRoot}/ui/components/charts`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-arrow-up',
+  //           label: 'menu.collapse',
+  //           to: `${adminRoot}/ui/components/collapse`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-arrow-down',
+  //           label: 'menu.dropdowns',
+  //           to: `${adminRoot}/ui/components/dropdowns`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-book-open',
+  //           label: 'menu.editors',
+  //           to: `${adminRoot}/ui/components/editors`,
+  //         },
 
-          {
-            icon: 'simple-icon-star',
-            label: 'menu.icons',
-            to: `${adminRoot}/ui/components/icons`,
-          },
-          {
-            icon: 'simple-icon-note',
-            label: 'menu.input-groups',
-            to: `${adminRoot}/ui/components/input-groups`,
-          },
-          {
-            icon: 'simple-icon-screen-desktop',
-            label: 'menu.jumbotron',
-            to: `${adminRoot}/ui/components/jumbotron`,
-          },
-          {
-            icon: 'simple-icon-map',
-            label: 'menu.maps',
-            to: `${adminRoot}/ui/components/maps`,
-          },
-          {
-            icon: 'simple-icon-docs',
-            label: 'menu.modal',
-            to: `${adminRoot}/ui/components/modal`,
-          },
-          {
-            icon: 'simple-icon-cursor',
-            label: 'menu.navigation',
-            to: `${adminRoot}/ui/components/navigation`,
-          },
-          {
-            icon: 'simple-icon-pin',
-            label: 'menu.popover-tooltip',
-            to: `${adminRoot}/ui/components/popover-tooltip`,
-          },
-          {
-            icon: 'simple-icon-shuffle',
-            label: 'menu.sortable',
-            to: `${adminRoot}/ui/components/sortable`,
-          },
-          {
-            icon: 'simple-icon-grid',
-            label: 'menu.tables',
-            to: `${adminRoot}/ui/components/tables`,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'menu',
-    icon: 'iconsminds-three-arrow-fork',
-    label: 'menu.menu',
-    to: `${adminRoot}/menu`,
-    subs: [
-      {
-        icon: 'simple-icon-logout',
-        label: 'menu.types',
-        to: `${adminRoot}/menu/types`,
-      },
-      {
-        icon: 'simple-icon-layers',
-        label: 'menu.levels',
-        to: `${adminRoot}/menu/levels`,
-        subs: [
-          {
-            icon: 'simple-icon-arrow-right',
-            label: 'menu.third-level-1',
-            to: `${adminRoot}/menu/levels/third-level-1`,
-          },
-          {
-            icon: 'simple-icon-arrow-right',
-            label: 'menu.third-level-2',
-            to: `${adminRoot}/menu/levels/third-level-2`,
-          },
-          {
-            icon: 'simple-icon-arrow-right',
-            label: 'menu.third-level-3',
-            to: `${adminRoot}/menu/levels/third-level-3`,
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'blankpage',
-    icon: 'iconsminds-bucket',
-    label: 'menu.blank-page',
-    to: `${adminRoot}/blank-page`,
-  },
-  {
-    id: 'docs',
-    icon: 'iconsminds-library',
-    label: 'menu.docs',
-    to: 'https://gogo-react-docs.coloredstrategies.com/',
-    newWindow: true,
-  },
+  //         {
+  //           icon: 'simple-icon-star',
+  //           label: 'menu.icons',
+  //           to: `${adminRoot}/ui/components/icons`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-note',
+  //           label: 'menu.input-groups',
+  //           to: `${adminRoot}/ui/components/input-groups`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-screen-desktop',
+  //           label: 'menu.jumbotron',
+  //           to: `${adminRoot}/ui/components/jumbotron`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-map',
+  //           label: 'menu.maps',
+  //           to: `${adminRoot}/ui/components/maps`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-docs',
+  //           label: 'menu.modal',
+  //           to: `${adminRoot}/ui/components/modal`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-cursor',
+  //           label: 'menu.navigation',
+  //           to: `${adminRoot}/ui/components/navigation`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-pin',
+  //           label: 'menu.popover-tooltip',
+  //           to: `${adminRoot}/ui/components/popover-tooltip`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-shuffle',
+  //           label: 'menu.sortable',
+  //           to: `${adminRoot}/ui/components/sortable`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-grid',
+  //           label: 'menu.tables',
+  //           to: `${adminRoot}/ui/components/tables`,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 'menu',
+  //   icon: 'iconsminds-three-arrow-fork',
+  //   label: 'menu.menu',
+  //   to: `${adminRoot}/menu`,
+  //   subs: [
+  //     {
+  //       icon: 'simple-icon-logout',
+  //       label: 'menu.types',
+  //       to: `${adminRoot}/menu/types`,
+  //     },
+  //     {
+  //       icon: 'simple-icon-layers',
+  //       label: 'menu.levels',
+  //       to: `${adminRoot}/menu/levels`,
+  //       subs: [
+  //         {
+  //           icon: 'simple-icon-arrow-right',
+  //           label: 'menu.third-level-1',
+  //           to: `${adminRoot}/menu/levels/third-level-1`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-arrow-right',
+  //           label: 'menu.third-level-2',
+  //           to: `${adminRoot}/menu/levels/third-level-2`,
+  //         },
+  //         {
+  //           icon: 'simple-icon-arrow-right',
+  //           label: 'menu.third-level-3',
+  //           to: `${adminRoot}/menu/levels/third-level-3`,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   id: 'blankpage',
+  //   icon: 'iconsminds-bucket',
+  //   label: 'menu.blank-page',
+  //   to: `${adminRoot}/blank-page`,
+  // },
+//   {
+//     id: 'docs',
+//     icon: 'iconsminds-library',
+//     label: 'menu.docs',
+//     to: 'https://gogo-react-docs.coloredstrategies.com/',
+//     newWindow: true,
+//   },
 ];
 export default data;

@@ -185,6 +185,7 @@ const layouts = [
   { title: "تب ها", img: "/assets/img/landing-page/layouts/tabs.jpg" },
 ];
 
+
 const applications = [
   {
     title: "نظرسنجی",
@@ -197,8 +198,8 @@ const applications = [
     img: "/assets/img/landing-page/applications/chat.jpg",
   },
   {
-    title: "وظایف - Todo",
-    path: `${adminRoot}/applications/todo`,
+    title: "میز کار",
+    path: `${adminRoot}/dashboards/todo`,
     img: "/assets/img/landing-page/applications/todo.jpg",
   },
 ];
