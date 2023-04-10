@@ -63,16 +63,18 @@ const ForgotPassword = ({
       <Colxx xxs="12" md="10" className="mx-auto my-auto m-all-outo">
         <Card className="auth-card">
           <div className="position-relative image-side ">
-            <p className="text-white h2">جادوی کاره مارو توی جزئیاتش ببین</p>
-            <p className="white mb-0">
-              از ایمیلت میتونی برای پیداکردن رمز عبورت استفاده کنی <br />
-              اگه حساب کاربری نداری نگران نباش، از {' '}
-              <NavLink to="/user/register" className="white">
+            <p className="text-white text-theme-1 h2">رادپردازن عصر جدید</p>
+            <h5 className="text-white mb-0 text-theme-1 justify-content-center">
+              {/* <NavLink to="/user/register" className="white">
                 اینجا
-              </NavLink>
-              {' '}
-              میتونی تو سایت اسمتو بویسی
-            </p>
+              </NavLink> */}
+              از طریق این صفحه شما می‌توانید حساب کاربری خود را بازیابی کنید.
+              پست الکترونیکی وارد شده می‌بايست پیش از این در سامانه ثبت شده باشد
+              در غیر اینصورت کد اعتبارسنجی به آدرس پست الکترونیکی شما ارسال
+              نخواهد شد. پس از ارسال کد اعتبارسنجی به آدرس پست الکترونیکی، ۵
+              دقیقه فرصت خواهید داشت تا این کد را وارد کنید در غیر این صورت کد
+              منقضی شده و می‌بايست مجددا تلاش کنید.
+            </h5>
           </div>
           <div className="form-side">
             <NavLink to="/" className="white">

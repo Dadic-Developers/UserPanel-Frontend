@@ -42,10 +42,10 @@ export const searchPath = `${adminRoot}/pages/miscellaneous/search`;
 export const servicePath = 'https://api.coloredstrategies.com';
 
 export const themeColorStorageKey = '__theme_selected_color';
-export const isMultiColorActive = true;
+export const isMultiColorActive = false;
 // export const defaultColor = 'light.purplemonster';
 export const defaultColor = 'light.blueyale';
-export const isDarkSwitchActive = true;
+export const isDarkSwitchActive = false;
 export const defaultDirection = 'rtl';
 export const themeRadiusStorageKey = '__theme_radius';
 export const isAuthGuardActive = false;

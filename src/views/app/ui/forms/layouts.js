@@ -48,6 +48,7 @@ const FormLayoutsUi = ({ match, intl }) => {
 
   return (
     <>
+
       <Row>
         <Colxx xxs="12">
           <Breadcrumb heading="menu.form-layouts" match={match} />
@@ -199,7 +200,7 @@ const FormLayoutsUi = ({ match, intl }) => {
                 <IntlMessages id="forms.top-labels-over-line" />
               </CardTitle>
 
-              <Form>
+              <Form className='form-group'>
                 <Label className="form-group has-float-label">
                   <Input type="email" />
                   <span>
