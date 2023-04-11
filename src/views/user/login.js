@@ -12,12 +12,13 @@ import IntlMessages from 'helpers/IntlMessages';
 import { loginUser } from 'redux/actions';
 import Captcha from 'components/captcha';
 
+
 const validatePassword = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا رمزت رو وارد کن';
+    error = 'لطفا رمز را وارد کنید';
   } else if (value.length < 4) {
-    error = 'باید بیشتر از 3 کاراکتر باشد';
+    error = 'رمز عبور باید بیشتر از 3 کاراکتر باشد';
   }
   return error;
 };
@@ -25,9 +26,9 @@ const validatePassword = (value) => {
 const validateEmail = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا پست الکترونیکی خودتو وارد کن';
+    error = 'لطفا پست الکترونیکی را وارد کن';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = 'ایمیل که وارد کردی نامعتبره';
+    error = 'ایمیل مورد نظر نامعتبر است';
   }
   return error;
 };
@@ -117,7 +118,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </div>
                     )}
                   </FormGroup>
-                  <Captcha />
+                <Captcha />
                 
                   <div className="d-flex justify-content-between align-items-center mt-5">
                     <NavLink to="/user/forgot-password">

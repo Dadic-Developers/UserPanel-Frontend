@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
-import {  Label, FormGroup } from 'reactstrap';
+import { Label, FormGroup } from 'reactstrap';
 import { Field } from 'formik';
 
 import {
@@ -15,7 +15,15 @@ class Captcha extends Component {
   componentDidMount() {
     loadCaptchaEnginge(4);
   }
-
+ validatePassword = (value) => {
+    let error;
+    if (!value) {
+      error = 'لطفا رمز را وارد کنید';
+    } else if (value.length < 4) {
+      error = 'رمز عبور باید بیشتر از 3 کاراکتر باشد';
+    }
+    return error;
+  };
   doSubmit = () => {
     const userCaptcha = document.getElementById('user_captcha_input').value;
 
@@ -43,24 +51,21 @@ class Captcha extends Component {
       //   </FormGroup>
       // </div>
 
-<>
-<LoadCanvasTemplate />
-<FormGroup className="form-group has-float-label">
-                    <Label>
-                      <IntlMessages id="forms.captcha" />
-                    </Label>
-                    <Field
-                      className="form-control"
-                      type="text"
-                      name="capcha"
-                      
-                      // validate={validatePassword}
-                    />
-                   
-                  </FormGroup>
-  
-</>
-   
+      <>
+        <LoadCanvasTemplate />
+        <FormGroup className="form-group has-float-label">
+          <Label>
+            <IntlMessages id="forms.captcha" />
+          </Label>
+          <Field
+            className="form-control"
+            type="text"
+            name="capcha"
+
+            // validate={validatePassword}
+          />
+        </FormGroup>
+      </>
     );
   }
 }
