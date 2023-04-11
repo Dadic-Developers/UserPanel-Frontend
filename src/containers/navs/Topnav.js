@@ -19,18 +19,18 @@ import IntlMessages from 'helpers/IntlMessages';
 import {
   menuHiddenBreakpoint,
   searchPath,
-  localeOptions,
+  // localeOptions,
   isDarkSwitchActive,
   buyUrl,
   adminRoot,
 } from 'constants/defaultValues';
 import { MobileMenuIcon, MenuIcon } from 'components/svg';
-import { getDirection, setDirection } from 'helpers/Utils';
+// import { getDirection, setDirection } from 'helpers/Utils';
 import {
   setContainerClassnames,
   clickOnMobileMenu,
   logoutUser,
-  changeLocale,
+  // changeLocale,
 } from 'redux/actions';
 
 import TopnavEasyAccess from './Topnav.EasyAccess';
@@ -43,11 +43,11 @@ const TopNav = ({
   containerClassnames,
   menuClickCount,
   selectedMenuHasSubItems,
-  locale,
+  // locale,
   setContainerClassnamesAction,
   clickOnMobileMenuAction,
   logoutUserAction,
-  changeLocaleAction,
+  // changeLocaleAction,
 }) => {
   const [isInFullScreen, setIsInFullScreen] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -57,17 +57,17 @@ const TopNav = ({
     setSearchKeyword('');
   };
 
-  const handleChangeLocale = (_locale, direction) => {
-    changeLocaleAction(_locale);
+  // const handleChangeLocale = (_locale, direction) => {
+  //   changeLocaleAction(_locale);
 
-    const currentDirection = getDirection().direction;
-    if (direction !== currentDirection) {
-      setDirection(direction);
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
-    }
-  };
+  //   const currentDirection = getDirection().direction;
+  //   if (direction !== currentDirection) {
+  //     setDirection(direction);
+  //     setTimeout(() => {
+  //       window.location.reload();
+  //     }, 500);
+  //   }
+  // };
 
   const isInFullScreenFn = () => {
     return (
@@ -239,7 +239,7 @@ const TopNav = ({
           </span>
         </div>
 
-        <div className="d-inline-block">
+        {/* <div className="d-inline-block">
           <UncontrolledDropdown className="ml-2">
             <DropdownToggle
               caret
@@ -262,7 +262,7 @@ const TopNav = ({
               })}
             </DropdownMenu>
           </UncontrolledDropdown>
-        </div>
+        </div> */}
         <div className="position-relative d-none d-none d-lg-inline-block">
           <a
             className="btn btn-outline-primary btn-sm ml-2"
@@ -336,6 +336,6 @@ export default injectIntl(
     setContainerClassnamesAction: setContainerClassnames,
     clickOnMobileMenuAction: clickOnMobileMenu,
     logoutUserAction: logoutUser,
-    changeLocaleAction: changeLocale,
+    // changeLocaleAction: changeLocale,
   })(TopNav)
 );
