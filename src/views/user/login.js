@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Card, CardTitle, Label, FormGroup, Button } from 'reactstrap';
+import { Formik, Form, Field } from 'formik';
+
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
-
-import { Formik, Form, Field } from 'formik';
 import { NotificationManager } from 'components/common/react-notifications';
 
 import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { loginUser } from 'redux/actions';
-
-
+import Captcha from 'components/captcha';
 
 const validatePassword = (value) => {
   let error;
@@ -66,10 +64,12 @@ const Login = ({ history, loading, error, loginUserAction }) => {
       <Colxx xxs="12" md="10" className="mx-auto my-auto m-all-outo">
         <Card className="auth-card">
           <div className="position-relative image-side ">
-            <p className="text-white h5 text-theme-1 ">همه به یک دستیار هوشمند نیاز داریم</p>
+            <p className="text-white h5 text-theme-1 ">
+              همه به یک دستیار هوشمند نیاز داریم
+            </p>
             <p className="text-white mb-0 text-theme-1">
               اگه حساب کاربری نداری نگران نباش، از{' '}
-              <NavLink to="/user/register" className="white">
+              <NavLink to="/user/register" className=" text-theme-1">
                 اینجا
               </NavLink>{' '}
               میتونی تو سایت اسمتو بویسی
@@ -117,6 +117,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </div>
                     )}
                   </FormGroup>
+               
                   <div className="d-flex justify-content-between align-items-center">
                     <NavLink to="/user/forgot-password">
                       <IntlMessages id="user.forgot-password-question" />
@@ -138,6 +139,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </span>
                     </Button>
                   </div>
+                  <Captcha />
                 </Form>
               )}
             </Formik>
@@ -155,6 +157,3 @@ const mapStateToProps = ({ authUser }) => {
 export default connect(mapStateToProps, {
   loginUserAction: loginUser,
 })(Login);
-
-
-

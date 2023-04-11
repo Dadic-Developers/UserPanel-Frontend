@@ -36,6 +36,9 @@ Table of Contents
 */
 
 module.exports = {
+  /* 00.New */
+	'forms.captcha':'کد امنیتی',
+	'forms.captcha.message':'برای دریافت کد تازه کلیک کنید.',
   /* 01.General */
   'general.copyright': 'Gogo React © 2018 تمامی حقوق برای فاطمه کاظمی محفوظ است',
 
@@ -43,6 +46,7 @@ module.exports = {
 	'unauthorized.detail': 'شما مجاز به مشاهده صفحه موردنظر برای دسترسی به آن نیستید.',
 
 	/* 02.User Login, Logout, Register */
+	
 	'user.login-title': 'ورود کاربر',
 	'user.register': 'ثبت نام',
 	'user.forgot-password': 'فراموشی رمز عبور',
@@ -462,6 +466,7 @@ module.exports = {
 	'editors.quill-bubble': 'Quill حبابی',
 
 	/* 07.10.Forms */
+
 	'forms.basic': 'ساده',
 	'forms.email': 'پست الکترونیک',
 	'forms.email-muted': "ما هرگز ایمیل شما را با شخص دیگری به اشتراک نمی گذاریم.",
