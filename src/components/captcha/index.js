@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
+import { Colxx } from 'components/common/CustomBootstrap';
 
-import { FormGroup, Label, Input } from 'reactstrap';
+// import { FormGroup, Label } from 'reactstrap';
 // import { Field } from 'formik';
 
 import {
@@ -43,16 +44,16 @@ class Captcha extends Component {
       //     </Label>
       //   </FormGroup>
       // </div>
-
-      <FormGroup className="form-group has-float-label">
-        <Label className="form-group has-float-label">
-          <Input type="email" />
+      <div className="row" Colxx sm={12}>
+        <Colxx sm={6}>
           <span>
             <IntlMessages id="forms.captcha.message" />
             <LoadCanvasTemplate />
           </span>
-        </Label>
-      </FormGroup>
+        </Colxx>
+        <input type="text" />
+        <i className="simple-icon-refresh" />
+      </div>
     );
   }
 }

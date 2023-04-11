@@ -62,9 +62,9 @@ const ForgotPassword = ({
     <Row className="h-100">
       <Colxx xxs="12" md="10" className="mx-auto my-auto m-all-outo">
         <Card className="auth-card">
-          <div className="position-relative image-side ">
+          <div className="position-relative image-side text-justify">
             <p className="text-white text-theme-1 h2">رادپردازن عصر جدید</p>
-            <h5 className="text-white mb-0 text-theme-1 justify-content-center">
+            <span className="text-white mb-0 text-theme-1 ql-editor  ">
               {/* <NavLink to="/user/register" className="white">
                 اینجا
               </NavLink> */}
@@ -74,7 +74,7 @@ const ForgotPassword = ({
               نخواهد شد. پس از ارسال کد اعتبارسنجی به آدرس پست الکترونیکی، ۵
               دقیقه فرصت خواهید داشت تا این کد را وارد کنید در غیر این صورت کد
               منقضی شده و می‌بايست مجددا تلاش کنید.
-            </h5>
+            </span>
           </div>
           <div className="form-side">
             <NavLink to="/" className="white">
