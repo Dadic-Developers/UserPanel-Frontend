@@ -39,6 +39,7 @@
     "prettier"
   ],
   "rules": {
+   
     "react/jsx-filename-extension": [
       1,
       {

@@ -39,6 +39,7 @@ module.exports = {
   /* 00.New */
 	'forms.captcha':'کد امنیتی',
 	'forms.captcha.message':'برای دریافت کد تازه کلیک کنید.',
+	 'reload_href':'دوباره سازی',
   /* 01.General */
   'general.copyright': 'Gogo React © 2018 تمامی حقوق برای فاطمه کاظمی محفوظ است',
 

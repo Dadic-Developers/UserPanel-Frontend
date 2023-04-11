@@ -117,8 +117,9 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </div>
                     )}
                   </FormGroup>
-               
-                  <div className="d-flex justify-content-between align-items-center">
+                  <Captcha />
+                
+                  <div className="d-flex justify-content-between align-items-center mt-5">
                     <NavLink to="/user/forgot-password">
                       <IntlMessages id="user.forgot-password-question" />
                     </NavLink>
@@ -139,7 +140,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </span>
                     </Button>
                   </div>
-                  <Captcha />
+               
                 </Form>
               )}
             </Formik>

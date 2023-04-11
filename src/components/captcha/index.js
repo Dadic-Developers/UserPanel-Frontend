@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
-
-import { FormGroup, Label, Input } from 'reactstrap';
-// import { Field } from 'formik';
+import {  Label, FormGroup } from 'reactstrap';
+import { Field } from 'formik';
 
 import {
   loadCaptchaEnginge,
@@ -44,15 +43,24 @@ class Captcha extends Component {
       //   </FormGroup>
       // </div>
 
-      <FormGroup className="form-group has-float-label">
-        <Label className="form-group has-float-label">
-          <Input type="email" />
-          <span>
-            <IntlMessages id="forms.captcha.message" />
-            <LoadCanvasTemplate />
-          </span>
-        </Label>
-      </FormGroup>
+<>
+<LoadCanvasTemplate />
+<FormGroup className="form-group has-float-label">
+                    <Label>
+                      <IntlMessages id="forms.captcha" />
+                    </Label>
+                    <Field
+                      className="form-control"
+                      type="text"
+                      name="capcha"
+                      
+                      // validate={validatePassword}
+                    />
+                   
+                  </FormGroup>
+  
+</>
+   
     );
   }
 }
