@@ -15,7 +15,8 @@ class Captcha extends Component {
   componentDidMount() {
     loadCaptchaEnginge(4);
   }
- validatePassword = (value) => {
+  
+  validatePassword = (value) => {
     let error;
     if (!value) {
       error = 'لطفا رمز را وارد کنید';
@@ -24,6 +25,7 @@ class Captcha extends Component {
     }
     return error;
   };
+
   doSubmit = () => {
     const userCaptcha = document.getElementById('user_captcha_input').value;
 
