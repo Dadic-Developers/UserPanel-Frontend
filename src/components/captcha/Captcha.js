@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Input } from 'reactstrap';
-
-
+import { Input, Label } from 'reactstrap';
+import IntlMessages from 'helpers/IntlMessages';
 import { Colxx } from 'components/common/CustomBootstrap';
+import bgimage from '../../assets/img/login/bg4.jpg';
 
-function Captcha({
-  setCaptcha,
-  onChange,
-  inputValue,
-  Flage,
-
-}) {
+function Captcha({ setCaptcha, onChange, inputValue, Flage }) {
   const [captchaText, setCaptchaText] = useState('');
   // const [inputValue, setInputValue] = useState('');
 
@@ -32,17 +26,31 @@ function Captcha({
   }, [Flage]);
 
   return (
-    <div>
-      <Colxx xxs="6">
-        <h1>Security Code : {captchaText}</h1>
-
-        <h4 color="light"> {captchaText}</h4>
+    <div className="row">
+      <Colxx sm={6}>
+        <Label className="form-group has-float-label">
+          <Input type="text" value={inputValue} onChange={onChange} />
+          <span>
+            <IntlMessages id="forms.captcha" />
+          </span>
+        </Label>
       </Colxx>
-
+      <Colxx sm={6}>
+        <h1
+          style={{
+            backgroundImage: `URL(${bgimage})`,
+            width: '100%',
+            textAlign: 'center',
+            color: '#fff',
+            letterSpacing: '5',
+          }}
+          className="talign-center"
+        >
+          {' '}
+          {captchaText}
+        </h1>
+      </Colxx>
       {/* <button type='submit' onSubmit={() =>{handleSubmit()}}>btn</button> */}
-      <div>
-        <Input type="text" value={inputValue} onChange={onChange} />
-      </div>
     </div>
   );
 }
