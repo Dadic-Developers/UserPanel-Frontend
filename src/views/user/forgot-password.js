@@ -103,10 +103,10 @@ const ForgotPassword = ({
                     )}
                   </FormGroup>
 
-                  <div className="d-flex justify-content-between align-items-center">
-                    <NavLink to="/user/forgot-password">
+                  <div className="d-flex justify-content-end align-items-center">
+                    {/* <NavLink to="/user/forgot-password">
                       <IntlMessages id="user.forgot-password-question" />
-                    </NavLink>
+                    </NavLink> */}
                     <Button
                       color="primary"
                       className={`btn-shadow btn-multiple-state ${

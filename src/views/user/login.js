@@ -10,8 +10,7 @@ import { NotificationManager } from 'components/common/react-notifications';
 import { Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { loginUser } from 'redux/actions';
-import Captcha from 'components/captcha';
-
+import Captcha from 'components/captcha/Captcha';
 
 const validatePassword = (value) => {
   let error;
@@ -36,7 +35,9 @@ const validateEmail = (value) => {
 const Login = ({ history, loading, error, loginUserAction }) => {
   const [email] = useState('demo@gogo.com');
   const [password] = useState('gogo123');
-
+  const [captchaText, setCaptchaText] = useState('');
+  const [inputValue, setInputValue] = useState('');
+  const [flage, setFlage] = useState(true);
   useEffect(() => {
     if (error) {
       NotificationManager.warning(
@@ -56,6 +57,26 @@ const Login = ({ history, loading, error, loginUserAction }) => {
         loginUserAction(values, history);
       }
     }
+  };
+  const onChange = (e) => {
+    setInputValue(e.target.value);
+  };
+  const setCaptcha = (code) => {
+    setCaptchaText(code);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const code = captchaText.replace(/\s+/g, '');
+    if (inputValue.toLocaleLowerCase() === code.toLocaleLowerCase()) {
+      alert('OK');
+
+      setInputValue('');
+    } else {
+      // alert('FAILED');
+
+      setInputValue('');
+    }
+    setFlage(!flage);
   };
 
   const initialValues = { email, password };
@@ -86,7 +107,10 @@ const Login = ({ history, loading, error, loginUserAction }) => {
 
             <Formik initialValues={initialValues} onSubmit={onUserLogin}>
               {({ errors, touched }) => (
-                <Form className="av-tooltip tooltip-label-bottom">
+                <Form
+                  className="av-tooltip tooltip-label-bottom"
+                  id="frm-login"
+                >
                   <FormGroup className="form-group has-float-label">
                     <Label>
                       <IntlMessages id="user.email" />
@@ -118,13 +142,19 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </div>
                     )}
                   </FormGroup>
-                <Captcha />
-                
+                  <Captcha
+                    setCaptcha={setCaptcha}
+                    Flage={flage}
+                    onChange={onChange}
+                    inputValue={inputValue}
+                    captchaText={captchaText}
+                  />
                   <div className="d-flex justify-content-between align-items-center mt-5">
                     <NavLink to="/user/forgot-password">
                       <IntlMessages id="user.forgot-password-question" />
                     </NavLink>
                     <Button
+                      onClick={handleSubmit}
                       color="primary"
                       className={`btn-shadow btn-multiple-state ${
                         loading ? 'show-spinner' : ''
@@ -141,7 +171,6 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       </span>
                     </Button>
                   </div>
-               
                 </Form>
               )}
             </Formik>
