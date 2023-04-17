@@ -1,4 +1,5 @@
 import { getCurrentUser } from 'helpers/Utils';
+
 import { isAuthGuardActive, currentUser } from 'constants/defaultValues';
 import {
   LOGIN_USER,
@@ -24,6 +25,7 @@ const INIT_STATE = {
   loading: false,
   error: '',
 };
+
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {

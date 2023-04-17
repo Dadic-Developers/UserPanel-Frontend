@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { Row, Card, CardTitle, Label, FormGroup, Button } from 'reactstrap';
 import { Formik, Form, Field } from 'formik';
 
@@ -15,9 +15,9 @@ import Captcha from 'components/captcha/Captcha';
 const validatePassword = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا رمز را وارد کنید';
+    error = 'لطفا رمز عبور را وارد کنید';
   } else if (value.length < 4) {
-    error = 'رمز عبور باید بیشتر از 3 کاراکتر باشد';
+    error = 'رمز عبور باید بیشتر از ۴ کاراکتر باشد';
   }
   return error;
 };
@@ -25,36 +25,52 @@ const validatePassword = (value) => {
 const validateEmail = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا پست الکترونیکی را وارد کن';
+    error = 'لطفا پست الکترونیکی را وارد کنید';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
     error = 'ایمیل مورد نظر نامعتبر است';
   }
   return error;
 };
 
-const Login = ({ history, loading, error, loginUserAction }) => {
-  const [email] = useState('demo@gogo.com');
-  const [password] = useState('gogo123');
+const Login = ({ history, loading,error, loginUserAction }) => {
+  const [email] = useState('');
+  const [password] = useState('');
   const [captchaText, setCaptchaText] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [flage, setFlage] = useState(true);
-  useEffect(() => {
-    if (error) {
-      NotificationManager.warning(
-        error,
-        'ارور ورود به سایت',
+
+  const showError = (err) => {
+    if (err) {
+      NotificationManager.error(
+        err,
+        'خطای ورود به سامانه',
         3000,
         null,
         null,
         ''
       );
     }
+  };
+  useEffect(() => {
+    if (error) {
+      showError(error);
+    }
   }, [error]);
 
   const onUserLogin = (values) => {
     if (!loading) {
-      if (values.email !== '' && values.password !== '') {
-        loginUserAction(values, history);
+      const code = captchaText.replace(/\s+/g, '');
+      if (inputValue.toLocaleLowerCase() === code.toLocaleLowerCase()) {
+        if (values.email !== '' && values.password !== '') {
+          loginUserAction(values, history);
+        }
+
+        // setInputValue('');
+      } else {
+        // alert('FAILED');
+        showError('کد امنیتی وارد شده صحیح نمی‌باشد');
+        setInputValue('');
+        setFlage(!flage);
       }
     }
   };
@@ -64,20 +80,10 @@ const Login = ({ history, loading, error, loginUserAction }) => {
   const setCaptcha = (code) => {
     setCaptchaText(code);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const code = captchaText.replace(/\s+/g, '');
-    if (inputValue.toLocaleLowerCase() === code.toLocaleLowerCase()) {
-      alert('OK');
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-      setInputValue('');
-    } else {
-      // alert('FAILED');
-
-      setInputValue('');
-    }
-    setFlage(!flage);
-  };
+  // };
 
   const initialValues = { email, password };
 
@@ -90,11 +96,11 @@ const Login = ({ history, loading, error, loginUserAction }) => {
               همه به یک دستیار هوشمند نیاز داریم
             </p>
             <p className="text-white mb-0 text-theme-1">
-              اگه حساب کاربری نداری نگران نباش، از{' '}
+              برای ایجاد حساب کاربری{' '}
               <NavLink to="/user/register" className=" text-theme-1">
-                اینجا
+                اینجا{' '}
               </NavLink>{' '}
-              میتونی تو سایت اسمتو بویسی
+              کلیک نمایید
             </p>
           </div>
           <div className="form-side">
@@ -154,7 +160,8 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                       <IntlMessages id="user.forgot-password-question" />
                     </NavLink>
                     <Button
-                      onClick={handleSubmit}
+                      type="Submit"
+                      // onClick={handleSubmit}
                       color="primary"
                       className={`btn-shadow btn-multiple-state ${
                         loading ? 'show-spinner' : ''

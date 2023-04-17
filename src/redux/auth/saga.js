@@ -1,7 +1,9 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { auth } from 'helpers/Firebase';
 import { adminRoot, currentUser } from 'constants/defaultValues';
-import { setCurrentUser } from 'helpers/Utils';
+import { setCurrentToken, setCurrentUser } from 'helpers/Utils';
+import { ENDPIONTS, createAPIEndpoint } from 'api';
+import axios from 'axios';
 import {
   LOGIN_USER,
   REGISTER_USER,
@@ -25,29 +27,60 @@ export function* watchLoginUser() {
   // eslint-disable-next-line no-use-before-define
   yield takeEvery(LOGIN_USER, loginWithEmailPassword);
 }
+const getToken = async (email, password) => {
+  const bodyArray = { email, password };
+  // axios.defaults.headers.post['Content-Type'] = 'application/json';
+  return (
+    createAPIEndpoint(ENDPIONTS.Login)
+      .getInfo(bodyArray)
+      .then((res) => res.data)
+      // console.log(error.response.data);
+      // console.log(error.response.status);
+      // console.log(error.response.headers);
 
-const loginWithEmailPasswordAsync = async (email, password) =>
+      .catch((error) => error.response.data)
+  );
+};
+// function getToken(apiUrl) {
+//   return fetch(apiUrl)
+//   .then(response => response.json())
+//   .catch(error => ({ error }))
+// }
+const loginWithEmailPasswordAsync = async () => {
   // eslint-disable-next-line no-return-await
-  await auth
-    .signInWithEmailAndPassword(email, password)
-    .then((user) => user)
-    .catch((error) => error);
+  axios.defaults.headers.common.Authorization = localStorage.getItem('token');
+  axios.defaults.headers.post['Content-Type'] = 'application/json';
+  return createAPIEndpoint(ENDPIONTS.UserInfo)
+    .fetchAll()
+    .then((res) => res.data)
+    .catch((error) => error)
+};
+//
+// };
 
 function* loginWithEmailPassword({ payload }) {
   const { email, password } = payload.user;
   const { history } = payload;
   try {
-    const loginUser = yield call(loginWithEmailPasswordAsync, email, password);
-    if (!loginUser.message) {
-      const item = { uid: loginUser.user.uid, ...currentUser };
-      setCurrentUser(item);
-      yield put(loginUserSuccess(item));
-      history.push(adminRoot);
-    } else {
-      yield put(loginUserError(loginUser.message));
+    const token = yield call(getToken, email, password);
+
+    if (!token.message) {
+      setCurrentToken(token);
+      const loginUser = yield call(loginWithEmailPasswordAsync);
+      
+      if (!loginUser.message) {
+        console.log(loginUser)
+        // const item = { uid: loginUser.user.uid, ...currentUser };
+        setCurrentUser(loginUser);
+        yield put(loginUserSuccess(loginUser));
+        history.push(adminRoot);
+      } else {
+        yield put(loginUserError('خطای در دریافت اطلاعات کاربر رخ داده است، مجددا تلاش کنید'));
+      }
     }
+   
   } catch (error) {
-    yield put(loginUserError(error));
+    yield put(loginUserError( "رمز عبور با نام کاربری اشتباه است یا نام کاربری مسدود است"));
   }
 }
 

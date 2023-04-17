@@ -152,8 +152,8 @@ export const getCurrentUser = () => {
   let user = null;
   try {
     user =
-      localStorage.getItem('gogo_current_user') != null
-        ? JSON.parse(localStorage.getItem('gogo_current_user'))
+      localStorage.getItem('current_user') != null
+        ? JSON.parse(localStorage.getItem('current_user'))
         : null;
   } catch (error) {
     console.log('>>>>: src/helpers/Utils.js  : getCurrentUser -> error', error);
@@ -164,12 +164,40 @@ export const getCurrentUser = () => {
 
 export const setCurrentUser = (user) => {
   try {
+   
     if (user) {
-      localStorage.setItem('gogo_current_user', JSON.stringify(user));
+  
+      localStorage.setItem('current_user', JSON.stringify(user));
+      
     } else {
-      localStorage.removeItem('gogo_current_user');
+      localStorage.removeItem('current_user');
     }
   } catch (error) {
     console.log('>>>>: src/helpers/Utils.js : setCurrentUser -> error', error);
+  }
+};
+
+export const getCurrentToken = () => {
+  let token = null;
+  try {
+    token =localStorage.getItem('token');
+    
+  } catch (error) {
+    console.log('>>>>: src/helpers/Utils.js  : getCurrentToken -> error', error);
+    token = null;
+  }
+  return token;
+};
+export const setCurrentToken = (token) => {
+  try {
+    if (token) {
+      localStorage.setItem('token', `Bearer ${token.access} `);
+      localStorage.setItem('refresh', token.refresh);
+    } else {
+      localStorage.removeItem('token');
+      localStorage.removeItem('refresh');
+    }
+  } catch (error) {
+    console.log('>>>>: src/helpers/Utils.js : setCurrentToken -> error', error);
   }
 };

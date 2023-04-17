@@ -5,6 +5,7 @@ import axios from "axios";
 // import data from 'data/iconCards';
 import GlideComponent from 'components/carousel/GlideComponent';
 import { ENDPIONTS, createAPIEndpoint } from 'api';
+import { getCurrentToken } from 'helpers/Utils';
 
 const IconCardsCarousel = ({ className = 'icon-cards-row' }) => {
   const [data, setData] = useState([
@@ -80,20 +81,21 @@ const IconCardsCarousel = ({ className = 'icon-cards-row' }) => {
   };
  const loadData = async () => {
   try {
-    axios.defaults.headers.common.Authorization="Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgxMTM2NTkwLCJpYXQiOjE2ODExMzE2OTgsImp0aSI6ImM0NmFmYzYwZDkzYjRlN2ZiYTZjYzU4ODFmNDNlN2IzIiwidXNlcl9pZCI6NH0.ZaFqUTzp1Cbsnz8Re7twXoyDx0kUkxBJxP0Ql38ZSRs"
+    axios.defaults.headers.common.Authorization=getCurrentToken();
       // localStorage.getItem("token");
     axios.defaults.headers.post["Content-Type"] = "application/json";
-    createAPIEndpoint(ENDPIONTS.PlanStatus)
+    await createAPIEndpoint(ENDPIONTS.PlanStatus)
       .fetchAll()
       .then((res) => {
         const result = res.data[0];
         console.log("datad>>>>", res.data[0]);
         const type=getPlan(result.plan) ;
         const totalDay=totalDays(result.date_expire);
-        console.log(type,totalDay)
-        if (result.length >= 0) {
+        
+        if (result) {
+         console.log(type,totalDay)
          setData([
-          { title: 'dashboards.pending-orders', icon: 'iconsminds-clock', value:totalDay,typePlan:type},
+          { title: `روزشمار ${type}`, icon: 'iconsminds-clock', value:totalDay,typePlan:type},
           {
             title: 'dashboards.completed-orders',
             icon: 'iconsminds-basket-coins',

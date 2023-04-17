@@ -2,14 +2,13 @@
 import axios from "axios";
 
 const BASE_URL = "http://daadik.com:8000/";
-// const api_key="freeMJTnmXZE28FI48KXsybVNZwzoWMY";
-// export const NavasanAPI={IP:"http://api.navasan.tech/latest/?api_key="+api_key};
+const apiKey="freeMJTnmXZE28FI48KXsybVNZwzoWMY";
+export const NavasanAPI={IP:`http://api.navasan.tech/latest/?api_key${apiKey}`};
 export const PathImage = {
-  pathFile: `${BASE_URL}staticfiles/uploads/`,
+  pathFile: `${BASE_URL} staticfiles/uploads/`,
 };
 
 export const ENDPIONTS = {
-  
   UserInfo: "accounts/user_info", //  get
   Login: "accounts/login", // post
   Refresh: "accounts/refresh", // post
@@ -19,7 +18,7 @@ export const ENDPIONTS = {
   EditUser: "accounts/user_edit", //  put
   PlanStatus: "accounts/plan_status", //  get
   Forget: "accounts/forget", // post
-  CheckCode: "accounts/code", //  post 	email, code
+  CheckCode: "accounts/code", //  post email code
   ChangePassword: "accounts/change_pass", //  put
   ListTicket: "support/list_ticket", // get
   CreateTicket: "support/create_ticket", // post
@@ -50,11 +49,11 @@ export const ENDPIONTS = {
   ChatStatus:"chat/status",// get
 }
 
-export  const createAPIEndpoint = (endpoint) => {
+export const createAPIEndpoint = (endpoint) => {
   
    const url= `${BASE_URL}${endpoint}/`;
 
-  return  {
+  return {
     postAll: async() =>  axios.post(url),
     fetchAll: async() =>  axios.get(url),
     fetchUrl: async(urlpage) =>  axios.get(urlpage),
