@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Input, Label } from 'reactstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { Colxx } from 'components/common/CustomBootstrap';
-import bgimage from '../../assets/img/login/bg4.jpg';
+import bgimage from '../../assets/img/login/bg2.png';
 
 function Captcha({ setCaptcha, onChange, inputValue, Flage }) {
   const [captchaText, setCaptchaText] = useState('');
@@ -36,15 +36,14 @@ function Captcha({ setCaptcha, onChange, inputValue, Flage }) {
         </Label>
       </Colxx>
       <Colxx sm={6}>
-        <h1
+        <h1 className="dz-upload talign-center"
           style={{
             backgroundImage: `URL(${bgimage})`,
             width: '100%',
             textAlign: 'center',
-            color: '#fff',
+           
             letterSpacing: '5',
           }}
-          className="talign-center"
         >
           {' '}
           {captchaText}
