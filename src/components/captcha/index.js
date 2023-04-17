@@ -15,15 +15,15 @@ class Captcha extends Component {
   componentDidMount() {
     loadCaptchaEnginge(4);
   }
- validatePassword = (value) => {
-    let error;
-    if (!value) {
-      error = 'لطفا رمز را وارد کنید';
-    } else if (value.length < 4) {
-      error = 'رمز عبور باید بیشتر از 3 کاراکتر باشد';
-    }
-    return error;
-  };
+//  validatePassword = (value) => {
+//     let error;
+//     if (!value) {
+//       error = 'لطفا رمز را وارد کنید';
+//     } else if (value.length < 4) {
+//       error = 'رمز عبور باید بیشتر از 3 کاراکتر باشد';
+//     }
+//     return error;
+//   };
   doSubmit = () => {
     const userCaptcha = document.getElementById('user_captcha_input').value;
 
