@@ -91,7 +91,7 @@ const Register = ({ history }) => {
                         defaultValue={nationalCode}
                       />
                     </Label>
-                    <Input type="tel" pattern="[0-9*]" />
+                    <Input type="tel"  pattern="[0-9]*" />
                   </FormGroup>
                 </Colxx>
                 <Colxx sm={6}>
