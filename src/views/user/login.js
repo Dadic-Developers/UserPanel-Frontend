@@ -64,6 +64,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
   const setCaptcha = (code) => {
     setCaptchaText(code);
   };
+  const setFlag=()=>setFlage(!flage);
   const handleSubmit = (e) => {
     e.preventDefault();
     const code = captchaText.replace(/\s+/g, '');
@@ -76,7 +77,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
 
       setInputValue('');
     }
-    setFlage(!flage);
+    setFlag();
   };
 
   const initialValues = { email, password };
@@ -148,6 +149,7 @@ const Login = ({ history, loading, error, loginUserAction }) => {
                     onChange={onChange}
                     inputValue={inputValue}
                     captchaText={captchaText}
+                    setFlag={setFlag}
                   />
                   <div className="d-flex justify-content-between align-items-center mt-5">
                     <NavLink to="/user/forgot-password">

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Input, Label } from 'reactstrap';
+import { Input, Label, FormGroup } from 'reactstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { Colxx } from 'components/common/CustomBootstrap';
-import bgimage from '../../assets/img/login/bg2.png';
+// import bgimage from '../../assets/img/login/bg2.png';
 
-function Captcha({ setCaptcha, onChange, inputValue, Flage }) {
+function Captcha({ setCaptcha, onChange, inputValue, Flage, setFlag }) {
   const [captchaText, setCaptchaText] = useState('');
   // const [inputValue, setInputValue] = useState('');
 
@@ -26,30 +26,41 @@ function Captcha({ setCaptcha, onChange, inputValue, Flage }) {
   }, [Flage]);
 
   return (
-    <div className="row">
-      <Colxx sm={6}>
-        <Label className="form-group has-float-label">
-          <Input type="text" value={inputValue} onChange={onChange} />
-          <span>
-            <IntlMessages id="forms.captcha" />
-          </span>
-        </Label>
-      </Colxx>
-      <Colxx sm={6}>
-        <h1 className="dz-upload talign-center"
-          style={{
-            backgroundImage: `URL(${bgimage})`,
-            width: '100%',
-            textAlign: 'center',
-           
-            letterSpacing: '5',
-          }}
-        >
-          {' '}
-          {captchaText}
-        </h1>
-      </Colxx>
-      {/* <button type='submit' onSubmit={() =>{handleSubmit()}}>btn</button> */}
+    <div>
+      <FormGroup row>
+        <Colxx sm={7}>
+          <Label className="form-group has-float-label">
+            <Input
+              type="text"
+              value={inputValue}
+              onChange={onChange}
+              style={{ width: '185%' }}
+            />
+            <span>
+              <IntlMessages id="forms.captcha" />
+            </span>
+          </Label>
+        </Colxx>
+        <Colxx sm={3}>
+          <h1
+            style={{
+              background: 'linear-gradient(#29332e, #898c80)',
+              color: 'blue',
+            }}
+          >
+            {captchaText}
+          </h1>
+        </Colxx>
+        <Colxx sm={2}>
+          <button
+            type="button"
+            className="btn btn-header-light icon-button "
+            onClick={() => setFlag()}
+          >
+            <i className="simple-icon-refresh" style={{ fontSize: '20px' }} />
+          </button>
+        </Colxx>
+      </FormGroup>
     </div>
   );
 }

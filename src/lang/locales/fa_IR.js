@@ -517,6 +517,7 @@ module.exports = {
   'forms.lastname': 'نام خانوادگی',
   'forms.lastname-message': 'لطفا نام خانوادگی خود را وارد کنید',
   'forms.name': 'نام',
+  'forms.national-Code': 'کد ملی',
 
   /* 07.11.Form Components */
   'form-components.custom-inputs': 'Inputs سفارشی',
