@@ -101,12 +101,13 @@ function* loginWithEmailPassword({ payload }) {
         setInterval(refreshToken, 1000*5); // 1000*60*60*1 update data each one hour
         history.push(adminRoot);
       } else {
-        yield put(loginUserError('خطای در دریافت اطلاعات کاربر رخ داده است، مجددا تلاش کنید'));
+        yield put(loginUserError( "رمز عبور با نام کاربری اشتباه است یا نام کاربری مسدود است"));
       }
     }
    
   } catch (error) {
-    yield put(loginUserError( "رمز عبور با نام کاربری اشتباه است یا نام کاربری مسدود است"));
+    yield put(loginUserError('خطای در دریافت اطلاعات کاربر رخ داده است، مجددا تلاش کنید'));
+   
   }
 }
 

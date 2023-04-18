@@ -218,7 +218,7 @@ export const barChartOptions = {
           beginAtZero: true,
           stepSize: 100,
           min: 0,
-          max: 1000,
+          max: 900,
           padding: 20,
           fontFamily: 'yekan',
         },
