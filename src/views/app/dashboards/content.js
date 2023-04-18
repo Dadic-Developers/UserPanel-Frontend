@@ -3,17 +3,18 @@ import { injectIntl } from 'react-intl';
 import { Row } from 'reactstrap';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import Breadcrumb from 'containers/navs/Breadcrumb';
-import IconCardsCarousel from 'containers/dashboards/IconCardsCarousel';
-import QuickPost from 'containers/dashboards/QuickPost';
-import BestSellers from 'containers/dashboards/BestSellers';
-import Cakes from 'containers/dashboards/Cakes';
-import GradientWithRadialProgressCard from 'components/cards/GradientWithRadialProgressCard';
-import WebsiteVisitsChartCard from 'containers/dashboards/WebsiteVisitsChartCard';
-import ConversionRatesChartCard from 'containers/dashboards/ConversionRatesChartCard';
-import NewComments from 'containers/dashboards/NewComments';
+// import IconCardsCarousel from 'containers/dashboards/IconCardsCarousel';
+// import QuickPost from 'containers/dashboards/QuickPost';
+// import BestSellers from 'containers/dashboards/BestSellers';
+// import Cakes from 'containers/dashboards/Cakes';
+// import GradientWithRadialProgressCard from 'components/cards/GradientWithRadialProgressCard';
+// import WebsiteVisitsChartCard from 'containers/dashboards/WebsiteVisitsChartCard';
+// import ConversionRatesChartCard from 'containers/dashboards/ConversionRatesChartCard';
+// import NewComments from 'containers/dashboards/NewComments';
+import UserProfile from 'containers/dashboards/user-profile';
 
-const DashboardContent = ({ intl, match }) => {
-  const { messages } = intl;
+const DashboardContent = ({ match }) => {
+  // const { messages } = intl;
   return (
     <>
       <Row>
@@ -24,34 +25,39 @@ const DashboardContent = ({ intl, match }) => {
       </Row>
       <Row>
         <Colxx lg="12" xl="6">
-          <IconCardsCarousel />
+          {/* <IconCardsCarousel /> */}
           <Row>
             <Colxx md="12" className="mb-4">
-              <QuickPost />
+              {/* <QuickPost /> */}
             </Colxx>
           </Row>
         </Colxx>
         <Colxx lg="12" xl="6" className="mb-4">
-          <BestSellers title="dashboards.top-viewed-posts" />
+          {/* <BestSellers title="dashboards.top-viewed-posts" /> */}
         </Colxx>
       </Row>
       <Row>
         <Colxx sm="12" lg="4" className="mb-4">
-          <Cakes />
+          {/* <Cakes /> */}
         </Colxx>
         <Colxx md="6" lg="8" className="mb-4">
-          <NewComments />
+          {/* <NewComments /> */}
         </Colxx>
       </Row>
       <Row>
         <Colxx sm="12" md="6" className="mb-4">
-          <WebsiteVisitsChartCard />
+          {/* <WebsiteVisitsChartCard /> */}
         </Colxx>
         <Colxx sm="12" md="6" className="mb-4">
-          <ConversionRatesChartCard />
+          {/* <ConversionRatesChartCard /> */}
         </Colxx>
       </Row>
       <Row>
+        <Colxx md="12">
+          <UserProfile />
+        </Colxx>
+      </Row>
+      {/* <Row>
         <Colxx lg="4" md="6" className="mb-4">
           <GradientWithRadialProgressCard
             icon="iconsminds-clock"
@@ -79,7 +85,7 @@ const DashboardContent = ({ intl, match }) => {
             progressText="8/10"
           />
         </Colxx>
-      </Row>
+      </Row> */}
     </>
   );
 };
