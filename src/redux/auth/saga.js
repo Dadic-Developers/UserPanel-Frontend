@@ -1,7 +1,7 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { auth } from 'helpers/Firebase';
 import { adminRoot, currentUser } from 'constants/defaultValues';
-import { setCurrentToken, setCurrentUser } from 'helpers/Utils';
+import { getCurrentToken, getCurrentTokenRefrash, setCurrentToken, setCurrentUser } from 'helpers/Utils';
 import { ENDPIONTS, createAPIEndpoint } from 'api';
 import axios from 'axios';
 import {
@@ -57,6 +57,31 @@ const loginWithEmailPasswordAsync = async () => {
 };
 //
 // };
+const refreshToken = async() => {
+  try {
+    axios.defaults.headers.common.Authorization=getCurrentToken();
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    const BodyRecord={"refresh": getCurrentTokenRefrash()};
+    createAPIEndpoint(ENDPIONTS.Refresh).getInfo(BodyRecord)// axios.post('http://daadik.com/accounts/refresh/',{'refresh':localStorage.getItem('refresh')});//get info user
+    .then((res) => {
+      console.log(res.data)
+      setCurrentToken(res.data)
+
+    console.log('Token is refreshed');
+    })
+    .catch((error) => {
+      console.log(error.errors);
+      console.log('Error in refreshing token ',error.errors);
+      window.location='user/login';
+    });
+    
+
+  } catch (error) {
+    console.log('Error in refreshing token ',error.errors);
+   //  props.history.replace('/logout');
+  }
+
+}
 
 function* loginWithEmailPassword({ payload }) {
   const { email, password } = payload.user;
@@ -73,6 +98,7 @@ function* loginWithEmailPassword({ payload }) {
         // const item = { uid: loginUser.user.uid, ...currentUser };
         setCurrentUser(loginUser);
         yield put(loginUserSuccess(loginUser));
+        setInterval(refreshToken, 1000*5); // 1000*60*60*1 update data each one hour
         history.push(adminRoot);
       } else {
         yield put(loginUserError('خطای در دریافت اطلاعات کاربر رخ داده است، مجددا تلاش کنید'));

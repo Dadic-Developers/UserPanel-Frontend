@@ -152,6 +152,12 @@ module.exports = {
   'dashboards.pending-orders': 'Pedidos Pendientes',
   'dashboards.completed-orders': 'Pedidos Completados',
   'dashboards.refund-requests': 'Petición de Reembolso',
+
+  'dashboards.plan-day': 'plan-day',// New Jwann added
+  'dashboards.number-search': 'number-search',// New Jwann added,
+  'dashboards.number-layehe': 'number-layehe',// New Jwann added
+  'dashboards.charge': 'charge', // New Jwann added
+
   'dashboards.new-comments': 'Nuevos Comentarios',
   'dashboards.sales': 'Ventas',
   'dashboards.orders': 'Pedidos',

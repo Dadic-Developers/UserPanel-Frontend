@@ -9,19 +9,20 @@ import { getCurrentToken } from 'helpers/Utils';
 
 const IconCardsCarousel = ({ className = 'icon-cards-row' }) => {
   const [data, setData] = useState([
-    { title: 'dashboards.pending-orders', icon: 'iconsminds-clock', value: 0 ,typePlan:''},
+    { title: 'dashboards.plan-day', icon: 'iconsminds-clock', value: 0 ,typePlan:''},
     {
-      title: 'dashboards.completed-orders',
+      title: 'dashboards.number-search',
       icon: 'iconsminds-basket-coins',
       value: 0,
     },
     {
-      title: 'dashboards.refund-requests',
+      title: 'dashboards.number-layehe',
       icon: 'iconsminds-arrow-refresh',
       value: 0,
     },
-    { title: 'dashboards.new-comments', icon: 'iconsminds-mail-read', value: 0 }]
+    { title: 'dashboards.charge', icon: 'iconsminds-mail-read', value: 0 }]
   );
+
   const totalDays =  (dateExpire) => {
     try {
       const dateNow = new Date(); //  data.date_started
@@ -43,15 +44,15 @@ const IconCardsCarousel = ({ className = 'icon-cards-row' }) => {
       let planString = "";
       switch (typeofoplan[0]) {
         case "silver":
-          planString = "طرح نقره‌ای ";
+          planString = " نقره‌ای ";
           // this.setState({ color: this.colorList[0] });
           break;
         case "bronze":
-          planString = "طرح برنز ";
+          planString = " برنز ";
           // this.setState({ color: this.colorList[1] });
           break;
         case "gold":
-          planString = "طرح طلایی ";
+          planString = " طلایی ";
           // this.setState({ color: this.colorList[2] });
           break;
           default:
@@ -88,32 +89,32 @@ const IconCardsCarousel = ({ className = 'icon-cards-row' }) => {
       .fetchAll()
       .then((res) => {
         const result = res.data[0];
-        console.log("datad>>>>", res.data[0]);
+        // console.log("datad>>>>", res.data);
         const type=getPlan(result.plan) ;
         const totalDay=totalDays(result.date_expire);
         
         if (result) {
-         console.log(type,totalDay)
+        //  console.log(type,totalDay)
          setData([
-          { title: `روزشمار ${type}`, icon: 'iconsminds-clock', value:totalDay,typePlan:type},
+          { title: 'dashboards.plan-day', icon: 'iconsminds-clock', value:totalDay,typePlan:type},
           {
-            title: 'dashboards.completed-orders',
+            title: 'dashboards.number-search',
             icon: 'iconsminds-basket-coins',
             value:  result.search_usage,
           },
           {
-            title: 'dashboards.refund-requests',
+            title: 'dashboards.number-layehe',
             icon: 'iconsminds-arrow-refresh',
             value: result.statemant_usage,
           },
-          { title: 'dashboards.new-comments', icon: 'iconsminds-mail-read', value: 20000 }
+          { title: 'dashboards.charge', icon: 'iconsminds-mail-read', value: 20000 }
         ])
         
         }
       })
     
       .catch((error) => {
-        console.log(error);
+        console.log('>>>>: src/containers/dashboards/IconCardsCarousel.js  : loadData -> error', error);
       });
   } catch {
     console.log("");

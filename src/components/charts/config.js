@@ -204,7 +204,7 @@ export const barChartOptions = {
     },
   },
   responsive: true,
-  maintainAspectRatio: false,
+  maintainAspectRatio: true,
   scales: {
     yAxes: [
       {
@@ -217,8 +217,8 @@ export const barChartOptions = {
         ticks: {
           beginAtZero: true,
           stepSize: 100,
-          min: 300,
-          max: 800,
+          min: 0,
+          max: 1000,
           padding: 20,
           fontFamily: 'yekan',
         },

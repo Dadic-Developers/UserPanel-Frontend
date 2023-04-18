@@ -96,24 +96,37 @@ export const scatterChartData = {
 };
 
 export const barChartData = {
-  labels: ['خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان'],
+  labels: [],
   datasets: [
     {
-      label: 'کیک ها',
+      label: 'تعداد',
       borderColor: colors.themeColor1,
       backgroundColor: colors.themeColor1_10,
-      data: [456, 479, 324, 569, 702, 600],
+      data: [],
       borderWidth: 2,
     },
-    {
-      label: 'دسرها',
-      borderColor: colors.themeColor2,
-      backgroundColor: colors.themeColor2_10,
-      data: [364, 504, 605, 400, 345, 320],
-      borderWidth: 2,
-    },
+
   ],
 };
+// export const barChartData = {
+//   labels: ['خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان'],
+//   datasets: [
+//     {
+//       label: 'کیک ها',
+//       borderColor: colors.themeColor1,
+//       backgroundColor: colors.themeColor1_10,
+//       data: [456, 479, 324, 569, 702, 600],
+//       borderWidth: 2,
+//     },
+//     {
+//       label: 'دسرها',
+//       borderColor: colors.themeColor2,
+//       backgroundColor: colors.themeColor2_10,
+//       data: [364, 504, 605, 400, 345, 320],
+//       borderWidth: 2,
+//     },
+//   ],
+// };
 
 export const radarChartData = {
   datasets: [

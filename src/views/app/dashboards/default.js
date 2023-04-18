@@ -4,7 +4,7 @@ import { Row } from 'reactstrap';
 import { Colxx, Separator } from 'components/common/CustomBootstrap';
 import Breadcrumb from 'containers/navs/Breadcrumb';
 import IconCardsCarousel from 'containers/dashboards/IconCardsCarousel';
-import RecentOrders from 'containers/dashboards/RecentOrders';
+// import RecentOrders from 'containers/dashboards/RecentOrders';
 import Logs from 'containers/dashboards/Logs';
 import Tickets from 'containers/dashboards/Tickets';
 import Calendar from 'containers/dashboards/Calendar';
@@ -18,9 +18,11 @@ import AdvancedSearch from 'containers/dashboards/AdvancedSearch';
 import SmallLineCharts from 'containers/dashboards/SmallLineCharts';
 import SalesChartCard from 'containers/dashboards/SalesChartCard';
 import ProductCategoriesPolarArea from 'containers/dashboards/ProductCategoriesPolarArea';
-import WebsiteVisitsChartCard from 'containers/dashboards/WebsiteVisitsChartCard';
-import ConversionRatesChartCard from 'containers/dashboards/ConversionRatesChartCard';
+// import WebsiteVisitsChartCard from 'containers/dashboards/WebsiteVisitsChartCard';
+// import ConversionRatesChartCard from 'containers/dashboards/ConversionRatesChartCard';
 import TopRatedItems from 'containers/dashboards/TopRatedItems';
+import RecentNews from 'containers/dashboards/RecentNews';
+import BarChartCard from 'containers/dashboards/BarChartCard';
 
 const DefaultDashboard = ({ intl, match }) => {
   const { messages } = intl;
@@ -43,7 +45,17 @@ const DefaultDashboard = ({ intl, match }) => {
           </Row>
         </Colxx>
         <Colxx lg="12" xl="6" className="mb-4">
-          <RecentOrders />
+          {/* <RecentOrders /> */}
+          <RecentNews />
+        </Colxx>
+      </Row>
+      <Row>
+        <Colxx sm="12" md="6" className="mb-4">
+          <BarChartCard graphType = 'statement'/>
+        </Colxx>
+        <Colxx sm="12" md="6" className="mb-4">
+          {/* <ConversionRatesChartCard /> */}
+          <BarChartCard graphType = 'search'/>
         </Colxx>
       </Row>
       <Row>
@@ -77,14 +89,14 @@ const DefaultDashboard = ({ intl, match }) => {
         </Colxx>
       </Row>
       <SortableStaticticsRow messages={messages} />
-      <Row>
+      {/* <Row>
         <Colxx sm="12" md="6" className="mb-4">
           <WebsiteVisitsChartCard />
         </Colxx>
         <Colxx sm="12" md="6" className="mb-4">
           <ConversionRatesChartCard />
         </Colxx>
-      </Row>
+      </Row> */}
       <Row>
         <Colxx lg="12" md="6" xl="4">
           <Row>

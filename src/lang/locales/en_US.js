@@ -161,16 +161,25 @@ module.exports = {
   'dashboards.orders': 'Orders',
   'dashboards.refunds': 'Refunds',
   'dashboards.recent-orders': 'Recent Orders',
+
+  'dashboards.plan-day': 'plan-day',// New Jwann added
+  'dashboards.number-search': 'number-search',// New Jwann added,
+  'dashboards.number-layehe': 'number-layehe',// New Jwann added
+  'dashboards.charge': 'charge', // New Jwann added
+  'dashboards.recent-news': 'recent-news', // 'New Added By Jwan
+
   'dashboards.product-categories': 'Product Categories',
   'dashboards.cakes': 'Cakes',
   'dashboards.tickets': 'Tickets',
   'dashboards.calendar': 'Calendar',
   'dashboards.best-sellers': 'Best Sellers',
   'dashboards.website-visits': 'Website Visits',
+  'dashboards.report-layehe': 'report-layehe',// New Jwann added
+  'dashboards.report-label': 'report-label',// New Jwann added
   'dashboards.unique-visitors': 'Unique Visitors',
-  'dashboards.this-week': 'This Week',
-  'dashboards.last-week': 'Lat Week',
-  'dashboards.this-month': 'This Month',
+  'dashboards.weekly': 'weekly',// New Jwann added
+  'dashboards.monthly': 'monthly',// New Jwann added
+  'dashboards.yearly': 'yearly',// New Jwann added
   'dashboards.conversion-rates': 'Conversion Rates',
   'dashboards.per-session': 'Per Session',
   'dashboards.profile-status': 'Profile Status',

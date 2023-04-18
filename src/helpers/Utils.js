@@ -7,6 +7,82 @@ import {
   themeRadiusStorageKey,
 } from 'constants/defaultValues';
 
+const FARSI_NUMBERS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+const ARABIC_NUMBERS = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+
+export const convertFaToEn = function (enNumber) {
+  if (!enNumber || !enNumber.toString) {
+    return enNumber;
+  }
+
+ 
+
+  return enNumber.toString()
+    .split("")
+    .map((letter) =>
+      FARSI_NUMBERS.indexOf(letter) !== -1
+        ? FARSI_NUMBERS.indexOf(letter)
+        : letter
+    )
+    .join("");
+};
+
+export const convertEnToFa = function (enNumber) {
+  if (!enNumber || !enNumber.toString) {
+    return enNumber;
+  }
+
+ 
+  return enNumber.toString()
+    .split("")
+    .map((letter) => (/[0-9]/.test(letter) ? FARSI_NUMBERS[letter] : letter))
+    .join("");
+};
+
+export const convertArToEn = function (enNumber) {
+  if (!enNumber || !enNumber.toString) {
+    return enNumber;
+  }
+
+
+  return enNumber.toString()
+    .split("")
+    .map((letter) =>
+      ARABIC_NUMBERS.indexOf(letter) !== -1
+        ? ARABIC_NUMBERS.indexOf(letter)
+        : letter
+    )
+    .join("");
+};
+
+export const convertEnToAr = function (enNumber) {
+  if (!enNumber || !enNumber.toString) {
+    return enNumber;
+  }
+
+  return enNumber.toString()
+    .split("")
+    .map((letter) => (/[0-9]/.test(letter) ? ARABIC_NUMBERS[letter] : letter))
+    .join("");
+};
+
+export const convertArToFa = function (enNumber) {
+  const en = convertArToEn(enNumber);
+  return convertEnToFa(en);
+};
+
+export const convertFaToAr = function (enNumber) {
+  const en = convertFaToEn(enNumber);
+  return convertEnToAr(en);
+};
+
+export const numberWithCommas = function (enNumber) {
+  const result=convertEnToFa(enNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','))
+  return (`${result} ریال `);
+};
+
+
 export const mapOrder = (array, order, key) => {
   // eslint-disable-next-line func-names
   array.sort(function (a, b) {
@@ -184,6 +260,17 @@ export const getCurrentToken = () => {
     
   } catch (error) {
     console.log('>>>>: src/helpers/Utils.js  : getCurrentToken -> error', error);
+    token = null;
+  }
+  return token;
+};
+export const getCurrentTokenRefrash = () => {
+  let token = null;
+  try {
+    token =localStorage.getItem('refresh');
+    
+  } catch (error) {
+    console.log('>>>>: src/helpers/Utils.js  : getCurrentTokenRefrash -> error', error);
     token = null;
   }
   return token;

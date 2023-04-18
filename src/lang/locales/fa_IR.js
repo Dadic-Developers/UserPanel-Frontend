@@ -169,21 +169,33 @@ module.exports = {
   'dashboards.pending-orders': 'درحال انتظار',
   'dashboards.completed-orders': 'کامل شده',
   'dashboards.refund-requests': 'درخواست بازپرداخت',
+
+  'dashboards.plan-day': 'روزشمار طرح',// New Jwann added
+  'dashboards.number-search': 'تعداد جستجوها ',// New Jwann added,
+  'dashboards.number-layehe': 'لوایح ایجاد شده',// New Jwann added
+  'dashboards.charge': 'کیف پول(ریال)', // New Jwann added
+
+
   'dashboards.new-comments': 'نظرات جدید',
   'dashboards.sales': 'فروش ها',
   'dashboards.orders': 'سفارشات',
   'dashboards.refunds': 'بازپرداخت ها',
+  'dashboards.recent-news': 'اخبار اخیر', // New Jwann added
   'dashboards.recent-orders': 'سفارشات اخیر',
   'dashboards.product-categories': 'دسته بندی محصولات',
   'dashboards.cakes': 'کیک ها',
   'dashboards.tickets': 'تیکت ها',
   'dashboards.calendar': 'تقویم',
   'dashboards.best-sellers': 'برترین فروشندگان',
-  'dashboards.website-visits': 'بازدید سایت',
+  'dashboards.report-layehe':  'لوایح ایجاد شده', // New Jwann added
+  'dashboards.report-label':  'بازه زمانی', // New Jwann added
   'dashboards.unique-visitors': 'برترین بازدیدکنندگان',
-  'dashboards.this-week': 'این هفته',
+  'dashboards.this-week': 'هفتگی',
   'dashboards.last-week': 'هفته قبل',
-  'dashboards.this-month': 'این ماه',
+  'dashboards.this-month': 'ماه',
+  'dashboards.weekly': 'هفتگی',// New Jwann added
+  'dashboards.monthly': 'ماهیانه',// New Jwann added
+  'dashboards.yearly': 'سالانه',// New Jwann added
   'dashboards.conversion-rates': 'نرخ تبدیل',
   'dashboards.per-session': 'در هر جلسه',
   'dashboards.profile-status': 'وضعیت پروفایل',
