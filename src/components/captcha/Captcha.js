@@ -34,27 +34,28 @@ function Captcha({ setCaptcha, onChange, inputValue, Flage, setFlag }) {
               type="text"
               value={inputValue}
               onChange={onChange}
-              style={{ width: '185%' }}
+              style={{ width: '179%' }}
             />
             <span>
               <IntlMessages id="forms.captcha" />
             </span>
           </Label>
         </Colxx>
-        <Colxx sm={3}>
-          <h1
-            style={{
-              background: 'linear-gradient(#29332e, #898c80)',
-              color: 'white',
-            }}
-          >
-            {captchaText}
-          </h1>
+        <Colxx
+          sm={3}
+          className="icon-button py-2"
+          style={{
+            background: 'linear-gradient(#2fb2cc, #8fd5e3)',
+            height: '37px',
+            borderRadius: '5px',
+          }}
+        >
+          <span className="color-theme-1 text-large  ">{captchaText}</span>
         </Colxx>
         <Colxx sm={2}>
           <button
             type="button"
-            className="btn btn-header-light icon-button "
+            className="btn btn-header-light icon-button py-2"
             onClick={() => setFlag()}
           >
             <i className="simple-icon-refresh" style={{ fontSize: '20px' }} />
