@@ -10,8 +10,31 @@ import {
   smallChartData3,
   smallChartData4,
 } from 'data/charts';
+// import { ENDPIONTS, createAPIEndpoint } from 'api';
+// import axios from 'axios';
 
 const SmallLineCharts = ({ itemClass = 'dashboard-small-chart' }) => {
+  // const [data, setData] = useState(smallChartData1);
+  // const refreshData = async () => {
+  //   axios.defaults.headers.common.Authorization = localStorage.getItem('token');
+  //   axios.defaults.headers.post['Content-Type'] = 'application/json';
+  //   createAPIEndpoint(ENDPIONTS.GetCurrency)
+  //     .fetchAll()
+  //     .then((res) => {
+  //       // console.log(res.data);
+  //       setData(res.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(
+  //         '>>>>: src/containers/dashboards/SmallLineCharts.js  : refreshData -> error',
+  //         error
+  //       );
+  //       setData(smallChartData1);
+  //     });
+  // };
+  // useEffect(() => {
+  //   refreshData();
+  // }, []);
   return (
     <Row>
       <Colxx xxs="6" className="mb-4">

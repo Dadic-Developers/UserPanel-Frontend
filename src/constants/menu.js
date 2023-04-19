@@ -1,58 +1,78 @@
 import { adminRoot } from './defaultValues';
 
 const data = [
+  // {
+  //   id: 'dashboards',
+  //   icon: 'iconsminds-shop-4',
+  //   label: 'menu.dashboards',
+  //   to: `${adminRoot}/dashboards`,
+  //   // roles: [UserRole.Admin, UserRole.Operator],
+  //   subs: [
+  //     {
+  //       icon: 'simple-icon-briefcase',
+  //       label: 'menu.default',
+  //       to: `${adminRoot}/dashboards/default`,
+  //       // roles: [UserRole.Admin],
+  //     },
+  //     // {
+  //     //   icon: 'simple-icon-pie-chart',
+  //     //   label: 'menu.analytics',
+  //     //   to: `${adminRoot}/dashboards/analytics`,
+  //     //   // roles: [UserRole.Admin],
+  //     // },
+  //     {
+  //       icon: 'simple-icon-basket-loaded',
+  //       label: 'menu.ecommerce',
+  //       to: `${adminRoot}/dashboards/ecommerce`,
+  //       // roles: [UserRole.Operator],
+  //     },
+  //     {
+  //       icon: 'simple-icon-check',
+  //       label: 'menu.todo',
+  //       to: `${adminRoot}/dashboards/todo`,
+  //     },
+  //     {
+  //       icon: 'simple-icon-doc',
+  //       label: 'menu.profile',
+  //       to: `${adminRoot}/dashboards/content`,
+  //       // roles: [UserRole.Operator],
+  //     },
+  //   ],
+  // },
   {
     id: 'dashboards',
     icon: 'iconsminds-shop-4',
     label: 'menu.dashboards',
-    to: `${adminRoot}/dashboards`,
-    // roles: [UserRole.Admin, UserRole.Operator],
-    subs: [
-      {
-        icon: 'simple-icon-briefcase',
-        label: 'menu.default',
-        to: `${adminRoot}/dashboards/default`,
-        // roles: [UserRole.Admin],
-      },
-      // {
-      //   icon: 'simple-icon-pie-chart',
-      //   label: 'menu.analytics',
-      //   to: `${adminRoot}/dashboards/analytics`,
-      //   // roles: [UserRole.Admin],
-      // },
-      {
-        icon: 'simple-icon-basket-loaded',
-        label: 'menu.ecommerce',
-        to: `${adminRoot}/dashboards/ecommerce`,
-        // roles: [UserRole.Operator],
-      },
-      {
-        icon: 'simple-icon-check',
-        label: 'menu.todo',
-        to: `${adminRoot}/dashboards/todo`,
-      },
-      {
-        icon: 'simple-icon-doc',
-        label: 'menu.profile',
-        to: `${adminRoot}/dashboards/content`,
-        // roles: [UserRole.Operator],
-      },
-    ],
+    to: `${adminRoot}/dashboards/default`,
   },
-  // {
-  //   id: 'search',
-  //   icon: 'iconsminds-magnifi-glass',
-  //   label: 'menu.search',
-  //   to: `${adminRoot}/blank-page`,
-  // },
-  // {
-  //   id: 'layehe',
-  //   icon: 'iconsminds-open-book',
-  //   label: 'menu.layehe',
-  //   to: `${adminRoot}/blank-page`,
-  // },
   {
-    id: 'pages',
+    id: 'search',
+    icon: 'iconsminds-magnifi-glass',
+    label: 'menu.search',
+    to: `${adminRoot}/blank-page`,
+  },
+  {
+    id: 'layehe',
+    icon: 'iconsminds-open-book',
+    label: 'menu.layehe',
+    to: `${adminRoot}/blank-page`,
+  },
+  {
+    id: 'invoice',
+      icon: 'simple-icon-bag',
+      label: 'menu.invoice',
+      to: `${adminRoot}/pages/miscellaneous/invoice`,
+    },
+  
+  {
+    id: 'blankpage',
+    icon: 'iconsminds-three-arrow-fork',
+    label: 'menu.tree',
+    to: `${adminRoot}/blank-page`,
+  },
+
+  {
+    id: 'pages1',
     icon: 'iconsminds-library',
     label: 'menu.pages',
     to: `${adminRoot}/pages`,
@@ -88,51 +108,69 @@ const data = [
       //     },
       //   ],
       // },
+      // {
+      //   id: 'pages-product',
+      //   label: 'menu.product',
+      //   to: `${adminRoot}/pages/product`,
+      //   subs: [
+      //     {
+      //       icon: 'simple-icon-magnifier',
+      //       label: 'menu.search',
+      //       to: `${adminRoot}/pages/miscellaneous/search`,
+      //     },
+      //     {
+      //       icon: 'simple-icon-book-open',
+      //       label: 'menu.wizard',
+      //       to: `${adminRoot}/ui/forms/wizard`,
+      //     },
+      //     {
+      //       icon: 'simple-icon-bag',
+      //       label: 'menu.invoice',
+      //       to: `${adminRoot}/pages/miscellaneous/invoice`,
+      //     },
+      //     // {
+      //     //   icon: 'simple-icon-credit-card',
+      //     //   label: 'menu.data-list',
+      //     //   to: `${adminRoot}/pages/product/data-list`,
+      //     // },
+      //     // {
+      //     //   icon: 'simple-icon-list',
+      //     //   label: 'menu.thumb-list',
+      //     //   to: `${adminRoot}/pages/product/thumb-list`,
+      //     // },
+      //     // {
+      //     //   icon: 'simple-icon-grid',
+      //     //   label: 'menu.image-list',
+      //     //   to: `${adminRoot}/pages/product/image-list`,
+      //     // },
+      //     // {
+      //     //   icon: 'simple-icon-picture',
+      //     //   label: 'menu.details',
+      //     //   to: `${adminRoot}/pages/product/details`,
+      //     // },
+      //     // {
+      //     //   icon: 'simple-icon-book-open',
+      //     //   label: 'menu.details-alt',
+      //     //   to: `${adminRoot}/pages/product/details-alt`,
+      //     // },
+      //   ],
+      // },
+      
       {
-        id: 'pages-product',
-        label: 'menu.product',
-        to: `${adminRoot}/pages/product`,
+        id: 'pages-blog',
+        label: 'menu.blog',
+        to: `${adminRoot}/pages/blog`,
         subs: [
           {
-            icon: 'simple-icon-magnifier',
-            label: 'menu.search',
-            to: `${adminRoot}/pages/miscellaneous/search`,
+            icon: 'simple-icon-share',
+            label: 'menu.blog-list',
+            to: `${adminRoot}/pages/blog/blog-list`,
           },
           {
-            icon: 'simple-icon-book-open',
-            label: 'menu.wizard',
-            to: `${adminRoot}/ui/forms/wizard`,
+            icon: 'simple-icon-link',
+            label: 'menu.blog-detail',
+            to: `${adminRoot}/pages/blog/blog-detail`,
           },
-          {
-            icon: 'simple-icon-bag',
-            label: 'menu.invoice',
-            to: `${adminRoot}/pages/miscellaneous/invoice`,
-          },
-          // {
-          //   icon: 'simple-icon-credit-card',
-          //   label: 'menu.data-list',
-          //   to: `${adminRoot}/pages/product/data-list`,
-          // },
-          // {
-          //   icon: 'simple-icon-list',
-          //   label: 'menu.thumb-list',
-          //   to: `${adminRoot}/pages/product/thumb-list`,
-          // },
-          // {
-          //   icon: 'simple-icon-grid',
-          //   label: 'menu.image-list',
-          //   to: `${adminRoot}/pages/product/image-list`,
-          // },
-          // {
-          //   icon: 'simple-icon-picture',
-          //   label: 'menu.details',
-          //   to: `${adminRoot}/pages/product/details`,
-          // },
-          // {
-          //   icon: 'simple-icon-book-open',
-          //   label: 'menu.details-alt',
-          //   to: `${adminRoot}/pages/product/details-alt`,
-          // },
         ],
       },
       {
@@ -167,23 +205,6 @@ const data = [
           //   label: 'menu.portfolio',
           //   to: `${adminRoot}/pages/profile/portfolio`,
           // },
-        ],
-      },
-      {
-        id: 'pages-blog',
-        label: 'menu.blog',
-        to: `${adminRoot}/pages/blog`,
-        subs: [
-          {
-            icon: 'simple-icon-share',
-            label: 'menu.blog-list',
-            to: `${adminRoot}/pages/blog/blog-list`,
-          },
-          {
-            icon: 'simple-icon-link',
-            label: 'menu.blog-detail',
-            to: `${adminRoot}/pages/blog/blog-detail`,
-          },
         ],
       },
       {
@@ -229,12 +250,7 @@ const data = [
       },
     ],
   },
-  {
-    id: 'blankpage',
-    icon: 'iconsminds-three-arrow-fork',
-    label: 'menu.tree',
-    to: `${adminRoot}/blank-page`,
-  },
+  
   {
     id: 'applications',
     icon: 'iconsminds-air-balloon-1',

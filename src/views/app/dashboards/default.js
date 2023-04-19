@@ -22,7 +22,7 @@ import ProductCategoriesPolarArea from 'containers/dashboards/ProductCategoriesP
 // import ConversionRatesChartCard from 'containers/dashboards/ConversionRatesChartCard';
 import TopRatedItems from 'containers/dashboards/TopRatedItems';
 import RecentNews from 'containers/dashboards/RecentNews';
-import BarChartCard from 'containers/dashboards/BarChartCard';
+// import BarChartCard from 'containers/dashboards/BarChartCard';
 
 const DefaultDashboard = ({ intl, match }) => {
   const { messages } = intl;
@@ -49,15 +49,15 @@ const DefaultDashboard = ({ intl, match }) => {
           <RecentNews />
         </Colxx>
       </Row>
-      <Row>
+      {/* <Row>
         <Colxx sm="12" md="6" className="mb-4">
           <BarChartCard graphType = 'statement'/>
         </Colxx>
         <Colxx sm="12" md="6" className="mb-4">
-          {/* <ConversionRatesChartCard /> */}
-          <BarChartCard graphType = 'search'/>
+           <ConversionRatesChartCard /> //disable
+          <BarChartCard graphType = 'search' id />
         </Colxx>
-      </Row>
+      </Row> */}
       <Row>
         <Colxx lg="4" md="12" className="mb-4">
           <ProductCategoriesPolarArea chartClass="dashboard-donut-chart" />

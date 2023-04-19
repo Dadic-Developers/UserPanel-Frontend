@@ -23,6 +23,7 @@ const BarChartCard = ({
   className = '',
   controls = true,
   graphType = 'statement',
+  
 }) => {
   
   const weeks = ['هفته اول', 'هفته دوم', 'هفته سوم', 'هفته چهارم'];
@@ -115,7 +116,7 @@ const BarChartCard = ({
         <div className="float-left float-none-xs">
           <div className="d-inline-block">
             <h5 className="d-inline">
-              <IntlMessages id="dashboards.report-layehe" />
+              <IntlMessages id={graphType === 'search'?"dashboards.report-layehe":"dashboards.report-search"} />
             </h5>
             <span className="text-muted text-small d-block">
               <IntlMessages id="dashboards.report-label" />
