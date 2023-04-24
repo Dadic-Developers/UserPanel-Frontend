@@ -217,8 +217,8 @@ export const barChartOptions = {
         ticks: {
           beginAtZero: true,
           stepSize: 100,
-          min: 0,
-          max: 900,
+          min: 200,
+          max: 800,
           padding: 20,
           fontFamily: 'yekan',
         },

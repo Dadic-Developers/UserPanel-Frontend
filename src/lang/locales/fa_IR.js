@@ -188,6 +188,7 @@ module.exports = {
   'dashboards.calendar': 'تقویم',
   'dashboards.best-sellers': 'برترین فروشندگان',
   'dashboards.report-layehe':  'لوایح ایجاد شده', // New Jwann added
+  'dashboards.report-search':  'طرح خریداری  شده', // New Jwann added
   'dashboards.report-label':  'بازه زمانی', // New Jwann added
   'dashboards.unique-visitors': 'برترین بازدیدکنندگان',
   'dashboards.this-week': 'هفتگی',

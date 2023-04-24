@@ -30,6 +30,7 @@ const NotificationItem = ({ img, title, date }) => {
   );
 };
 
+
 const TopnavNotifications = () => {
   return (
     <div className="position-relative d-inline-block">

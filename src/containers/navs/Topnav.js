@@ -10,6 +10,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   Input,
+  
 } from 'reactstrap';
 
 import { NavLink } from 'react-router-dom';
@@ -33,9 +34,10 @@ import {
   // changeLocale,
 } from 'redux/actions';
 
-import TopnavEasyAccess from './Topnav.EasyAccess';
+// import TopnavEasyAccess from './Topnav.EasyAccess';
 import TopnavNotifications from './Topnav.Notifications';
 import TopnavDarkSwitch from './Topnav.DarkSwitch';
+
 
 const TopNav = ({
   intl,
@@ -283,8 +285,35 @@ const TopNav = ({
       <div className="navbar-right">
         {isDarkSwitchActive && <TopnavDarkSwitch />}
         <div className="header-icons d-inline-block align-middle">
-          <TopnavEasyAccess />
+          {/* <TopnavEasyAccess /> */}
+         
+            
+         
           <TopnavNotifications />
+         
+          <NavLink
+            to='/app/pages/miscellaneous/invoice'
+            className="header-icon btn btn-empty d-none d-sm-inline-block"
+            type="button"
+            id="help"
+           
+          >
+            
+              <i className="simple-icon-calendar d-block" />
+            
+          </NavLink>
+ 
+          <NavLink 
+            to='/app/blank-page'
+            className="header-icon btn btn-empty d-none d-sm-inline-block"
+            type="button"
+            id="help"
+           
+          >
+            
+              <i className="simple-icon-question d-block" />
+            
+          </NavLink>
           <button
             className="header-icon btn btn-empty d-none d-sm-inline-block"
             type="button"
@@ -298,6 +327,7 @@ const TopNav = ({
             )}
           </button>
         </div>
+        
         <div className="user d-inline-block">
           <UncontrolledDropdown className="dropdown-menu-right">
             <DropdownToggle className="p-0" color="empty">
