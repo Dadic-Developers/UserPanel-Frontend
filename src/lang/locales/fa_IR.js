@@ -530,8 +530,17 @@ module.exports = {
   'forms.lastname-message': 'لطفا نام خانوادگی خود را وارد کنید',
   'forms.name': 'نام',
   'forms.national-Code': 'کد ملی',
+  'forms.phone-number': 'شماره موبایل',
+  'forms.fixed-number': 'شماره ثابت',
+  'forms.gender': 'جنسیت',
+  'forms.education': 'تحصیلات',
+  'forms.getting-know': 'نحوه ی آشنایی با دادیک',
 
   /* 07.11.Form Components */
+  // new
+  'form-components.person': 'تصویر شخص',
+  'form-components.national-card': 'تصویر کارت ملی',
+  'form-components.license': 'تصویر مجوز',
   'form-components.custom-inputs': 'Inputs سفارشی',
   'form-components.checkboxes': 'چک باکس ها',
   'form-components.radios': 'رادیو ها',
@@ -665,6 +674,10 @@ module.exports = {
   'table.divided': 'جدول با فاصله میان سطرها',
 
   /* 07.21.Wizards */
+  // new
+  'wizard.step-desc-1-description': 'کدملی و شماره همراه',
+  'wizard.step-desc-2-description': 'اطلاعات شناسنامه ای',
+  'wizard.step-desc-3-description': 'تصاویر مدارک',
   'wizard.step-name-1': 'گام 1',
   'wizard.step-name-2': 'گام 2',
   'wizard.step-name-3': 'گام 3',

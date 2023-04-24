@@ -30,7 +30,7 @@ const CustomInputExample = () => {
       </FormGroup>
       <FormGroup>
         <Label for="exCustomRadio">
-          <IntlMessages id="form-components.radios" />
+          <IntlMessages id="forms.gender" />
         </Label>
         <div>
           <CustomInput

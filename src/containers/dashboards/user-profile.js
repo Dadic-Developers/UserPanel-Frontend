@@ -1,20 +1,46 @@
 /* eslint-disable no-param-reassign */
-import React, { createRef, useState } from 'react';
-import { Card, CardBody, FormGroup, Label, Spinner } from 'reactstrap';
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { createRef, useState, useRef } from 'react';
+import {
+  Card,
+  CardBody,
+  FormGroup,
+  Label,
+  Spinner,
+  Row,
+  CardTitle,
+} from 'reactstrap';
 import { Wizard, Steps, Step } from 'react-albus';
 import { injectIntl } from 'react-intl';
 import { Formik, Form, Field } from 'formik';
 import IntlMessages from 'helpers/IntlMessages';
 import BottomNavigation from 'components/wizard/BottomNavigation';
 import TopNavigation from 'components/wizard/TopNavigation';
+import Select from 'react-select';
+import { Colxx } from 'components/common/CustomBootstrap';
+import DropzoneExample from 'containers/forms/DropzoneExample';
+import CustomSelectInput from 'components/common/CustomSelectInput';
+import {
+  AvGroup,
+  AvInput,
+  AvFeedback,
+  AvForm,
+} from 'availity-reactstrap-validation';
 
-// const onlyNumberKey = (e) => {
-//   const x = e.which || e.keycode;
-//   if (x >= 48 && x <= 57) {
-//     return true;
-//   }
-//   return false;
-// };
+const selectData = [
+  { label: 'زیردیپلم', value: 'prediploma', key: 0 },
+  { label: 'دیپلم', value: 'diploma', key: 1 },
+  { label: 'کاردانی', value: 'associate', key: 2 },
+  { label: 'لیسانس', value: 'bachelor', key: 3 },
+  { label: 'فوق لیسانس', value: 'master', key: 4 },
+  { label: 'دکترا', value: 'phd', key: 5 },
+  { label: 'فوق دکترا ', value: 'postdoc', key: 6 },
+];
+const selectGender = [
+  { label: 'زن', value: 'woman', key: 0 },
+  { label: 'مرد', value: 'man', key: 1 },
+];
 const validateEmail = (value) => {
   let error;
   if (!value) {
@@ -29,6 +55,24 @@ const validateName = (value) => {
   let error;
   if (!value) {
     error = 'لطفا اسمت رو وارد کن';
+  } else if (value.length < 2) {
+    error = 'باید بیشتر از 2 تا کاراکتر باشه';
+  }
+  return error;
+};
+const validateCity = (value) => {
+  let error;
+  if (!value) {
+    error = 'لطفا نام شهر رو وارد کن';
+  } else if (value.length < 2) {
+    error = 'باید بیشتر از 2 تا کاراکتر باشه';
+  }
+  return error;
+};
+const validateState = (value) => {
+  let error;
+  if (!value) {
+    error = 'لطفا نام استان رو وارد کن';
   } else if (value.length < 2) {
     error = 'باید بیشتر از 2 تا کاراکتر باشه';
   }
@@ -52,12 +96,33 @@ const NationalCode = (value) => {
   }
   return error;
 };
+
 const validatePassword = (value) => {
   let error;
   if (!value) {
     error = 'لطفا رمزت رو وارد کن';
   } else if (value.length < 6) {
-    error = 'Password must be longer than 6 characters';
+    error = 'پسورد دارای حداقل 6 کاراکتر باشد';
+  }
+  return error;
+};
+
+const Phonenumber = (value) => {
+  let error;
+  if (!value) {
+    error = 'لطفا شماره موبایل رو وارد کن';
+  } else if (value.length < 6) {
+    error = 'شماره موبایل دارای 11 رقم میباشد';
+  }
+  return error;
+};
+
+const fixednumber = (value) => {
+  let error;
+  if (!value) {
+    error = 'لطفا شماره ثابت رو وارد کن';
+  } else if (value.length < 6) {
+    error = 'شماره ثابت دارای 8 رقم میباشد';
   }
   return error;
 };
@@ -72,6 +137,9 @@ const Validation = ({ intl }) => {
     email: '',
     password: '',
   });
+  // start select dependency for select / option
+  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedGender, setSelectedGender] = useState('');
 
   const onClickNext = (goToNext, steps, step) => {
     if (steps.length - 1 <= steps.indexOf(step)) {
@@ -99,14 +167,20 @@ const Validation = ({ intl }) => {
       }
     });
   };
-
+  const dropzone = useRef();
   const onClickPrev = (goToPrev, steps, step) => {
     if (steps.indexOf(step) <= 0) {
       return;
     }
     goToPrev();
   };
-
+  const onSubmit = (errors, values) => {
+    console.log(errors);
+    console.log(values);
+    if (errors.length === 0) {
+      // submit
+    }
+  };
   const { messages } = intl;
   return (
     <Card>
@@ -117,18 +191,104 @@ const Validation = ({ intl }) => {
             <Step
               id="step1"
               name={messages['wizard.step-name-1']}
-              family={messages['wizard.step-family-1']}
-              desc={messages['wizard.step-desc-1']}
+              nationalCode={messages['wizard.step-nationalCode-1']}
+              Phonenumber={messages['wizard.step-Phonenumber-1']}
+              fixednumber={messages['wizard.step-fixednumber-1']}
+              desc={messages['wizard.step-desc-1-description']}
             >
               <div className="wizard-basic-step">
                 <Formik
                   innerRef={forms[0]}
                   initialValues={{
-                    name: fields.name,
-                    family: fields.family,
+                    nationalCode: fields.nationalCode,
+                    Phonenumber: fields.Phonenumber,
+                    fixednumber:fields.fixednumber
                   }}
                   validateOnMount
                   onSubmit={() => {}}
+                >
+                  {({ errors, touched }) => (
+                    <Form className="av-tooltip tooltip-label-right col-md-6" style={{margin:'0 auto'}}>
+                      <FormGroup >
+                        <Label className="form-group has-float-label">
+                          <Field
+                            type="text"
+                            validate={NationalCode}
+                            className="form-control"
+                            name="nationalCode"
+                          />
+                          <span>
+                            <IntlMessages id="forms.national-Code" />
+                          </span>
+                        </Label>
+                        {errors.nationalCode && touched.nationalCode && (
+                          <div className="invalid-feedback d-block">
+                            {errors.nationalCode}
+                          </div>
+                        )}
+                      </FormGroup>
+                      <FormGroup>
+                        <Label className="form-group has-float-label">
+                          <Field
+                            type="text"
+                            validate={Phonenumber}
+                            className="form-control"
+                            name="Phonenumber"
+                          />
+                          <span>
+                            <IntlMessages id="forms.phone-number" />
+                          </span>
+                        </Label>
+                        {errors.Phonenumber && touched.Phonenumber && (
+                          <div className="invalid-feedback d-block">
+                            {errors.Phonenumber}
+                          </div>
+                        )}
+                      </FormGroup>
+                      <FormGroup>
+                        <Label className="form-group has-float-label">
+                          <Field
+                            type="text"
+                            validate={fixednumber}
+                            className="form-control"
+                            name="fixednumber"
+                          />
+                          <span>
+                            <IntlMessages id="forms.fixed-number" />
+                          </span>
+                        </Label>
+                        {errors.fixednumber && touched.fixednumber && (
+                          <div className="invalid-feedback d-block">
+                            {errors.fixednumber}
+                          </div>
+                        )}
+                      </FormGroup>
+                    </Form>
+                  )}
+                </Formik>
+              </div>
+            </Step>
+            <Step
+              id="step2"
+              name={messages['wizard.step-name-2']}
+              family={messages['wizard.step-family-2']}
+              fname={messages['wizard.step-name-2']}
+              email={messages['wizard.step-email-2']}
+              city={messages['wizard.step-city-2']}
+              state={messages['wizard.step-state-2']}
+              
+              desc={messages['wizard.step-desc-2-description']}
+            >
+              <div className="wizard-basic-step">
+                <Formik
+                  innerRef={forms[1]}
+                  initialValues={{
+                    email: fields.email,
+                    family: fields.family,
+                    name: fields.name,
+                  }}
+                  onSubmit={() => {}}
+                  validateOnMount
                 >
                   {({ errors, touched }) => (
                     <Form className="av-tooltip tooltip-label-right">
@@ -172,55 +332,117 @@ const Validation = ({ intl }) => {
                         <Label className="form-group has-float-label">
                           <Field
                             type="text"
-                            validate={NationalCode}
+                            validate={validateEmail}
                             className="form-control"
-                            name="nationalCode"
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                            name="email"
                           />
                           <span>
-                            <IntlMessages id="forms.national-Code" />
+                            <IntlMessages id="forms.email" />
                           </span>
                         </Label>
-                        {errors.nationalCode && touched.nationalCode && (
-                          <div className="invalid-feedback d-block">
-                            {errors.nationalCode}
-                          </div>
-                        )}
-                      </FormGroup>
-                    </Form>
-                  )}
-                </Formik>
-              </div>
-            </Step>
-            <Step
-              id="step2"
-              name={messages['wizard.step-name-2']}
-              desc={messages['wizard.step-desc-2']}
-            >
-              <div className="wizard-basic-step">
-                <Formik
-                  innerRef={forms[1]}
-                  initialValues={{
-                    email: fields.email,
-                  }}
-                  onSubmit={() => {}}
-                  validateOnMount
-                >
-                  {({ errors, touched }) => (
-                    <Form className="av-tooltip tooltip-label-right">
-                      <FormGroup>
-                        <Label>{messages['forms.email']}</Label>
-                        <Field
-                          className="form-control"
-                          name="email"
-                          validate={validateEmail}
-                        />
                         {errors.email && touched.email && (
                           <div className="invalid-feedback d-block">
                             {errors.email}
                           </div>
                         )}
                       </FormGroup>
+                      <FormGroup>
+                        <Label className="form-group has-float-label">
+                          <Field
+                            type="text"
+                            validate={validateState}
+                            className="form-control"
+                            name="state"
+                          />
+                          <span>
+                            <IntlMessages id="forms.state" />
+                          </span>
+                        </Label>
+                        {errors.state && touched.state && (
+                          <div className="invalid-feedback d-block">
+                            {errors.state}
+                          </div>
+                        )}
+                      </FormGroup>
+                      <FormGroup>
+                        <Label className="form-group has-float-label">
+                          <Field
+                            type="text"
+                            validate={validateCity}
+                            className="form-control"
+                            name="city"
+                          />
+                          <span>
+                            <IntlMessages id="forms.city" />
+                          </span>
+                        </Label>
+                        {errors.city && touched.city && (
+                          <div className="invalid-feedback d-block">
+                            {errors.city}
+                          </div>
+                        )}
+                      </FormGroup>
+                      <FormGroup>
+                        <Label className="form-group has-float-label">
+                          <Field
+                            type="text"
+                            className="form-control"
+                            name="getting-know"
+                          />
+                          <span>
+                            <IntlMessages id="forms.getting-know" />
+                          </span>
+                        </Label>
+                      </FormGroup>
+                      <AvForm
+                        className="av-tooltip tooltip-label-right"
+                        onSubmit={(event, values) => onSubmit(event, values)}
+                      >
+                        <AvGroup>
+                          <Label className="form-group has-float-label">
+                            <span>
+                              <IntlMessages id="forms.address" />
+                            </span>
+                            <AvInput
+                              type="textarea"
+                              name="details"
+                              id="details"
+                              required
+                            />
+                          </Label>
+                          <AvFeedback>آدرس هم باید وارد کنی!</AvFeedback>
+                        </AvGroup>
+                      </AvForm>
+                      <Row>
+                        <Colxx xxs="12" md="6" className="mb-5">
+                          <label>
+                            <IntlMessages id="forms.gender" />
+                          </label>
+                          <Select
+                            components={{ Input: CustomSelectInput }}
+                            className="react-select"
+                            classNamePrefix="react-select"
+                            name="form-field-name"
+                            value={selectedGender}
+                            onChange={setSelectedGender}
+                            options={selectGender}
+                          />
+                        </Colxx>
+                        <Colxx xxs="12" md="6" className="mb-5">
+                          <label>
+                            <IntlMessages id="forms.education" />
+                          </label>
+                          <Select
+                            components={{ Input: CustomSelectInput }}
+                            className="react-select"
+                            classNamePrefix="react-select"
+                            name="form-field-name"
+                            value={selectedOption}
+                            onChange={setSelectedOption}
+                            options={selectData}
+                          />
+                        </Colxx>
+                      </Row>
                     </Form>
                   )}
                 </Formik>
@@ -229,7 +451,7 @@ const Validation = ({ intl }) => {
             <Step
               id="step3"
               name={messages['wizard.step-name-3']}
-              desc={messages['wizard.step-desc-3']}
+              desc={messages['wizard.step-desc-3-description']}
             >
               <div className="wizard-basic-step">
                 <Formik
@@ -256,6 +478,38 @@ const Validation = ({ intl }) => {
                           </div>
                         )}
                       </FormGroup>
+                      <Row className="mb-4">
+                        <Colxx xxs="12" md="4">
+                          <Card>
+                            <CardBody>
+                              <CardTitle>
+                                <IntlMessages id="form-components.person" />
+                              </CardTitle>
+                              <DropzoneExample ref={dropzone} />
+                            </CardBody>
+                          </Card>
+                        </Colxx>
+                        <Colxx xxs="12" md="4">
+                          <Card>
+                            <CardBody>
+                              <CardTitle>
+                                <IntlMessages id="form-components.national-card" />
+                              </CardTitle>
+                              <DropzoneExample ref={dropzone} />
+                            </CardBody>
+                          </Card>
+                        </Colxx>
+                        <Colxx xxs="12" md="4">
+                          <Card>
+                            <CardBody>
+                              <CardTitle>
+                                <IntlMessages id="form-components.license" />
+                              </CardTitle>
+                              <DropzoneExample ref={dropzone} />
+                            </CardBody>
+                          </Card>
+                        </Colxx>
+                      </Row>
                     </Form>
                   )}
                 </Formik>

@@ -25,7 +25,7 @@ const DashboardContent = ({ match }) => {
       </Row>
       <Row>
         <Colxx lg="12" xl="6">
-          {/* <IconCardsCarousel /> */}
+           {/* <IconCardsCarousel />  */}
           <Row>
             <Colxx md="12" className="mb-4">
               {/* <QuickPost /> */}
