@@ -14,10 +14,12 @@ const AnalyticsDefault = React.lazy(() =>
 const EcommerceDefault = React.lazy(() =>
   import(/* webpackChunkName: "dashboard-ecommerce" */ './ecommerce')
 );
+const ProfileDefault = React.lazy(() =>
+  import(/* webpackChunkName: "dashboard-profile" */ './user-profile')
+);
 const Todo = React.lazy(() =>
   import(/* webpackChunkName: "applications-todo" */ '../applications/todo')
 );
-
 
 const Dashboards = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
@@ -36,13 +38,18 @@ const Dashboards = ({ match }) => (
         render={(props) => <EcommerceDefault {...props} />}
       />
       <Route
+        path={`${match.url}/profile`}
+        render={(props) => <ProfileDefault {...props} />}
+      />
+      <Route
         path={`${match.url}/analytics`}
         render={(props) => <AnalyticsDefault {...props} />}
       />
-     <Route
+      <Route
         path={`${match.url}/todo`}
         render={(props) => <Todo {...props} />}
       />
+
       {/* 
       <ProtectedRoute
         path={`${match.url}/default`}

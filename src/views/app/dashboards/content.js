@@ -11,7 +11,7 @@ import Breadcrumb from 'containers/navs/Breadcrumb';
 // import WebsiteVisitsChartCard from 'containers/dashboards/WebsiteVisitsChartCard';
 // import ConversionRatesChartCard from 'containers/dashboards/ConversionRatesChartCard';
 // import NewComments from 'containers/dashboards/NewComments';
-import UserProfile from 'containers/dashboards/user-profile';
+// import UserProfile from 'containers/dashboards/user-profile';
 
 const DashboardContent = ({ match }) => {
   // const { messages } = intl;
@@ -25,7 +25,7 @@ const DashboardContent = ({ match }) => {
       </Row>
       <Row>
         <Colxx lg="12" xl="6">
-           {/* <IconCardsCarousel />  */}
+          {/* <IconCardsCarousel />  */}
           <Row>
             <Colxx md="12" className="mb-4">
               {/* <QuickPost /> */}
@@ -53,9 +53,7 @@ const DashboardContent = ({ match }) => {
         </Colxx>
       </Row>
       <Row>
-        <Colxx md="12">
-          <UserProfile />
-        </Colxx>
+        <Colxx md="12">{/* <UserProfile /> */}</Colxx>
       </Row>
       {/* <Row>
         <Colxx lg="4" md="6" className="mb-4">

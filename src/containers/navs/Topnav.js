@@ -10,7 +10,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   Input,
-  
 } from 'reactstrap';
 
 import { NavLink } from 'react-router-dom';
@@ -37,7 +36,6 @@ import {
 // import TopnavEasyAccess from './Topnav.EasyAccess';
 import TopnavNotifications from './Topnav.Notifications';
 import TopnavDarkSwitch from './Topnav.DarkSwitch';
-
 
 const TopNav = ({
   intl,
@@ -224,8 +222,6 @@ const TopNav = ({
           <MobileMenuIcon />
         </NavLink>
 
-        
-
         <div className="search">
           <Input
             name="searchKeyword"
@@ -286,33 +282,25 @@ const TopNav = ({
         {isDarkSwitchActive && <TopnavDarkSwitch />}
         <div className="header-icons d-inline-block align-middle">
           {/* <TopnavEasyAccess /> */}
-         
-            
-         
+
           <TopnavNotifications />
-         
+
           <NavLink
-            to='/app/pages/miscellaneous/invoice'
+            to="/app/pages/miscellaneous/invoice"
             className="header-icon btn btn-empty d-none d-sm-inline-block"
             type="button"
             id="help"
-           
           >
-            
-              <i className="simple-icon-calendar d-block" />
-            
+            <i className="simple-icon-calendar d-block" />
           </NavLink>
- 
-          <NavLink 
-            to='/app/blank-page'
+
+          <NavLink
+            to="/app/blank-page"
             className="header-icon btn btn-empty d-none d-sm-inline-block"
             type="button"
             id="help"
-           
           >
-            
-              <i className="simple-icon-question d-block" />
-            
+            <i className="simple-icon-question d-block" />
           </NavLink>
           <button
             className="header-icon btn btn-empty d-none d-sm-inline-block"
@@ -327,7 +315,7 @@ const TopNav = ({
             )}
           </button>
         </div>
-        
+
         <div className="user d-inline-block">
           <UncontrolledDropdown className="dropdown-menu-right">
             <DropdownToggle className="p-0" color="empty">
@@ -337,7 +325,9 @@ const TopNav = ({
               </span>
             </DropdownToggle>
             <DropdownMenu className="mt-3" right>
-              <DropdownItem>حساب کاربری</DropdownItem>
+              <DropdownItem>
+                <NavLink to="/app/dashboards/profile">حساب کاربری</NavLink>
+              </DropdownItem>
               <DropdownItem>ویژگی ها</DropdownItem>
               <DropdownItem>تاریخچه</DropdownItem>
               <DropdownItem>پشتیبانی</DropdownItem>
