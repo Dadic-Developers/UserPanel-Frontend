@@ -87,7 +87,7 @@ const validateFamily = (value) => {
   }
   return error;
 };
-const NationalCode = (value) => {
+const validateNationalCode = (value) => {
   let error;
   if (!value) {
     error = 'لطفا کد ملی رو وارد کن';
@@ -96,16 +96,25 @@ const NationalCode = (value) => {
   }
   return error;
 };
-
-const validatePassword = (value) => {
+const validateImage = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا رمزت رو وارد کن';
-  } else if (value.length < 6) {
-    error = 'پسورد دارای حداقل 6 کاراکتر باشد';
+    error = 'تصویر وارد نشده است';
+  } else if (!value.match(/.(jpg|jpeg|png|gif)$/i)) {
+    error = 'فرمت تصویر صحیح نمی‌باشد. فرمت‌های مجاز: jpg, jpeg, png, gif';
   }
   return error;
 };
+
+// const validatePassword = (value) => {
+//   let error;
+//   if (!value) {
+//     error = 'لطفا رمزت رو وارد کن';
+//   } else if (value.length < 6) {
+//     error = 'پسورد دارای حداقل 6 کاراکتر باشد';
+//   }
+//   return error;
+// };
 
 const Phonenumber = (value) => {
   let error;
@@ -202,18 +211,21 @@ const Validation = ({ intl }) => {
                   initialValues={{
                     nationalCode: fields.nationalCode,
                     Phonenumber: fields.Phonenumber,
-                    fixednumber:fields.fixednumber
+                    fixednumber: fields.fixednumber,
                   }}
                   validateOnMount
                   onSubmit={() => {}}
                 >
                   {({ errors, touched }) => (
-                    <Form className="av-tooltip tooltip-label-right col-md-6" style={{margin:'0 auto'}}>
-                      <FormGroup >
+                    <Form
+                      className="av-tooltip tooltip-label-right col-md-6"
+                      style={{ margin: '0 auto' }}
+                    >
+                      <FormGroup>
                         <Label className="form-group has-float-label">
                           <Field
                             type="text"
-                            validate={NationalCode}
+                            validate={validateNationalCode}
                             className="form-control"
                             name="nationalCode"
                           />
@@ -276,7 +288,6 @@ const Validation = ({ intl }) => {
               email={messages['wizard.step-email-2']}
               city={messages['wizard.step-city-2']}
               state={messages['wizard.step-state-2']}
-              
               desc={messages['wizard.step-desc-2-description']}
             >
               <div className="wizard-basic-step">
@@ -286,114 +297,125 @@ const Validation = ({ intl }) => {
                     email: fields.email,
                     family: fields.family,
                     name: fields.name,
+                    city: fields.city,
+                    state: fields.state,
                   }}
                   onSubmit={() => {}}
                   validateOnMount
                 >
                   {({ errors, touched }) => (
-                    <Form className="av-tooltip tooltip-label-right">
-                      <FormGroup>
-                        <Label className="form-group has-float-label">
-                          <Field
-                            type="text"
-                            validate={validateName}
-                            className="form-control"
-                            name="name"
-                          />
-                          <span>
-                            <IntlMessages id="forms.name" />
-                          </span>
-                        </Label>
-                        {errors.name && touched.name && (
-                          <div className="invalid-feedback d-block">
-                            {errors.name}
-                          </div>
-                        )}
-                      </FormGroup>
-                      <FormGroup>
-                        <Label className="form-group has-float-label">
-                          <Field
-                            type="text"
-                            validate={validateFamily}
-                            className="form-control"
-                            name="family"
-                          />
-                          <span>
-                            <IntlMessages id="forms.lastname" />
-                          </span>
-                        </Label>
-                        {errors.family && touched.family && (
-                          <div className="invalid-feedback d-block">
-                            {errors.family}
-                          </div>
-                        )}
-                      </FormGroup>
-                      <FormGroup>
-                        <Label className="form-group has-float-label">
-                          <Field
-                            type="text"
-                            validate={validateEmail}
-                            className="form-control"
-                            name="email"
-                          />
-                          <span>
-                            <IntlMessages id="forms.email" />
-                          </span>
-                        </Label>
-                        {errors.email && touched.email && (
-                          <div className="invalid-feedback d-block">
-                            {errors.email}
-                          </div>
-                        )}
-                      </FormGroup>
-                      <FormGroup>
-                        <Label className="form-group has-float-label">
-                          <Field
-                            type="text"
-                            validate={validateState}
-                            className="form-control"
-                            name="state"
-                          />
-                          <span>
-                            <IntlMessages id="forms.state" />
-                          </span>
-                        </Label>
-                        {errors.state && touched.state && (
-                          <div className="invalid-feedback d-block">
-                            {errors.state}
-                          </div>
-                        )}
-                      </FormGroup>
-                      <FormGroup>
-                        <Label className="form-group has-float-label">
-                          <Field
-                            type="text"
-                            validate={validateCity}
-                            className="form-control"
-                            name="city"
-                          />
-                          <span>
-                            <IntlMessages id="forms.city" />
-                          </span>
-                        </Label>
-                        {errors.city && touched.city && (
-                          <div className="invalid-feedback d-block">
-                            {errors.city}
-                          </div>
-                        )}
-                      </FormGroup>
-                      <FormGroup>
-                        <Label className="form-group has-float-label">
-                          <Field
-                            type="text"
-                            className="form-control"
-                            name="getting-know"
-                          />
-                          <span>
-                            <IntlMessages id="forms.getting-know" />
-                          </span>
-                        </Label>
-                      </FormGroup>
+                    <Form
+                      className="av-tooltip tooltip-label-right "
+                      style={{ margin: '0 auto' }}
+                    >
+                      <Row>
+                        <FormGroup className="col-sm-6">
+                          <Label className="form-group has-float-label">
+                            <Field
+                              type="text"
+                              validate={validateName}
+                              className="form-control"
+                              name="name"
+                            />
+                            <span>
+                              <IntlMessages id="forms.name" />
+                            </span>
+                          </Label>
+                          {errors.name && touched.name && (
+                            <div className="invalid-feedback d-block">
+                              {errors.name}
+                            </div>
+                          )}
+                        </FormGroup>
+                        <FormGroup className="col-sm-6">
+                          <Label className="form-group has-float-label">
+                            <Field
+                              type="text"
+                              validate={validateFamily}
+                              className="form-control"
+                              name="family"
+                            />
+                            <span>
+                              <IntlMessages id="forms.lastname" />
+                            </span>
+                          </Label>
+                          {errors.family && touched.family && (
+                            <div className="invalid-feedback d-block">
+                              {errors.family}
+                            </div>
+                          )}
+                        </FormGroup>
+                      </Row>
+                      <Row>
+                        <FormGroup className="col-sm-6">
+                          <Label className="form-group has-float-label">
+                            <Field
+                              type="text"
+                              validate={validateEmail}
+                              className="form-control"
+                              name="email"
+                            />
+                            <span>
+                              <IntlMessages id="forms.email" />
+                            </span>
+                          </Label>
+                          {errors.email && touched.email && (
+                            <div className="invalid-feedback d-block">
+                              {errors.email}
+                            </div>
+                          )}
+                        </FormGroup>
+                        <FormGroup className="col-sm-6">
+                          <Label className="form-group has-float-label">
+                            <Field
+                              type="text"
+                              validate={validateState}
+                              className="form-control"
+                              name="state"
+                            />
+                            <span>
+                              <IntlMessages id="forms.state" />
+                            </span>
+                          </Label>
+                          {errors.state && touched.state && (
+                            <div className="invalid-feedback d-block">
+                              {errors.state}
+                            </div>
+                          )}
+                        </FormGroup>
+                      </Row>
+                      <Row>
+                        <FormGroup className="col-sm-6">
+                          <Label className="form-group has-float-label">
+                            <Field
+                              type="text"
+                              validate={validateCity}
+                              className="form-control"
+                              name="city"
+                            />
+                            <span>
+                              <IntlMessages id="forms.city" />
+                            </span>
+                          </Label>
+                          {errors.city && touched.city && (
+                            <div className="invalid-feedback d-block">
+                              {errors.city}
+                            </div>
+                          )}
+                        </FormGroup>
+                        <FormGroup className="col-sm-6">
+                          <Label className="form-group has-float-label">
+                            <Field
+                              type="text"
+                              className="form-control"
+                              name="getting-know"
+                            />
+                            <span>
+                              <IntlMessages id="forms.getting-know" />
+                            </span>
+                          </Label>
+                        </FormGroup>
+                      </Row>
                       <AvForm
                         className="av-tooltip tooltip-label-right"
                         onSubmit={(event, values) => onSubmit(event, values)}
@@ -448,47 +470,57 @@ const Validation = ({ intl }) => {
                 </Formik>
               </div>
             </Step>
+
             <Step
               id="step3"
-              name={messages['wizard.step-name-3']}
+              //  name={messages['wizard.step-name-3']}
+              national-card={messages['wizard.step-national-card-1']}
+              license={messages['wizard.step-license-2']}
+              person={messages['wizard.step-person-3']}
               desc={messages['wizard.step-desc-3-description']}
             >
               <div className="wizard-basic-step">
                 <Formik
                   innerRef={forms[2]}
                   initialValues={{
-                    password: fields.password,
+                    // password: fields.password,
+                    national: CardTitle.national,
+                    license: fields.license,
+                    person: fields.person,
                   }}
                   onSubmit={() => {}}
                   validateOnMount
                 >
                   {({ errors, touched }) => (
                     <Form className="av-tooltip tooltip-label-right error-l-75">
-                      <FormGroup>
-                        <Label>{messages['forms.password']}</Label>
-                        <Field
-                          className="form-control"
-                          name="password"
-                          type="password"
-                          validate={validatePassword}
-                        />
-                        {errors.password && touched.password && (
-                          <div className="invalid-feedback d-block">
-                            {errors.password}
-                          </div>
-                        )}
-                      </FormGroup>
                       <Row className="mb-4">
                         <Colxx xxs="12" md="4">
                           <Card>
                             <CardBody>
                               <CardTitle>
-                                <IntlMessages id="form-components.person" />
+                                <IntlMessages
+                                  id="form-components.person"
+                                  validate={validateImage}
+                                  name="person"
+                                />
                               </CardTitle>
-                              <DropzoneExample ref={dropzone} />
+                              <DropzoneExample
+                                ref={dropzone}
+                                value={values.person}
+                                setValue={(value) =>
+                                  setFieldValue('person', value)
+                                }
+                              />
+                              {/* {touched.person && errors.person && <div className="error">{errors.validatepersonImg}</div>} */}
+                              {errors.person && touched.person && (
+                                <div className="invalid-feedback d-block">
+                                  {errors.person}
+                                </div>
+                              )}
                             </CardBody>
                           </Card>
                         </Colxx>
+
                         <Colxx xxs="12" md="4">
                           <Card>
                             <CardBody>
@@ -499,6 +531,7 @@ const Validation = ({ intl }) => {
                             </CardBody>
                           </Card>
                         </Colxx>
+
                         <Colxx xxs="12" md="4">
                           <Card>
                             <CardBody>
