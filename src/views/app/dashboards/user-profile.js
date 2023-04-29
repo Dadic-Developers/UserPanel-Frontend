@@ -504,13 +504,7 @@ const Validation = ({ intl }) => {
                                   name="person"
                                 />
                               </CardTitle>
-                              <DropzoneExample
-                                ref={dropzone}
-                                value={values.person}
-                                setValue={(value) =>
-                                  setFieldValue('person', value)
-                                }
-                              />
+                              <DropzoneExample ref={dropzone} />
                               {/* {touched.person && errors.person && <div className="error">{errors.validatepersonImg}</div>} */}
                               {errors.person && touched.person && (
                                 <div className="invalid-feedback d-block">
