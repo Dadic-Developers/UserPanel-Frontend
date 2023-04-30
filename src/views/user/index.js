@@ -14,7 +14,16 @@ const ForgotPassword = React.lazy(() =>
 const ResetPassword = React.lazy(() =>
   import(/* webpackChunkName: "user-reset-password" */ './reset-password')
 );
-
+const Individuals = React.lazy(() =>
+  import(
+    /* webpackChunkName: "user-reset-password" */ './user-profile-Individuals'
+  )
+);
+const Legal = React.lazy(() =>
+  import(
+    /* webpackChunkName: "user-reset-password" */ './user-profile-legal'
+  )
+);
 const User = ({ match }) => {
   return (
     <UserLayout>
@@ -37,7 +46,14 @@ const User = ({ match }) => {
             path={`${match.url}/reset-password`}
             render={(props) => <ResetPassword {...props} />}
           />
-
+          <Route
+            path={`${match.url}/individuals`}
+            render={(props) => <Individuals {...props} />}
+          />
+          <Route
+            path={`${match.url}/legal`}
+            render={(props) => <Legal {...props} />}
+          />
           <Redirect to="/error" />
         </Switch>
       </Suspense>

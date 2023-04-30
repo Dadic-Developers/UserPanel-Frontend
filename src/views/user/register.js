@@ -1,43 +1,49 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Row,
   Card,
   CardTitle,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Button,
+  // Form,
+  // FormGroup,
+  // Label,
+  // Input,
+  // Button,
+  CardBody,
+  // Nav,
+  // NavItem,
+  // NavLink,
+  Alert,
 } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from 'redux/actions';
 
 import IntlMessages from 'helpers/IntlMessages';
 import { Colxx } from 'components/common/CustomBootstrap';
-import { adminRoot } from 'constants/defaultValues';
+import { NavLink } from 'react-router-dom';
+// import { adminRoot } from 'constants/defaultValues';
 
-const Register = ({ history }) => {
-  const [email] = useState('');
-  const [password] = useState('gogo123');
-  const [name] = useState(' ');
-  const [nationalCode] = useState('123456789');
-  const [family] = useState('کاظمی زاده');
-  const [fixedNumber] = useState('33123456');
-  const [phoneNumber] = useState('09366249218');
+const Register = () => {
+  //   const [email] = useState('');
+  //   const [password] = useState('gogo123');
+  // const [name] = useState(' ');
+  // const [nationalCode] = useState('123456789');
+  // const [family] = useState('کاظمی زاده');
+  // const [fixedNumber] = useState('33123456');
+  // const [phoneNumber] = useState('09366249218');
 
-  const onUserRegister = () => {
-    if (email !== '' && password !== '') {
-      history.push(adminRoot);
-    }
-    // call registerUserAction()
-  };
+  // const onUserRegister = () => {
+  //   if (email !== '' && password !== '') {
+  //     history.push(adminRoot);
+  //   }
+  //   // call registerUserAction()
+  // };
 
   return (
-    <Row className="h-100">
+    <Row className="h-100 ">
       <Colxx xxs="12" md="10" className="mx-auto my-auto m-all-outo">
         <Card className="auth-card">
-          <div className="position-relative image-side text-justify">
+          <div className="position-relative image-side text-justify col-6">
             <p className="text-white h2 text-theme-1">رادپردازن عصر جدید</p>
             <span
               className="text-white mb-0 text-theme-1 "
@@ -45,7 +51,7 @@ const Register = ({ history }) => {
             >
               با سلام و احترام، خوشحالیم که شما را به جامعه ما خوش آمد می‌گوییم!
               لطفا فرم زیر را با دقت پر کرده و اطلاعات درست و کامل را وارد
-              نمایید تا بتوانیم تجربه بهتری را برای شما فراهم کنیم.از  زمانی که
+              نمایید تا بتوانیم تجربه بهتری را برای شما فراهم کنیم.از زمانی که
               عضو جامعه ما شوید، شما میتوانید از جذابیت‌ های فراوانی که این
               جامعه برای شما فراهم می‌کند بهره‌مند شوید. ما به اطلاعات شما
               احترام می‌گذاریم و هیچگونه اطلاعات شخصی شما را با شخص یا شرکت
@@ -56,7 +62,7 @@ const Register = ({ history }) => {
               </NavLink>{' '} */}
             </span>
           </div>
-          <div className="form-side">
+          {/* <div className="form-side">
             <NavLink to="/" className="white">
               <span className="logo-single" />
             </NavLink>
@@ -91,7 +97,7 @@ const Register = ({ history }) => {
                         defaultValue={nationalCode}
                       />
                     </Label>
-                    <Input type="tel"  pattern="[0-9]*" />
+                    <Input type="tel" pattern="[0-9]*" />
                   </FormGroup>
                 </Colxx>
                 <Colxx sm={6}>
@@ -138,6 +144,23 @@ const Register = ({ history }) => {
                 </Button>
               </div>
             </Form>
+          </div> */}
+          <div className="d-flex align-items-sm-center justify-content-center w-100 h-100">
+            <CardBody>
+              <CardTitle>
+                <IntlMessages id="user.register-button" />
+              </CardTitle>
+              <NavLink to="/user/individuals">
+                <Alert color="primary" className="rounded">
+                  <IntlMessages id="user.Individuals" />
+                </Alert>
+              </NavLink>
+              <NavLink to="/user/legal">
+                <Alert color="secondary" className="rounded">
+                  <IntlMessages id="user.legal-entities" />
+                </Alert>
+              </NavLink>
+            </CardBody>
           </div>
         </Card>
       </Colxx>

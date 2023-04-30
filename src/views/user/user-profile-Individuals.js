@@ -18,12 +18,9 @@ import IntlMessages from 'helpers/IntlMessages';
 import BottomNavigation from 'components/wizard/BottomNavigation';
 import TopNavigation from 'components/wizard/TopNavigation';
 import Select from 'react-select';
-import { Colxx,Separator } from 'components/common/CustomBootstrap';
+import { Colxx } from 'components/common/CustomBootstrap';
 import DropzoneExample from 'containers/forms/DropzoneExample';
 import CustomSelectInput from 'components/common/CustomSelectInput';
-import Breadcrumb from 'containers/navs/Breadcrumb';
-
-
 import {
   AvGroup,
   AvInput,
@@ -32,7 +29,6 @@ import {
 } from 'availity-reactstrap-validation';
 
 const selectData = [
-  
   { label: 'دیپلم', value: 'diploma', key: 1 },
   { label: 'کاردانی', value: 'associate', key: 2 },
   { label: 'کارشناسی', value: 'bachelor', key: 3 },
@@ -46,7 +42,7 @@ const selectGender = [
 const validateEmail = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا پست الکترونیکی خود را وارد کنید';
+    error = 'لطفا پست الکترونیکی خود را وارد کن';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
     error = 'ایمیل که وارد کردی نامعتبره';
   }
@@ -56,7 +52,7 @@ const validateEmail = (value) => {
 const validateName = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا نام خود را وارد کنید';
+    error = 'لطفا نم خود را وارد کنید ';
   } else if (value.length < 2) {
     error = 'باید بیشتر از 2 تا کاراکتر باشه';
   }
@@ -92,7 +88,7 @@ const validateFamily = (value) => {
 const validateNationalCode = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا کد ملی خود را وارد کنید.';
+    error = 'لطفا کد ملی خود را وارد کنید';
   } else if (value.length < 2) {
     error = 'باید بیشتر از 2 تا کاراکتر باشه';
   }
@@ -121,7 +117,7 @@ const validateImage = (value) => {
 const Phonenumber = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا شماره موبایل خود را کنید';
+    error = 'لطفا شماره موبایل رو وارد کن';
   } else if (value.length < 6) {
     error = 'شماره موبایل دارای 11 رقم میباشد';
   }
@@ -131,14 +127,14 @@ const Phonenumber = (value) => {
 const fixednumber = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا شماره ثابت خود را وارد کنید';
+    error = 'لطفا شماره ثابت رو وارد کن';
   } else if (value.length < 6) {
     error = 'شماره ثابت دارای 8 رقم میباشد';
   }
   return error;
 };
 
-const Validation = ({ intl,match }) => {
+const Validation = ({ intl }) => {
   const forms = [createRef(null), createRef(null), createRef(null)];
   const [bottomNavHidden, setBottomNavHidden] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -194,13 +190,8 @@ const Validation = ({ intl,match }) => {
   };
   const { messages } = intl;
   return (
-    <Card >
-      <Row>
-        <Colxx xxs="12">
-          <Breadcrumb heading="menu.default" match={match} />
-          <Separator className="mb-5" />
-        </Colxx>
-      </Row>
+  <section>
+      <Card className="d-flex justify-content-center flex-column h-100">
       <CardBody className="wizard wizard-default">
         <Wizard>
           <TopNavigation className="justify-content-center" disableNav />
@@ -584,6 +575,7 @@ const Validation = ({ intl,match }) => {
         </Wizard>
       </CardBody>
     </Card>
+  </section>
   );
 };
 export default injectIntl(Validation);

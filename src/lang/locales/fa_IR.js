@@ -69,6 +69,8 @@ module.exports = {
   'user.new-password-again': 'تکرار کلمه عبور جدید',
   'user.new-password': 'رمز جدید',
   'user.reset-password': 'بازنشانی رمزعبور',
+  'user.Individuals': 'اشخاص حقیقی',
+  'user.legal-entities': 'اشخاص حقوقی',
   /* 03.Menu */
   'menu.home': 'خانه',
   'menu.app': 'خانه',
@@ -535,13 +537,17 @@ module.exports = {
   'forms.fixed-number': 'شماره ثابت',
   'forms.gender': 'جنسیت',
   'forms.education': 'تحصیلات',
-  'forms.getting-know': 'نحوه ی آشنایی با دادیک',
+  'forms.name-organization': 'نام سازمان',
+  'forms.email-organization': 'پست الکترونیک سازمان',
+
 
   /* 07.11.Form Components */
   // new
   'form-components.person': 'تصویر شخص',
   'form-components.national-card': 'تصویر کارت ملی',
   'form-components.license': 'تصویر مجوز',
+  'form-components.official-newspaper': 'تصویر روزنامه رسمی',
+  'form-components.logo': 'تصویر لگو سازمان',
   'form-components.custom-inputs': 'Inputs سفارشی',
   'form-components.checkboxes': 'چک باکس ها',
   'form-components.radios': 'رادیو ها',
