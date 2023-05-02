@@ -1,52 +1,70 @@
-/* eslint-disable react/no-array-index-key */
-import React, { useEffect, useState } from 'react';
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, {useState} from 'react';
+import CustomSelectInput from 'components/common/CustomSelectInput';
+import Select from 'react-select';
+
 import {
   Row,
-  Card,
-  CardBody,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Modal,
-  Button,
+  Input,
+  Label,
+  Form,
+  CustomInput,
+  FormGroup
+  // Card,
+  // CardBody,
+  // ModalHeader,
+  // ModalBody,
+  // ModalFooter,
+  // Modal,
+  // Button,
 } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 
-import Pagination from 'containers/pages/Pagination';
-import { servicePath } from 'constants/defaultValues';
+// import { NavLink } from 'react-router-dom';
+// import axios from 'axios';
+
+// import Pagination from 'containers/pages/Pagination';
+// import { servicePath } from 'constants/defaultValues';
 import Breadcrumb from 'containers/navs/Breadcrumb';
 import { Separator, Colxx } from 'components/common/CustomBootstrap';
+import IntlMessages from 'helpers/IntlMessages';
 
-const apiUrl = `${servicePath}/cakes/paging`;
 
+// const apiUrl = `${servicePath}/cakes/paging`;
+const selectData = [
+  { label: 'کیک', value: 'cake', key: 0 },
+  { label: 'کاپ کیک', value: 'cupcake', key: 1 },
+  { label: 'دسر', value: 'dessert', key: 2 },
+];
 const Search = ({ match }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [items, setItems] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [keyword] = useState('Cake');
-  const [pageSize] = useState(10);
-  const [totalPage, setTotalPage] = useState(0);
-  const [modalBasic, setModalBasic] = useState(true);
+  const [selectedOption, setSelectedOption] = useState('');
 
-  useEffect(() => {
-    async function fetchData() {
-      axios
-        .get(
-          `${apiUrl}?pageSize=${pageSize}&currentPage=${currentPage}&search=${keyword}`
-        )
-        .then((res) => {
-          return res.data;
-        })
-        .then((data) => {
-          setItems(data.data);
-          setTotalPage(data.totalPage);
-          setIsLoading(false);
-        });
-    }
-    fetchData();
-  }, [pageSize, currentPage, keyword]);
+  // const [IsLoading ,setIsLoading] = useState(true);
+  // const [Items, setItems] = useState([]);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [keyword] = useState('Cake');
+  // const [pageSize] = useState(10);
+  // const [totalPage, setTotalPage] = useState(0);
+  // const [modalBasic, setModalBasic] = useState(true);
 
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     axios
+  //       .get(
+  //         `${apiUrl}?pageSize=${pageSize}&currentPage=${currentPage}&search=${keyword}`
+  //       )
+  //       .then((res) => {
+  //         return res.data;
+  //       })
+  //       .then((data) => {
+  //         setItems(data.data);
+  //         setTotalPage(data.totalPage);
+  //         setIsLoading(false);
+  //       });
+  //   }
+  //   fetchData();
+  // }, [pageSize, currentPage, keyword]);
+  // const { messages } = intl;
   return (
     <>
       <Row>
@@ -55,8 +73,9 @@ const Search = ({ match }) => {
           <Separator className="mb-5" />
         </Colxx>
       </Row>
-      <Row>
+      {/* <Row>
         <Colxx xxs="12" className="mb-4">
+  
           <Card>
             <CardBody>
               {!isLoading ? (
@@ -90,9 +109,9 @@ const Search = ({ match }) => {
           totalPage={totalPage}
           onChangePage={(i) => setCurrentPage(i)}
         />
-      </Row>
+      </Row>  */}
       {/* مودال اطلاعه به کاربر */}
-      <Modal
+      {/* <Modal
         isOpen={modalBasic}
         toggle={() => setModalBasic(!modalBasic)}
       >
@@ -116,7 +135,68 @@ const Search = ({ match }) => {
             اکی فهمیدم!
           </Button>{' '}
         </ModalFooter>
-      </Modal>
+      </Modal> */}
+      <Row>
+        {/* <span
+            className="search-icon"
+            onClick={(e) => handleSearchIconClick(e)}
+          >
+            <i className="simple-icon-magnifier" />
+          </span> */}
+        <span className="search-icon">
+          <i className="simple-icon-magnifier" />
+        </span>
+
+        <Colxx xxs="12">
+          <Form className="form-group">
+            <Label className="form-group has-float-label">
+              <Input type="text" />
+              <span>
+                <IntlMessages id="menu.search" />
+              </span>
+            </Label>
+          </Form>
+        </Colxx>
+        <Colxx xxs="12" md="6" className="mb-5">
+        <label>
+          <IntlMessages id="form-organization-selection" />
+        </label>
+        <Select
+          components={{ Input: CustomSelectInput }}
+          className="react-select"
+          classNamePrefix="react-select"
+          name="form-field-name"
+          value={selectedOption}
+          onChange={setSelectedOption}
+          options={selectData}
+        />
+      </Colxx>
+      <FormGroup>
+        {/* <Label for="exCustomRadio">
+          <IntlMessages id="forms.gender" />
+        </Label> */}
+        <div>
+          <CustomInput
+            type="radio"
+            id="exCustomRadio"
+            name="customRadio"
+            label="مطابق با عبارت"
+          />
+          <CustomInput
+            type="radio"
+            id="exCustomRadio2"
+            name="customRadio"
+            label="همراه با تشابه"
+          />
+          {/* <CustomInput
+            type="radio"
+            id="exCustomRadio3"
+            label="ولی نه این یکی چون غیرفعاله"
+            disabled
+          /> */}
+        </div>
+      </FormGroup>
+      </Row>
     </>
   );
 };

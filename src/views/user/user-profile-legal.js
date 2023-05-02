@@ -17,10 +17,10 @@ import { Formik, Form, Field } from 'formik';
 import IntlMessages from 'helpers/IntlMessages';
 import BottomNavigation from 'components/wizard/BottomNavigation';
 import TopNavigation from 'components/wizard/TopNavigation';
-import Select from 'react-select';
+// import Select from 'react-select';
 import { Colxx } from 'components/common/CustomBootstrap';
 import DropzoneExample from 'containers/forms/DropzoneExample';
-import CustomSelectInput from 'components/common/CustomSelectInput';
+// import CustomSelectInput from 'components/common/CustomSelectInput';
 import {
   AvGroup,
   AvInput,
@@ -28,17 +28,17 @@ import {
   AvForm,
 } from 'availity-reactstrap-validation';
 
-const selectData = [
-  { label: 'دیپلم', value: 'diploma', key: 1 },
-  { label: 'کاردانی', value: 'associate', key: 2 },
-  { label: 'کارشناسی', value: 'bachelor', key: 3 },
-  { label: 'کارشناسی ارشد', value: 'master', key: 4 },
-  { label: 'دکترا', value: 'phd', key: 5 },
-];
-const selectGender = [
-  { label: 'زن', value: 'woman', key: 0 },
-  { label: 'مرد', value: 'man', key: 1 },
-];
+// const selectData = [
+//   { label: 'دیپلم', value: 'diploma', key: 1 },
+//   { label: 'کاردانی', value: 'associate', key: 2 },
+//   { label: 'کارشناسی', value: 'bachelor', key: 3 },
+//   { label: 'کارشناسی ارشد', value: 'master', key: 4 },
+//   { label: 'دکترا', value: 'phd', key: 5 },
+// ];
+// const selectGender = [
+//   { label: 'زن', value: 'woman', key: 0 },
+//   { label: 'مرد', value: 'man', key: 1 },
+// ];
 const validateEmail = (value) => {
   let error;
   if (!value) {
@@ -52,7 +52,7 @@ const validateEmail = (value) => {
 const validateName = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا نام شرکت خود را وارد کنید.';
+    error = 'لطفا نام سازمان خود را وارد کنید.';
   } else if (value.length < 2) {
     error = 'باید بیشتر از 2 تا کاراکتر باشه';
   }
@@ -71,6 +71,24 @@ const validateState = (value) => {
   let error;
   if (!value) {
     error = 'لطفا نام استان خود را وارد کنید';
+  } else if (value.length < 2) {
+    error = 'باید بیشتر از 2 تا کاراکتر باشه';
+  }
+  return error;
+};
+const companyField = (value) => {
+  let error;
+  if (!value) {
+    error = 'لطفا حوزه فعالیت شرکت را انتخاب کنید';
+  } else if (value.length < 2) {
+    error = 'باید بیشتر از 2 تا کاراکتر باشه';
+  }
+  return error;
+};
+const nationalID = (value) => {
+  let error;
+  if (!value) {
+    error = 'لطفا شناسه ملی سازمان را وارد کنید';
   } else if (value.length < 2) {
     error = 'باید بیشتر از 2 تا کاراکتر باشه';
   }
@@ -115,15 +133,15 @@ const Phonenumber = (value) => {
   return error;
 };
 
-const fixednumber = (value) => {
-  let error;
-  if (!value) {
-    error = 'لطفا شماره ثابت خود را وارد کنید';
-  } else if (value.length < 6) {
-    error = 'شماره ثابت دارای 8 رقم میباشد';
-  }
-  return error;
-};
+// const fixednumber = (value) => {
+//   let error;
+//   if (!value) {
+//     error = 'لطفا شماره ثابت خود را وارد کنید';
+//   } else if (value.length < 6) {
+//     error = 'شماره ثابت دارای 8 رقم میباشد';
+//   }
+//   return error;
+// };
 
 const Validation = ({ intl }) => {
   const forms = [createRef(null), createRef(null), createRef(null)];
@@ -136,8 +154,8 @@ const Validation = ({ intl }) => {
     password: '',
   });
   // start select dependency for select / option
-  const [selectedOption, setSelectedOption] = useState('');
-  const [selectedGender, setSelectedGender] = useState('');
+  // const [selectedOption, setSelectedOption] = useState('');
+  // const [selectedGender, setSelectedGender] = useState('');
 
   const onClickNext = (goToNext, steps, step) => {
     if (steps.length - 1 <= steps.indexOf(step)) {
@@ -189,19 +207,19 @@ const Validation = ({ intl }) => {
             <Steps>
               <Step
                 id="step1"
-                name={messages['wizard.step-name-1']}
-                nationalCode={messages['wizard.step-nationalCode-1']}
+                // name={messages['wizard.step-name-1']}
+                // nationalCode={messages['wizard.step-nationalCode-1']}
                 Phonenumber={messages['wizard.step-Phonenumber-1']}
-                fixednumber={messages['wizard.step-fixednumber-1']}
+                // fixednumber={messages['wizard.step-fixednumber-1']}
                 desc={messages['wizard.step-desc-1-description']}
               >
                 <div className="wizard-basic-step">
                   <Formik
                     innerRef={forms[0]}
                     initialValues={{
-                      nationalCode: fields.nationalCode,
+                      // nationalCode: fields.nationalCode,
                       Phonenumber: fields.Phonenumber,
-                      fixednumber: fields.fixednumber,
+                      // fixednumber: fields.fixednumber,
                     }}
                     validateOnMount
                     onSubmit={() => {}}
@@ -212,6 +230,24 @@ const Validation = ({ intl }) => {
                         style={{ margin: '0 auto' }}
                       >
                         <FormGroup>
+                          <Label className="form-group has-float-label">
+                            <Field
+                              type="text"
+                              validate={validateEmail}
+                              className="form-control"
+                              name="email"
+                            />
+                            <span>
+                              <IntlMessages id="forms.email-organization" />
+                            </span>
+                          </Label>
+                          {errors.email && touched.email && (
+                            <div className="invalid-feedback d-block">
+                              {errors.email}
+                            </div>
+                          )}
+                        </FormGroup>
+                        {/* <FormGroup>
                           <Label className="form-group has-float-label">
                             <Field
                               type="text"
@@ -228,7 +264,7 @@ const Validation = ({ intl }) => {
                               {errors.nationalCode}
                             </div>
                           )}
-                        </FormGroup>
+                        </FormGroup> */}
                         <FormGroup>
                           <Label className="form-group has-float-label">
                             <Field
@@ -247,7 +283,7 @@ const Validation = ({ intl }) => {
                             </div>
                           )}
                         </FormGroup>
-                        <FormGroup>
+                        {/* <FormGroup>
                           <Label className="form-group has-float-label">
                             <Field
                               type="text"
@@ -264,7 +300,7 @@ const Validation = ({ intl }) => {
                               {errors.fixednumber}
                             </div>
                           )}
-                        </FormGroup>
+                        </FormGroup> */}
                       </Form>
                     )}
                   </Formik>
@@ -276,6 +312,7 @@ const Validation = ({ intl }) => {
                 fname={messages['wizard.step-name-2']}
                 email={messages['wizard.step-email-2']}
                 city={messages['wizard.step-city-2']}
+                nationalCode={messages['wizard.step-nationalCode-2']}
                 state={messages['wizard.step-state-2']}
                 desc={messages['wizard.step-desc-2-description']}
               >
@@ -284,10 +321,12 @@ const Validation = ({ intl }) => {
                     innerRef={forms[1]}
                     initialValues={{
                       email: fields.email,
-
+                      nationalCode: fields.nationalCode,
                       name: fields.name,
                       city: fields.city,
                       state: fields.state,
+                      nationalID:fields.nationalID,
+                      companyField:fields.companyField
                     }}
                     onSubmit={() => {}}
                     validateOnMount
@@ -320,17 +359,55 @@ const Validation = ({ intl }) => {
                             <Label className="form-group has-float-label">
                               <Field
                                 type="text"
-                                validate={validateEmail}
+                                validate={validateNationalCode}
                                 className="form-control"
-                                name="email"
+                                name="nationalCode"
                               />
                               <span>
-                                <IntlMessages id="forms.email-organization" />
+                                <IntlMessages id="forms.Representative-national-code" />
                               </span>
                             </Label>
-                            {errors.email && touched.email && (
+                            {errors.nationalCode && touched.nationalCode && (
                               <div className="invalid-feedback d-block">
-                                {errors.email}
+                                {errors.nationalCode}
+                              </div>
+                            )}
+                          </FormGroup>
+                        </Row>
+                        <Row>
+                          <FormGroup className="col-sm-6">
+                            <Label className="form-group has-float-label">
+                              <Field
+                                type="text"
+                                validate={nationalID}
+                                className="form-control"
+                                name="nationalID"
+                              />
+                              <span>
+                                <IntlMessages id="forms.national-id" />
+                              </span>
+                            </Label>
+                            {errors.nationalID && touched.nationalID && (
+                              <div className="invalid-feedback d-block">
+                                {errors.nationalID}
+                              </div>
+                            )}
+                          </FormGroup>
+                          <FormGroup className="col-sm-6">
+                            <Label className="form-group has-float-label">
+                              <Field
+                                type="text"
+                                validate={companyField}
+                                className="form-control"
+                                name="companyField"
+                              />
+                              <span>
+                                <IntlMessages id="forms.company-field-activity" />
+                              </span>
+                            </Label>
+                            {errors.companyField && touched.companyField && (
+                              <div className="invalid-feedback d-block">
+                                {errors.companyField}
                               </div>
                             )}
                           </FormGroup>
@@ -404,7 +481,7 @@ const Validation = ({ intl }) => {
                             <AvFeedback>آدرس هم باید وارد کنی!</AvFeedback>
                           </AvGroup>
                         </AvForm>
-                        <Row>
+                        {/* <Row>
                           <Colxx xxs="12" md="6" className="mb-5">
                             <label>
                               <IntlMessages id="forms.gender" />
@@ -433,7 +510,7 @@ const Validation = ({ intl }) => {
                               options={selectData}
                             />
                           </Colxx>
-                        </Row>
+                        </Row> */}
                       </Form>
                     )}
                   </Formik>

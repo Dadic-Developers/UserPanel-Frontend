@@ -190,8 +190,8 @@ const Validation = ({ intl }) => {
   };
   const { messages } = intl;
   return (
-  <section>
-      <Card className="d-flex justify-content-center flex-column h-100">
+  <section className="d-flex justify-content-center flex-column h-100">
+      <Card>
       <CardBody className="wizard wizard-default">
         <Wizard>
           <TopNavigation className="justify-content-center" disableNav />

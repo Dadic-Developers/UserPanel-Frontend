@@ -37,9 +37,9 @@ Table of Contents
 
 module.exports = {
   /* 00.New */
-	'forms.captcha':'کد امنیتی',
-	'forms.captcha.message':'برای دریافت کد تازه کلیک کنید.',
-	 'reload_href':'دوباره سازی',
+  'forms.captcha': 'کد امنیتی',
+  'forms.captcha.message': 'برای دریافت کد تازه کلیک کنید.',
+  reload_href: 'دوباره سازی',
   /* 01.General */
   'general.copyright':
     'Gogo React © 2018 تمامی حقوق برای فاطمه کاظمی محفوظ است',
@@ -172,11 +172,10 @@ module.exports = {
   'dashboards.completed-orders': 'کامل شده',
   'dashboards.refund-requests': 'درخواست بازپرداخت',
 
-  'dashboards.plan-day': 'روزشمار طرح',// New Jwann added
-  'dashboards.number-search': 'تعداد جستجوها ',// New Jwann added,
-  'dashboards.number-layehe': 'لوایح ایجاد شده',// New Jwann added
+  'dashboards.plan-day': 'روزشمار طرح', // New Jwann added
+  'dashboards.number-search': 'تعداد جستجوها ', // New Jwann added,
+  'dashboards.number-layehe': 'لوایح ایجاد شده', // New Jwann added
   'dashboards.charge': 'کیف پول(ریال)', // New Jwann added
-
 
   'dashboards.new-comments': 'نظرات جدید',
   'dashboards.sales': 'فروش ها',
@@ -189,16 +188,16 @@ module.exports = {
   'dashboards.tickets': 'تیکت ها',
   'dashboards.calendar': 'تقویم',
   'dashboards.best-sellers': 'برترین فروشندگان',
-  'dashboards.report-layehe':  'لوایح ایجاد شده', // New Jwann added
-  'dashboards.report-search':  'طرح خریداری  شده', // New Jwann added
-  'dashboards.report-label':  'بازه زمانی', // New Jwann added
+  'dashboards.report-layehe': 'لوایح ایجاد شده', // New Jwann added
+  'dashboards.report-search': 'طرح خریداری  شده', // New Jwann added
+  'dashboards.report-label': 'بازه زمانی', // New Jwann added
   'dashboards.unique-visitors': 'برترین بازدیدکنندگان',
   'dashboards.this-week': 'هفتگی',
   'dashboards.last-week': 'هفته قبل',
   'dashboards.this-month': 'ماه',
-  'dashboards.weekly': 'هفتگی',// New Jwann added
-  'dashboards.monthly': 'ماهیانه',// New Jwann added
-  'dashboards.yearly': 'سالانه',// New Jwann added
+  'dashboards.weekly': 'هفتگی', // New Jwann added
+  'dashboards.monthly': 'ماهیانه', // New Jwann added
+  'dashboards.yearly': 'سالانه', // New Jwann added
   'dashboards.conversion-rates': 'نرخ تبدیل',
   'dashboards.per-session': 'در هر جلسه',
   'dashboards.profile-status': 'وضعیت پروفایل',
@@ -532,17 +531,21 @@ module.exports = {
   'forms.lastname': 'نام خانوادگی',
   'forms.lastname-message': 'لطفا نام خانوادگی خود را وارد کنید',
   'forms.name': 'نام',
-  'forms.national-Code': 'کد ملی',
+  'forms.Representative-national-code': 'کد ملی نماینده سازمان',
+  'forms.national-Code': ' کد ملی',
   'forms.phone-number': 'شماره موبایل',
   'forms.fixed-number': 'شماره ثابت',
   'forms.gender': 'جنسیت',
   'forms.education': 'تحصیلات',
   'forms.name-organization': 'نام سازمان',
   'forms.email-organization': 'پست الکترونیک سازمان',
-
+  'forms.getting-know': 'نحوه آشنایی با دادیک',
+  'forms.company-field-activity': 'حوزه فعالیت سازمان',
+  'forms.national-id': 'شناسه ملی',
 
   /* 07.11.Form Components */
   // new
+  'form-organization-selection': 'انتخاب سازمان',
   'form-components.person': 'تصویر شخص',
   'form-components.national-card': 'تصویر کارت ملی',
   'form-components.license': 'تصویر مجوز',
