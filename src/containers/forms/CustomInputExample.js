@@ -37,13 +37,13 @@ const CustomInputExample = () => {
             type="radio"
             id="exCustomRadio"
             name="customRadio"
-            label="مطابق با عبارت"
+            label="این رادیوباتن کاستوم شده رو تیک بزن"
           />
           <CustomInput
             type="radio"
             id="exCustomRadio2"
             name="customRadio"
-            label="همراه با تشابه"
+            label="یا این یکی"
           />
           <CustomInput
             type="radio"

@@ -389,6 +389,7 @@ module.exports = {
 
   /* 07.03.Buttons */
   'button.default': 'پیشفرض بوتسترپ',
+  'button.advanced-search':'جستجوی پیشرفته', // New Fatemeh added
   'button.colors': 'رنگ ها',
   'button.rounded': 'گِرد',
   'button.outline': 'دورخط',

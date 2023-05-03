@@ -1,16 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import CustomSelectInput from 'components/common/CustomSelectInput';
 import Select from 'react-select';
-
+import images from 'assets/img/search/Dadic1.png';
+// import { LoadListGov } from "./Gov/index";
 import {
   Row,
   Input,
   Label,
   Form,
   CustomInput,
-  FormGroup
+  FormGroup,
+  Button,
   // Card,
   // CardBody,
   // ModalHeader,
@@ -29,9 +31,12 @@ import Breadcrumb from 'containers/navs/Breadcrumb';
 import { Separator, Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 
-
 // const apiUrl = `${servicePath}/cakes/paging`;
 const selectData = [
+  { label: 'کیک', value: 'cake', key: 0 },
+  { label: 'کیک', value: 'cake', key: 0 },
+  { label: 'کیک', value: 'cake', key: 0 },
+  { label: 'کیک', value: 'cake', key: 0 },
   { label: 'کیک', value: 'cake', key: 0 },
   { label: 'کاپ کیک', value: 'cupcake', key: 1 },
   { label: 'دسر', value: 'dessert', key: 2 },
@@ -143,39 +148,54 @@ const Search = ({ match }) => {
           >
             <i className="simple-icon-magnifier" />
           </span> */}
-        <span className="search-icon">
-          <i className="simple-icon-magnifier" />
-        </span>
-
-        <Colxx xxs="12">
+      </Row>
+      <Row>
+        <Colxx xxs="12" md="1">
+          <img
+            src={images}
+            alt="daadic"
+            className="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall"
+          />
+        </Colxx>
+        <Colxx xxs="12" md="6">
           <Form className="form-group">
             <Label className="form-group has-float-label">
+              {/* <LoadListGov
+                selectedId={(idGov) => {
+                  this.setState({ idGov: idGov });
+                }}
+              /> */}
               <Input type="text" />
               <span>
                 <IntlMessages id="menu.search" />
+                <i className="simple-icon-magnifier" />
               </span>
+              {/* <span className="search-icon">
+              
+              </span> */}
             </Label>
           </Form>
         </Colxx>
-        <Colxx xxs="12" md="6" className="mb-5">
-        <label>
-          <IntlMessages id="form-organization-selection" />
-        </label>
-        <Select
-          components={{ Input: CustomSelectInput }}
-          className="react-select"
-          classNamePrefix="react-select"
-          name="form-field-name"
-          value={selectedOption}
-          onChange={setSelectedOption}
-          options={selectData}
-        />
-      </Colxx>
+        <Colxx xxs="12" md="5">
+          <label>
+            <IntlMessages id="form-organization-selection" />
+          </label>
+          <Select
+            components={{ Input: CustomSelectInput }}
+            className="react-select"
+            classNamePrefix="react-select"
+            name="form-field-name"
+            value={selectedOption}
+            onChange={setSelectedOption}
+            options={selectData}
+          />
+        </Colxx>
+      </Row>
       <FormGroup>
         {/* <Label for="exCustomRadio">
           <IntlMessages id="forms.gender" />
         </Label> */}
-        <div>
+        <div className="d-flex m-1">
           <CustomInput
             type="radio"
             id="exCustomRadio"
@@ -196,7 +216,43 @@ const Search = ({ match }) => {
           /> */}
         </div>
       </FormGroup>
-      </Row>
+      <div className="mb-4">
+        <Button color="primary" size="sm" className="mb-2">
+          <IntlMessages id="button.advanced-search" />
+        </Button>{' '}
+      </div>
+      {/* <Card> */}
+      {/* <CardBody> */}
+      {/* <CardTitle>
+          <IntlMessages id="dashboards.tickets" />
+        </CardTitle> */}
+      <div className="dashboard-list-with-user">
+        {/* <PerfectScrollbar
+            options={{ suppressScrollX: true, wheelPropagation: false }}
+          > */}
+
+        <div
+          // key={index}
+          className="d-flex flex-row mb-3 pb-3 border-bottom"
+        >
+          {/* <NavLink to={`${adminRoot}/pages/product/details`}> */}
+
+          {/* </NavLink> */}
+
+          <div className="pl-3 pr-2">
+            {/* <NavLink to={`${adminRoot}/pages/product/details`}>
+                      <p className="font-weight-medium mb-0 ">{ticket.title}</p>
+                      <p className="text-muted mb-0 text-small">
+                        {ticket.detail}
+                      </p>
+                    </NavLink> */}
+          </div>
+        </div>
+
+        {/* </PerfectScrollbar> */}
+      </div>
+      {/* </CardBody> */}
+      {/* </Card> */}
     </>
   );
 };
