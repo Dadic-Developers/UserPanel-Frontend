@@ -33,6 +33,7 @@ Table of Contents
 07.19.Maps
 07.20.Tables
 07.21.Wizards
+07.22.Search
 */
 
 module.exports = {
@@ -703,4 +704,14 @@ module.exports = {
   'wizard.prev': 'قبلی',
   'wizard.registered': 'ثبت نام شما با موفقیت انجام شد!',
   'wizard.async': 'Async save for 3 seconds!',
+   /* 07.22.Search */
+  'forms.advanced-search': 'فرم جستجوی پیشرفته',
+  'forms.search.number': 'تعداد',
+  'forms.search.type': 'نوع جستجو',
+  'forms.search.legalarticle': 'ماده قانونی',
+  'forms.search.season': 'فصل',
+  'forms.search.bob': 'باب',
+  'forms.search.document.number': 'جستجو بر اساس شماره سند',
+  'forms.search.document.history': 'جستجو بر اساس تاریخجه سند',
+  'forms.search': 'جستجو',
 };

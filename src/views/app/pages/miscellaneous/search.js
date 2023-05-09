@@ -5,11 +5,13 @@ import CustomSelectInput from 'components/common/CustomSelectInput';
 import Select from 'react-select';
 import images from 'assets/img/search/black.jpg';
 // import LoadListGov from './../../../../Gov/gov.Json';
+
 import {
   Row,
   Input,
   Label,
   CustomInput,
+  Form,
   FormGroup,
   Button,
   // Dropdown,
@@ -18,6 +20,7 @@ import {
   Card,
   CardBody,
   CardTitle,
+
   // ModalHeader,
   // ModalBody,
   // ModalFooter,
@@ -33,48 +36,60 @@ import {
 import Breadcrumb from 'containers/navs/Breadcrumb';
 import { Separator, Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
-import { Formik, Form, Field } from 'formik';
+// import DatePicker from 'react-jalali-datepicker';
+import DatePicker from 'react-datepicker';
+import LoadList from './gov.json';
 
-import {
-  FormikReactSelect,
-  FormikTagsInput,
-  FormikDatePicker,
-} from './FormikFields';
-
+// import {Field } from 'formik';
+// import {
+//   FormikReactSelect,
+//   //FormikTagsInput,
+//   // FormikDatePicker,
+// } from './FormikFields';
 // const apiUrl = `${servicePath}/cakes/paging`;
+
 const selectData = [
-  { label: 'کیک', value: 'cake', key: 0 },
-  { label: 'کیک', value: 'cake', key: 0 },
-  { label: 'کیک', value: 'cake', key: 0 },
-  { label: 'کیک', value: 'cake', key: 0 },
-  { label: 'کیک', value: 'cake', key: 0 },
-  { label: 'کاپ کیک', value: 'cupcake', key: 1 },
-  { label: 'دسر', value: 'dessert', key: 2 },
+    { value: "1", label: "ماده قانونی" },
+    { value: "2", label: "تبصره" },
+    { value: "3", label: "بخشنامه" },
+    { value: "4", label: "دستورالعمل" },
+    { value: "5", label: "آیین نامه" },
+    { value: "6", label: "رای شورا" },
+    { value: "7", label: "دیوان عدالت اداری" },
+    { value: "8", label:"تصویب‌نامه‌ها و تصمیم‌نامه‌ها" },
+    { value: "9", label: "دادنامه" },
+    { value: "10", label: "فرامین رهبری" },
 ];
-const options = [
-  { value: 'food', label: 'تهران' },
-  { value: 'beingfabulous', label: 'گلستان', disabled: true },
-  { value: 'reasonml', label: 'خراسان' },
-  { value: 'unicorns', label: 'اصفهان' },
-  { value: 'kittens', label: 'فارس' },
-];
+
 const Search = ({ match }) => {
-  const [selectedOption, setSelectedOption] = useState('');
+  // const [selectedOption, setSelectedOption] = useState('');
   // const [dropdownBasicOpen, setDropdownBasicOpen] = useState(false);
   const [buttonBasicOpen, setButtonBasicOpen] = useState(false);
-  const onSubmit = (values, { setSubmitting }) => {
-    const payload = {
-      ...values,
-      state: values.state.value,
-    };
-    setTimeout(() => {
-      console.log(JSON.stringify(payload, null, 2));
-      setSubmitting(false);
-    }, 1000);
-  };
+  const [selectedOptionLO, setSelectedOptionLO] = useState('');
+  const [startDateLO, setStartDateLO] = useState(null);
+
   const togglebtnAdvanced = () => {
     setButtonBasicOpen(!buttonBasicOpen);
   };
+
+  const optionsList = LoadList.flatMap((listItem) => {
+    return listItem.Ejrai.flatMap((getItem) => {
+      return getItem.suborg.map((setItem) => ({
+        label: setItem.title,
+        value: setItem.id
+      }));
+    });
+  });
+  
+ 
+  // const options = [
+  //   { value: 'food', label: 'تهران' },
+  //   { value: 'beingfabulous', label: 'گلستان', disabled: true },
+  //   { value: 'reasonml', label: 'خراسان' },
+  //   { value: 'unicorns', label: 'اصفهان' },
+  //   { value: 'kittens', label: 'فارس' },
+  // ];
+
   // const [IsLoading ,setIsLoading] = useState(true);
   // const [Items, setItems] = useState([]);
   // const [currentPage, setCurrentPage] = useState(1);
@@ -184,38 +199,42 @@ const Search = ({ match }) => {
                 />
               </Row>
               <Row className="justify-content-center mb-2">
-                <label>
+                <label className="mt-2">
                   <IntlMessages id="form-organization-selection" />
                 </label>
-                <Colxx xxs="12" md="7">
+                <Colxx xxs="12" md="5">
                   <Select
-                    components={{ Input: CustomSelectInput }}
+                    // components={{ Input: CustomSelectInput }}
                     className="react-select"
                     classNamePrefix="react-select"
                     name="form-field-name"
-                    value={selectedOption}
-                    onChange={setSelectedOption}
-                    options={selectData}
+                    placeholder='انتخاب سازمان'
+                    options={optionsList}
+                    // value={selectedOption}
+                    // onChange={setSelectedOption}
                   />
                 </Colxx>
               </Row>
               <Row className="justify-content-center mb-4">
-                <Colxx xxs="12" md="8">
-                  <Label className="form-group has-float-label">
-                    {/* <LoadListGov
-                selectedId={(idGov) => {
-                  this.setState({ idGov: idGov });
-                }}
-              /> */}
-                    <Input type="text" />
-                    <span>
+                <Colxx xxs="12" md="5">
+                  <FormGroup className="form-group has-float-label">
+                    <Label>
                       <IntlMessages id="menu.search" />
-                      <i className="simple-icon-magnifier" />
-                    </span>
-                    {/* <span className="search-icon">
-              
-              </span> */}
-                  </Label>
+                    </Label>
+                    <Input className="form-control" name="search" />
+                    <i className="simple-icon-magnifier" />
+                  </FormGroup>
+                </Colxx>
+                <Colxx xxs="12" md="2">
+                  <Button
+                    color="primary"
+                    size="sm"
+                    className="mb-2"
+                    onClick={togglebtnAdvanced}
+                  >
+                    <IntlMessages id="button.advanced-search" />
+                    {buttonBasicOpen}
+                  </Button>
                 </Colxx>
               </Row>
               <Row className="justify-content-center">
@@ -236,137 +255,120 @@ const Search = ({ match }) => {
                   </div>
                 </FormGroup>
               </Row>
-              <Row>
-                <Button
-                  color="primary"
-                  size="sm"
-                  className="mb-2"
-                  onClick={togglebtnAdvanced}
-                >
-                  <IntlMessages id="button.advanced-search" />
-                  {buttonBasicOpen ? 'Close Form' : 'Show Form'}
-                </Button>
-              </Row>
-              <Row>
-                {buttonBasicOpen && (
+              {buttonBasicOpen && (
+                <Row className="mb-4">
                   <Colxx xxs="12">
                     <Card>
                       <CardBody>
                         <CardTitle>
-                          <IntlMessages id="forms.top-labels-over-line" />
+                          <IntlMessages id="forms.advanced-search" />
                         </CardTitle>
-
-                        <Formik
-                          initialValues={{
-                            email: 'test@test.com',
-                            password: '',
-                            tags: [],
-                            date: null,
-                            state: { value: 'reasonml', label: 'تهران' },
-                          }}
-                          // validationSchema={SignupSchema}
-                          onSubmit={onSubmit}
-                        >
-                          {({
-                            // handleSubmit,
-                            setFieldValue,
-                            setFieldTouched,
-                            // handleChange,
-                            // handleBlur,
-                            values,
-                            errors,
-                            touched,
-                            // isSubmitting,
-                          }) => (
-                            <Form className="av-tooltip tooltip-label-bottom">
-                              <FormGroup className="form-group has-float-label">
-                                <Label>
-                                  <IntlMessages id="forms.email" />
-                                </Label>
-                                <Field className="form-control" name="email" />
-                                {errors.email && touched.email ? (
-                                  <div className="invalid-feedback d-block">
-                                    {errors.email}
-                                  </div>
-                                ) : null}
-                              </FormGroup>
-                              <FormGroup className="form-group has-float-label">
-                                <Label>
-                                  <IntlMessages id="forms.password" />
-                                </Label>
-                                <Field
-                                  className="form-control"
-                                  name="password"
-                                  type="password"
+                        <Form className="form-group">
+                          <FormGroup row>
+                            <Colxx xxs="12" md="6">
+                              <Label className="form-group has-float-label">
+                                <Input type="number" />
+                                <span>
+                                  <IntlMessages id="forms.search.number" />
+                                </span>
+                              </Label>
+                            </Colxx>
+                            <Colxx xxs="12" md="6">
+                              <div className="form-group has-float-label">
+                                <Select
+                                  components={{ Input: CustomSelectInput }}
+                                  className="react-select"
+                                  classNamePrefix="react-select"
+                                  name="form-field-name"
+                                  value={selectedOptionLO}
+                                  onChange={(val) => setSelectedOptionLO(val)}
+                                  options={selectData}
+                                  placeholder="انتخاب نوع جستجو"
                                 />
-                                {errors.password && touched.password ? (
-                                  <div className="invalid-feedback d-block">
-                                    {errors.password}
-                                  </div>
-                                ) : null}
-                              </FormGroup>
-
-                              <FormGroup className="form-group has-float-label">
-                                <Label className="d-block">
-                                  <IntlMessages id="form-components.tags" />
-                                </Label>
-                                <FormikTagsInput
-                                  name="tags"
-                                  value={values.tags}
-                                  onChange={setFieldValue}
-                                  onBlur={setFieldTouched}
+                                <span>
+                                  <IntlMessages id="forms.search.type" />
+                                </span>
+                              </div>
+                            </Colxx>
+                            <Colxx xxs="12" md="6">
+                              <div className="form-group has-float-label">
+                                <DatePicker
+                                  selected={startDateLO}
+                                  onChange={(val) => setStartDateLO(val)}
                                 />
-
-                                {errors.tags && touched.tags ? (
-                                  <div className="invalid-feedback d-block">
-                                    {errors.tags}
-                                  </div>
-                                ) : null}
-                              </FormGroup>
-
-                              <FormGroup className="form-group has-float-label">
-                                <Label className="d-block">
-                                  <IntlMessages id="form-components.date" />
-                                </Label>
-                                <FormikDatePicker
-                                  name="date"
-                                  value={values.date}
-                                  onChange={setFieldValue}
-                                  onBlur={setFieldTouched}
+                                <span>
+                                  <IntlMessages id="forms.date" />
+                                </span>
+                              </div>
+                            </Colxx>
+                            <Colxx xxs="12" md="6">
+                              <div className="form-group has-float-label">
+                                <DatePicker
+                                  selected={startDateLO}
+                                  onChange={(val) => setStartDateLO(val)}
                                 />
-                               
-                              </FormGroup>
-
-                              <FormGroup className="form-group has-float-label">
-                                <Label>
-                                  <IntlMessages id="forms.state" />
-                                </Label>
-                                <FormikReactSelect
-                                  name="state"
-                                  id="state"
-                                  value={values.state}
-                                  options={options}
-                                  onChange={setFieldValue}
-                                  onBlur={setFieldTouched}
-                                />
-                                {errors.state && touched.state ? (
-                                  <div className="invalid-feedback d-block">
-                                    {errors.state}
-                                  </div>
-                                ) : null}
-                              </FormGroup>
-
-                              <Button color="primary" type="submit">
-                                ارسال فرم
+                                <span>
+                                  <IntlMessages id="forms.date" />
+                                </span>
+                              </div>
+                            </Colxx>
+                            <Colxx xxs="12" md="4">
+                              <Label className="form-group has-float-label">
+                                <Input type="text" />
+                                <span>
+                                  <IntlMessages id="forms.search.legalarticle" />
+                                </span>
+                              </Label>
+                            </Colxx>
+                            <Colxx xxs="12" md="4">
+                              <Label className="form-group has-float-label">
+                                <Input type="text" />
+                                <span>
+                                  <IntlMessages id="forms.search.season" />
+                                </span>
+                              </Label>
+                            </Colxx>
+                            <Colxx xxs="12" md="3">
+                              <Label className="form-group has-float-label">
+                                <Input type="text" />
+                                <span>
+                                  <IntlMessages id="forms.search.bob" />
+                                </span>
+                              </Label>
+                            </Colxx>
+                            <Colxx xxs="12" md="1">
+                              <Button color="primary">
+                                <IntlMessages id="+" />
                               </Button>
-                            </Form>
-                          )}
-                        </Formik>
+                            </Colxx>
+
+                            <Colxx xxs="12" md="6">
+                              <Label className="form-group has-float-label">
+                                <Input type="text" />
+                                <span>
+                                  <IntlMessages id="forms.search.document.number" />
+                                </span>
+                              </Label>
+                            </Colxx>
+                            <Colxx xxs="12" md="6">
+                              <FormGroup>
+                                <CustomInput
+                                  type="checkbox"
+                                  id="forms.search.document.history"
+                                  label="جستجو بر اساس تاریخجه سند"
+                                />
+                              </FormGroup>
+                            </Colxx>
+                          </FormGroup>
+                          <Button color="primary">
+                            <IntlMessages id="forms.search" />
+                          </Button>
+                        </Form>
                       </CardBody>
                     </Card>
                   </Colxx>
-                )}
-              </Row>
+                </Row>
+              )}
             </CardBody>
           </Card>
         </Colxx>
@@ -374,5 +376,4 @@ const Search = ({ match }) => {
     </>
   );
 };
-
 export default Search;

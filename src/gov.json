@@ -6,17 +6,7 @@
         "link": "https://dotic.ir/cat/187",
         "id": 1,
         "slug": [],
-        "suborg": [
-          {
-            "title": "صندوق توسعه ملی",
-            "link": "https://dotic.ir/cat/187",
-            "id": 1,
-            "slug": [],
-            "suborg": [
-              
-            ]
-          }
-        ]
+        "suborg": []
       },
       {
         "title": "ریاست جمهوری",
@@ -80,15 +70,7 @@
         "link": "https://dotic.ir/org-exec",
         "id": 10,
         "slug": [],
-        "suborg": [
-          {
-            "title": "شوراهای عالی",
-            "link": "https://dotic.ir/org-exec",
-            "id": 10,
-            "slug": [],
-            "suborg": []
-          }
-        ]
+        "suborg": []
       },
       {
         "title": "سازمان‌های مستقل",
@@ -456,7 +438,6 @@
           }
         ]
       },
-     
       {
         "title": "قوه مجریه",
         "link": "https://dotic.ir/cat/104",
@@ -647,7 +628,6 @@
           }
         ]
       },
-   
       {
         "title": "قوه قضائیه",
         "link": "https://dotic.ir/cat/105",
@@ -682,15 +662,7 @@
         "link": "https://dotic.ir/cat/106",
         "id": 93,
         "slug": [],
-        "suborg": [
-          {
-            "title": "نهادها و مؤسسات عمومی غیردولتی",
-            "link": "https://dotic.ir/cat/106",
-            "id": 93,
-            "slug": [],
-            "suborg": []
-          }
-        ]
+        "suborg": []
       },
       {
         "title": "سایر مراجع",
