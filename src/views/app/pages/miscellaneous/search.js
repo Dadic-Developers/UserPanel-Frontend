@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import CustomSelectInput from 'components/common/CustomSelectInput';
 import Select from 'react-select';
 import images from 'assets/img/search/black.jpg';
+// import DatePicker from 'react-jalali-datepicker';
 // import LoadListGov from './../../../../Gov/gov.Json';
 
 import {
@@ -27,38 +28,23 @@ import {
   // Modal,
   // Button,
 } from 'reactstrap';
-
-// import { NavLink } from 'react-router-dom';
-// import axios from 'axios';
-
-// import Pagination from 'containers/pages/Pagination';
-// import { servicePath } from 'constants/defaultValues';
 import Breadcrumb from 'containers/navs/Breadcrumb';
 import { Separator, Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
-// import DatePicker from 'react-jalali-datepicker';
-import DatePicker from 'react-datepicker';
+import { DatePicker } from 'react-advance-jalaali-datepicker';
 import LoadList from './gov.json';
 
-// import {Field } from 'formik';
-// import {
-//   FormikReactSelect,
-//   //FormikTagsInput,
-//   // FormikDatePicker,
-// } from './FormikFields';
-// const apiUrl = `${servicePath}/cakes/paging`;
-
-const selectData = [
-    { value: "1", label: "ماده قانونی" },
-    { value: "2", label: "تبصره" },
-    { value: "3", label: "بخشنامه" },
-    { value: "4", label: "دستورالعمل" },
-    { value: "5", label: "آیین نامه" },
-    { value: "6", label: "رای شورا" },
-    { value: "7", label: "دیوان عدالت اداری" },
-    { value: "8", label:"تصویب‌نامه‌ها و تصمیم‌نامه‌ها" },
-    { value: "9", label: "دادنامه" },
-    { value: "10", label: "فرامین رهبری" },
+const selectDataTypeSearch = [
+  { value: '1', label: 'ماده قانونی' },
+  { value: '2', label: 'تبصره' },
+  { value: '3', label: 'بخشنامه' },
+  { value: '4', label: 'دستورالعمل' },
+  { value: '5', label: 'آیین نامه' },
+  { value: '6', label: 'رای شورا' },
+  { value: '7', label: 'دیوان عدالت اداری' },
+  { value: '8', label: 'تصویب‌نامه‌ها و تصمیم‌نامه‌ها' },
+  { value: '9', label: 'دادنامه' },
+  { value: '10', label: 'فرامین رهبری' },
 ];
 
 const Search = ({ match }) => {
@@ -66,56 +52,25 @@ const Search = ({ match }) => {
   // const [dropdownBasicOpen, setDropdownBasicOpen] = useState(false);
   const [buttonBasicOpen, setButtonBasicOpen] = useState(false);
   const [selectedOptionLO, setSelectedOptionLO] = useState('');
-  const [startDateLO, setStartDateLO] = useState(null);
-
+  const [startDateLO, setStartDateLO] = useState('');
+  const [numberOfInputs, setNumberOfInputs] = useState(1);
   const togglebtnAdvanced = () => {
     setButtonBasicOpen(!buttonBasicOpen);
   };
-
+  function datePickerInput(props) {
+    return <input className="popo form-control" {...props} />;
+  }
+  const handlePlusClick = () => {
+    setNumberOfInputs(numberOfInputs + 1);
+  };
   const optionsList = LoadList.flatMap((listItem) => {
     return listItem.Ejrai.flatMap((getItem) => {
       return getItem.suborg.map((setItem) => ({
         label: setItem.title,
-        value: setItem.id
+        value: setItem.id,
       }));
     });
   });
-  
- 
-  // const options = [
-  //   { value: 'food', label: 'تهران' },
-  //   { value: 'beingfabulous', label: 'گلستان', disabled: true },
-  //   { value: 'reasonml', label: 'خراسان' },
-  //   { value: 'unicorns', label: 'اصفهان' },
-  //   { value: 'kittens', label: 'فارس' },
-  // ];
-
-  // const [IsLoading ,setIsLoading] = useState(true);
-  // const [Items, setItems] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [keyword] = useState('Cake');
-  // const [pageSize] = useState(10);
-  // const [totalPage, setTotalPage] = useState(0);
-  // const [modalBasic, setModalBasic] = useState(true);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     axios
-  //       .get(
-  //         `${apiUrl}?pageSize=${pageSize}&currentPage=${currentPage}&search=${keyword}`
-  //       )
-  //       .then((res) => {
-  //         return res.data;
-  //       })
-  //       .then((data) => {
-  //         setItems(data.data);
-  //         setTotalPage(data.totalPage);
-  //         setIsLoading(false);
-  //       });
-  //   }
-  //   fetchData();
-  // }, [pageSize, currentPage, keyword]);
-  // const { messages } = intl;
   return (
     <>
       <Row>
@@ -208,7 +163,7 @@ const Search = ({ match }) => {
                     className="react-select"
                     classNamePrefix="react-select"
                     name="form-field-name"
-                    placeholder='انتخاب سازمان'
+                    placeholder="انتخاب سازمان"
                     options={optionsList}
                     // value={selectedOption}
                     // onChange={setSelectedOption}
@@ -282,7 +237,7 @@ const Search = ({ match }) => {
                                   name="form-field-name"
                                   value={selectedOptionLO}
                                   onChange={(val) => setSelectedOptionLO(val)}
-                                  options={selectData}
+                                  options={selectDataTypeSearch}
                                   placeholder="انتخاب نوع جستجو"
                                 />
                                 <span>
@@ -293,54 +248,67 @@ const Search = ({ match }) => {
                             <Colxx xxs="12" md="6">
                               <div className="form-group has-float-label">
                                 <DatePicker
-                                  selected={startDateLO}
+                                  inputComponent={datePickerInput}
+                                  format="jYYYY/jMM/jDD"
                                   onChange={(val) => setStartDateLO(val)}
+                                  selected={startDateLO}
+                                  idStart="rangePickerStart"
                                 />
                                 <span>
-                                  <IntlMessages id="forms.date" />
+                                  <IntlMessages id="forms.search.data.start" />
                                 </span>
                               </div>
                             </Colxx>
                             <Colxx xxs="12" md="6">
                               <div className="form-group has-float-label">
                                 <DatePicker
+                                  inputComponent={datePickerInput}
                                   selected={startDateLO}
+                                  format="jYYYY/jMM/jDD"
                                   onChange={(val) => setStartDateLO(val)}
+                                  idEnd="rangePickerEnd"
                                 />
                                 <span>
-                                  <IntlMessages id="forms.date" />
+                                  <IntlMessages id="forms.search.data.end" />
                                 </span>
                               </div>
                             </Colxx>
-                            <Colxx xxs="12" md="4">
-                              <Label className="form-group has-float-label">
-                                <Input type="text" />
-                                <span>
-                                  <IntlMessages id="forms.search.legalarticle" />
-                                </span>
-                              </Label>
-                            </Colxx>
-                            <Colxx xxs="12" md="4">
-                              <Label className="form-group has-float-label">
-                                <Input type="text" />
-                                <span>
-                                  <IntlMessages id="forms.search.season" />
-                                </span>
-                              </Label>
-                            </Colxx>
-                            <Colxx xxs="12" md="3">
-                              <Label className="form-group has-float-label">
-                                <Input type="text" />
-                                <span>
-                                  <IntlMessages id="forms.search.bob" />
-                                </span>
-                              </Label>
-                            </Colxx>
-                            <Colxx xxs="12" md="1">
-                              <Button color="primary">
-                                <IntlMessages id="+" />
-                              </Button>
-                            </Colxx>
+                            {[...Array(numberOfInputs)].map((i) => (
+                              <Row key={i} className='col-12'>
+                                <Colxx xxs="12" md="4">
+                                  <Label className="form-group has-float-label">
+                                    <Input type="text" />
+                                    <span>
+                                      <IntlMessages id="forms.search.legalarticle" />
+                                    </span>
+                                  </Label>
+                                </Colxx>
+                                <Colxx xxs="12" md="4">
+                                  <Label className="form-group has-float-label">
+                                    <Input type="text" readOnly/>
+                                    <span>
+                                      <IntlMessages id="forms.search.season" />
+                                    </span>
+                                  </Label>
+                                </Colxx>
+                                <Colxx xxs="12" md="3">
+                                  <Label className="form-group has-float-label">
+                                    <Input type="text" readOnly/>
+                                    <span>
+                                      <IntlMessages id="forms.search.bob" />
+                                    </span>
+                                  </Label>
+                                </Colxx>
+                                <Colxx xxs="12" md="1">
+                                  <Button
+                                    color="primary"
+                                    onClick={handlePlusClick}
+                                  >
+                                    <IntlMessages id="+" />
+                                  </Button>
+                                </Colxx>
+                              </Row>
+                            ))}
 
                             <Colxx xxs="12" md="6">
                               <Label className="form-group has-float-label">

@@ -714,4 +714,6 @@ module.exports = {
   'forms.search.document.number': 'جستجو بر اساس شماره سند',
   'forms.search.document.history': 'جستجو بر اساس تاریخجه سند',
   'forms.search': 'جستجو',
+  'forms.search.data.start': 'تاریخ شروع',
+  'forms.search.data.end': 'تاریخ پایان',
 };
