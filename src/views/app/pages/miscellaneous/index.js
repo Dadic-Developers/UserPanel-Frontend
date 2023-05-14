@@ -22,6 +22,7 @@ const Search = React.lazy(() =>
   import(/* webpackChunkName: "miscellaneous-search" */ './search')
 );
 
+
 const PagesMiscellaneous = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
     <Switch>

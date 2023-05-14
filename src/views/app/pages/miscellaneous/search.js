@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CustomSelectInput from 'components/common/CustomSelectInput';
 import Select from 'react-select';
 import images from 'assets/img/search/black.jpg';
-// import DatePicker from 'react-jalali-datepicker';
-// import LoadListGov from './../../../../Gov/gov.Json';
+
 
 import {
   Row,
@@ -33,6 +32,7 @@ import { Separator, Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { DatePicker } from 'react-advance-jalaali-datepicker';
 import LoadList from './gov.json';
+import filter from './filter';
 
 const selectDataTypeSearch = [
   { value: '1', label: 'ماده قانونی' },
@@ -53,16 +53,30 @@ const Search = ({ match }) => {
   const [buttonBasicOpen, setButtonBasicOpen] = useState(false);
   const [selectedOptionLO, setSelectedOptionLO] = useState('');
   const [startDateLO, setStartDateLO] = useState('');
-  const [numberOfInputs, setNumberOfInputs] = useState(1);
-  const togglebtnAdvanced = () => {
-    setButtonBasicOpen(!buttonBasicOpen);
-  };
+  const [numberOfInputsPlas, setNumberOfInputsPlas] = useState(1);
+  const [numberOfInputsMinus, setNumberOfInputsMinus] = useState(0);
+  const [isMinusDisabled, setIsMinusDisabled] = useState(true);
   function datePickerInput(props) {
     return <input className="popo form-control" {...props} />;
   }
-  const handlePlusClick = () => {
-    setNumberOfInputs(numberOfInputs + 1);
+
+  useEffect(() => {
+    setIsMinusDisabled(numberOfInputsPlas + numberOfInputsMinus <= 1);
+  }, [numberOfInputsPlas, numberOfInputsMinus]);
+  const togglebtnAdvanced = () => {
+    setButtonBasicOpen(!buttonBasicOpen);
   };
+
+  const handlePlusClick = () => {
+    setNumberOfInputsPlas(numberOfInputsPlas + 1);
+    if (numberOfInputsPlas > 1) {
+      setIsMinusDisabled(false);
+    }
+  };
+  const handlemMinusClick = () => {
+    setNumberOfInputsMinus(numberOfInputsMinus - 1);
+  };
+
   const optionsList = LoadList.flatMap((listItem) => {
     return listItem.Ejrai.flatMap((getItem) => {
       return getItem.suborg.map((setItem) => ({
@@ -170,7 +184,7 @@ const Search = ({ match }) => {
                   />
                 </Colxx>
               </Row>
-              <Row className="justify-content-center mb-4">
+              <Row className="justify-content-center">
                 <Colxx xxs="12" md="5">
                   <FormGroup className="form-group has-float-label">
                     <Label>
@@ -273,43 +287,57 @@ const Search = ({ match }) => {
                                 </span>
                               </div>
                             </Colxx>
-                            {[...Array(numberOfInputs)].map((i) => (
-                              <Row key={i} className='col-12'>
-                                <Colxx xxs="12" md="4">
-                                  <Label className="form-group has-float-label">
-                                    <Input type="text" />
-                                    <span>
-                                      <IntlMessages id="forms.search.legalarticle" />
-                                    </span>
-                                  </Label>
-                                </Colxx>
-                                <Colxx xxs="12" md="4">
-                                  <Label className="form-group has-float-label">
-                                    <Input type="text" readOnly/>
-                                    <span>
-                                      <IntlMessages id="forms.search.season" />
-                                    </span>
-                                  </Label>
-                                </Colxx>
-                                <Colxx xxs="12" md="3">
-                                  <Label className="form-group has-float-label">
-                                    <Input type="text" readOnly/>
-                                    <span>
-                                      <IntlMessages id="forms.search.bob" />
-                                    </span>
-                                  </Label>
-                                </Colxx>
-                                <Colxx xxs="12" md="1">
-                                  <Button
-                                    color="primary"
-                                    onClick={handlePlusClick}
-                                  >
-                                    <IntlMessages id="+" />
-                                  </Button>
-                                </Colxx>
-                              </Row>
-                            ))}
-
+                            <Row className="w-100">
+                              {[
+                                ...Array(
+                                  numberOfInputsPlas + numberOfInputsMinus
+                                ),
+                              ].map((i) => (
+                                <Row key={i} className="col-12 col-md-10">
+                                  <Colxx xxs="12" md="4">
+                                    <Label className="form-group has-float-label">
+                                      <Input type="text" />
+                                      <span>
+                                        <IntlMessages id="forms.search.legalarticle" />
+                                      </span>
+                                    </Label>
+                                  </Colxx>
+                                  <Colxx xxs="12" md="4">
+                                    <Label className="form-group has-float-label">
+                                      <Input type="text" readOnly />
+                                      <span>
+                                        <IntlMessages id="forms.search.season" />
+                                      </span>
+                                    </Label>
+                                  </Colxx>
+                                  <Colxx xxs="12" md="3">
+                                    <Label className="form-group has-float-label">
+                                      <Input type="text" readOnly />
+                                      <span>
+                                        <IntlMessages id="forms.search.bob" />
+                                      </span>
+                                    </Label>
+                                  </Colxx>
+                                </Row>
+                              ))}
+                              <Colxx xxs="12" md="1">
+                                <Button
+                                  color="primary"
+                                  onClick={handlePlusClick}
+                                >
+                                  <IntlMessages id="+" />
+                                </Button>
+                              </Colxx>
+                              <Colxx xxs="12" md="1">
+                                <Button
+                                  color="primary"
+                                  onClick={handlemMinusClick}
+                                  disabled={isMinusDisabled}
+                                >
+                                  <IntlMessages id="-" />
+                                </Button>
+                              </Colxx>
+                            </Row>
                             <Colxx xxs="12" md="6">
                               <Label className="form-group has-float-label">
                                 <Input type="text" />
@@ -340,6 +368,9 @@ const Search = ({ match }) => {
             </CardBody>
           </Card>
         </Colxx>
+      </Row>
+      <Row>
+        <filter/>
       </Row>
     </>
   );
