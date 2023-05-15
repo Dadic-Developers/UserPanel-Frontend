@@ -716,4 +716,7 @@ module.exports = {
   'forms.search': 'جستجو',
   'forms.search.data.start': 'تاریخ شروع',
   'forms.search.data.end': 'تاریخ پایان',
+  'forms.search.sortby': 'ترتیب براساس ',
+  'forms.search.orderby': 'مرتب‌سازی براساس ',
+
 };

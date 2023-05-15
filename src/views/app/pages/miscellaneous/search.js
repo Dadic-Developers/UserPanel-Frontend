@@ -5,7 +5,6 @@ import CustomSelectInput from 'components/common/CustomSelectInput';
 import Select from 'react-select';
 import images from 'assets/img/search/black.jpg';
 
-
 import {
   Row,
   Input,
@@ -32,7 +31,7 @@ import { Separator, Colxx } from 'components/common/CustomBootstrap';
 import IntlMessages from 'helpers/IntlMessages';
 import { DatePicker } from 'react-advance-jalaali-datepicker';
 import LoadList from './gov.json';
-import filter from './filter';
+import ResultSearch from './ResultSearch';
 
 const selectDataTypeSearch = [
   { value: '1', label: 'ماده قانونی' },
@@ -369,9 +368,8 @@ const Search = ({ match }) => {
           </Card>
         </Colxx>
       </Row>
-      <Row>
-        <filter/>
-      </Row>
+
+      <ResultSearch />
     </>
   );
 };
