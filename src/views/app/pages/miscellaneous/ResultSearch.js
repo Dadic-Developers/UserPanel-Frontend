@@ -3,18 +3,18 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 import IntlMessages from 'helpers/IntlMessages';
-// import CustomSelectInput from 'components/common/CustomSelectInput';
 import { Colxx } from 'components/common/CustomBootstrap';
-import { ButtonGroup, Button, Row, CardBody, Card } from 'reactstrap';
+
+import { ButtonGroup, Button, Row, CardBody, Card, Table } from 'reactstrap';
 
 const selectDataorderby = [
-  { label: 'تاریخ', value: 'date', key: 0  },
+  { label: 'تاریخ', value: 'date', key: 0 },
   { label: 'ماده', value: 'matter', key: 1 },
 ];
 const selectDatasortby = [
-    { label: 'صعودی', value: 'ascending', key: 0 },
-    { label: 'نزولی', value: 'descending', key: 1 },
-  ];
+  { label: 'صعودی', value: 'ascending', key: 0 },
+  { label: 'نزولی', value: 'descending', key: 1 },
+];
 const optionType = [
   { value: '11', label: 'همه موارد' },
   { value: '1', label: 'ماده', icon: 'simple-icon-layers' },
@@ -32,12 +32,18 @@ const optionType = [
   { value: '9', label: 'دادنامه', icon: 'iconsminds-newspaper' },
   { value: '10', label: 'فرامین رهبری', icon: 'iconsminds-quotes' },
 ];
+
 const TableResultSearch = () => {
   const [selectedOptionOrderby, setSelectedOptionOrderby] = useState('');
   const [selectedOptionSortby, setSelectedOptionSortby] = useState('');
+  const [selectedOptionType, setSelectedOptionType] = useState('ماده');
+  const handleButtonClickLableOption = (event) => {
+    const selectedLabel = event.currentTarget.getAttribute('data-label');
+    setSelectedOptionType(selectedLabel);
+  };
   return (
     <Row className="mb-4">
-      <Colxx xxs="12">
+      <Colxx>
         <Card>
           <CardBody>
             <Row>
@@ -73,18 +79,58 @@ const TableResultSearch = () => {
               </Colxx>
             </Row>
             <Row>
-              <Colxx xxs="12" className="mb-5">
-                <ButtonGroup>
+              <Colxx md="12" className="mb-5">
+                <ButtonGroup className="d-flex flex-column flex-lg-row">
                   {optionType.map(
                     (option) =>
                       option.value !== '11' && (
-                        <Button key={option.value}>
+                        <Button
+                          key={option.value}
+                          data-label={option.label}
+                          className="mb-1 mb-lg-0"
+                          onClick={handleButtonClickLableOption}
+                        >
                           <i className={option.icon} />
                           {option.label}
                         </Button>
                       )
                   )}
                 </ButtonGroup>
+              </Colxx>
+              <Colxx md="12" className="mb-5">
+                <Table borderless>
+                  <thead>
+                    <tr>
+                      <th scope="col-4">{selectedOptionType}</th>
+                      <th scope="col-4">باب</th>
+                      <th scope="col-4">فصل</th>
+                    </tr>
+                    <tr>
+                      <td>شماره سند</td>
+                      <td>
+                        <i className="iconsminds-profile" />
+                      </td>
+                      <td>
+                        {' '}
+                        <i className="iconsminds-profile" />
+                      </td>
+                      <td>
+                        <i className="iconsminds-profile" />
+                      </td>
+                      <td>نظرسنجی</td>
+                    </tr>
+                  </thead>
+                </Table>
+                <span>
+                  لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem ipsum) به متنی
+                  آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته
+                  می‌شود. طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی
+                  برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش
+                  گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی
+                  نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
+                  صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند
+                  تا صرفا به مشتری یا صاحب کار خود نشان دهند
+                </span>
               </Colxx>
             </Row>
           </CardBody>
