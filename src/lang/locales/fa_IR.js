@@ -539,11 +539,15 @@ module.exports = {
   'forms.fixed-number': 'شماره ثابت',
   'forms.gender': 'جنسیت',
   'forms.education': 'تحصیلات',
-  'forms.name-organization': 'نام سازمان',
-  'forms.email-organization': 'پست الکترونیک سازمان',
-  'forms.getting-know': 'نحوه آشنایی با دادیک',
-  'forms.company-field-activity': 'حوزه فعالیت سازمان',
-  'forms.national-id': 'شناسه ملی',
+  'forms.name-organization': 'نام سازمان', // New Fatemeh added
+  'forms.company-field-activity': 'حوزه فعالیت سازمان', // New Fatemeh added
+  'forms.national-id': 'شناسه ملی', // New Fatemeh added
+  'forms.layehe-type': 'نوع لایحه', // New Fatemeh added
+  'forms.Protest-type': 'نوع اعتراض', // New Fatemeh added
+  'forms.protest': 'اعتراض به', // New Fatemeh added
+  'forms.authority-under-consideration': 'مرجع مورد رسیدگی', // New Fatemeh added
+  'forms.file-summary': 'خلاصه پرونده', // New Fatemeh added
+
 
   /* 07.11.Form Components */
   // new

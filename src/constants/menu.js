@@ -55,7 +55,7 @@ const data = [
     id: 'layehe',
     icon: 'iconsminds-open-book',
     label: 'menu.layehe',
-    to: `${adminRoot}/blank-page`,
+    to: `${adminRoot}/pages/miscellaneous/layehe`,
   },
   {
     id: 'invoice',
@@ -156,44 +156,44 @@ const data = [
       //   ],
       // },
       
-      {
-        id: 'pages-blog',
-        label: 'menu.blog',
-        to: `${adminRoot}/pages/blog`,
-        subs: [
-          {
-            icon: 'simple-icon-share',
-            label: 'menu.blog-list',
-            to: `${adminRoot}/pages/blog/blog-list`,
-          },
-          {
-            icon: 'simple-icon-link',
-            label: 'menu.blog-detail',
-            to: `${adminRoot}/pages/blog/blog-detail`,
-          },
-        ],
-      },
-      {
-        id: 'pages-history',
-        label: 'menu.history',
-        to: `${adminRoot}/pages/profile`,
-        subs: [
+      // {
+      //   id: 'pages-blog',
+      //   label: 'menu.blog',
+      //   to: `${adminRoot}/pages/blog`,
+      //   subs: [
+      //     {
+      //       icon: 'simple-icon-share',
+      //       label: 'menu.blog-list',
+      //       to: `${adminRoot}/pages/blog/blog-list`,
+      //     },
+      //     {
+      //       icon: 'simple-icon-link',
+      //       label: 'menu.blog-detail',
+      //       to: `${adminRoot}/pages/blog/blog-detail`,
+      //     },
+      //   ],
+      // },
+      // {
+      //   id: 'pages-history',
+      //   label: 'menu.history',
+      //   to: `${adminRoot}/pages/profile`,
+      //   subs: [
         
-          {
-            icon: 'simple-icon-arrow-right',
-            label: 'menu.historysearch',
-            to: `${adminRoot}/ui/components/tables`,
-          },
-          {
-            icon: 'simple-icon-arrow-right',
-            label: 'menu.historylayehe',
-            to: `${adminRoot}/ui/components/tables`,
-          },
-          {
-            icon: 'simple-icon-arrow-right',
-            label: 'menu.historydownload',
-            to: `${adminRoot}/ui/components/tables`,
-          },
+      //     {
+      //       icon: 'simple-icon-arrow-right',
+      //       label: 'menu.historysearch',
+      //       to: `${adminRoot}/ui/components/tables`,
+      //     },
+      //     {
+      //       icon: 'simple-icon-arrow-right',
+      //       label: 'menu.historylayehe',
+      //       to: `${adminRoot}/ui/components/tables`,
+      //     },
+      //     {
+      //       icon: 'simple-icon-arrow-right',
+      //       label: 'menu.historydownload',
+      //       to: `${adminRoot}/ui/components/tables`,
+      //     },
      
           // {
           //   icon: 'simple-icon-share',
@@ -207,72 +207,72 @@ const data = [
           // },
         ],
       },
-      {
-        id: 'pages-miscellaneous',
-        label: 'menu.miscellaneous',
-        to: `${adminRoot}/pages/miscellaneous`,
-        subs: [
-          {
-            icon: 'simple-icon-question',
-            label: 'menu.faq',
-            to: `${adminRoot}/pages/miscellaneous/faq`,
-          },
-          {
-            icon: 'simple-icon-graduation',
-            label: 'menu.knowledge-base',
-            to: `${adminRoot}/pages/miscellaneous/knowledge-base`,
-          },
+      // {
+      //   id: 'pages-miscellaneous',
+      //   label: 'menu.miscellaneous',
+      //   to: `${adminRoot}/pages/miscellaneous`,
+      //   subs: [
+      //     {
+      //       icon: 'simple-icon-question',
+      //       label: 'menu.faq',
+      //       to: `${adminRoot}/pages/miscellaneous/faq`,
+      //     },
+      //     {
+      //       icon: 'simple-icon-graduation',
+      //       label: 'menu.knowledge-base',
+      //       to: `${adminRoot}/pages/miscellaneous/knowledge-base`,
+      //     },
 
-          {
-            icon: 'simple-icon-diamond',
-            label: 'menu.prices',
-            to: `${adminRoot}/pages/miscellaneous/prices`,
-          },
+      //     {
+      //       icon: 'simple-icon-diamond',
+      //       label: 'menu.prices',
+      //       to: `${adminRoot}/pages/miscellaneous/prices`,
+      //     },
       
-          {
-            icon: 'simple-icon-envelope-open',
-            label: 'menu.mailing',
-            to: `${adminRoot}/pages/miscellaneous/mailing`,
-          },
+      //     {
+      //       icon: 'simple-icon-envelope-open',
+      //       label: 'menu.mailing',
+      //       to: `${adminRoot}/pages/miscellaneous/mailing`,
+      //     },
           // {
           //   icon: 'simple-icon-bag',
           //   label: 'menu.invoice',
           //   to: `${adminRoot}/pages/miscellaneous/invoice`,
           // },
 
-          {
-            icon: 'simple-icon-exclamation',
-            label: 'menu.error',
-            to: '/error',
-            newWindow: true,
-          },
-        ],
-      },
-    ],
-  },
+          // {
+          //   icon: 'simple-icon-exclamation',
+          //   label: 'menu.error',
+          //   to: '/error',
+          //   newWindow: true,
+          // },
+       // ],
+     // },
+    //  ],
+  // },
   
   {
     id: 'applications',
     icon: 'iconsminds-air-balloon-1',
     label: 'menu.applications',
-    to: `${adminRoot}/applications`,
-    subs: [
-      // {
-      //   icon: 'simple-icon-check',
-      //   label: 'menu.todo',
-      //   to: `${adminRoot}/applications/todo`,
-      // },
-      {
-        icon: 'simple-icon-calculator',
-        label: 'menu.survey',
-        to: `${adminRoot}/applications/survey`,
-      },
-      {
-        icon: 'simple-icon-bubbles',
-        label: 'menu.chat',
-        to: `${adminRoot}/applications/chat`,
-      },
-    ],
+    to: `${adminRoot}/blank-page`,
+    // subs: [
+    //   {
+    //     icon: 'simple-icon-check',
+    //     label: 'menu.todo',
+    //     to: `${adminRoot}/applications/todo`,
+    //   },
+    //   {
+    //     icon: 'simple-icon-calculator',
+    //     label: 'menu.survey',
+    //     to: `${adminRoot}/applications/survey`,
+    //   },
+    //   {
+    //     icon: 'simple-icon-bubbles',
+    //     label: 'menu.chat',
+    //     to: `${adminRoot}/applications/chat`,
+    //   },
+    //  ],
   },
   // {
   //   id: 'ui',
