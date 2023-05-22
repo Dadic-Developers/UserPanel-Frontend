@@ -13,21 +13,67 @@ import CustomSelectInput from 'components/common/CustomSelectInput';
 import Select from 'react-select';
 
 const selectData = [
-  { label: 'کیک', value: 'cake', key: 0 },
-  { label: 'کاپ کیک', value: 'cupcake', key: 1 },
-  { label: 'دسر', value: 'dessert', key: 2 },
+  { label: 'اعتراض', value: '1', key: 0 },
+  { label: 'قبولی ', value: '2', key: 1 },
+  { label: 'بخشودگی جرائم', value: '3', key: 2 },
+  { label: ' تقسیط بدهی', value: '4', key: 3 },
 ];
-const validateEmail = (value) => {
+
+const selectDataTypeHayehe = [
+  { label: 'اعتراض', value: '1', key: 0 },
+  { label: 'قبولی ', value: '2', key: 1 },
+  { label: 'بخشودگی جرائم', value: '3', key: 2 },
+  { label: ' تقسیط بدهی', value: '4', key: 3 },
+];
+const selectDataProtest = [
+  { label: 'برگ تشخیص', value: '1', key: 0 },
+  { label: 'رای هیات بدوی', value: '2', key: 1 },
+  { label: 'رای هیات تجدید نظر', value: '3', key: 2 },
+  { label: ' رای شورای عالی مالیاتی', value: '4', key: 3 },
+];
+const selectDatadesiredSection = [
+  { label: 'شمال', value: '1', key: 0 },
+  { label: 'شرق', value: '2', key: 1 },
+  { label: 'غرب', value: '3', key: 2 },
+  { label: 'جنوب', value: '4', key: 3 },
+  { label: 'مرکز', value: '5', key: 4 },
+  { label: 'مودیان بزرگ', value: '6', key: 5 },
+];
+const selectDataProtestType = [
+  { label: 'ماخذ دذآمد عملکرد', value: '1', key: 0 },
+  { label: 'ارزش افزوده', value: '2', key: 1 },
+  { label: 'ماده 169', value: '3', key: 2 },
+  { label: 'حقوق', value: '4', key: 3 },
+  { label: 'تکلیفی', value: '5', key: 4 },
+  { label: 'سایر', value: '6', key: 5 },
+];
+const selectDataDesiredReference = [
+  { label: 'ممیزکل', value: '1', key: 0 },
+  { label: 'هیات بدوی', value: '2', key: 1 },
+  { label: 'هیات تجدید نظر', value: '3', key: 2 },
+  { label: 'شورای عالی مالیاتی', value: '4', key: 3 },
+  { label: 'دیوان عالی اداری', value: '5', key: 4 },
+];
+const voteNumber = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا پست الکترونیکی خودتو وارد کن';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = 'ایمیل که وارد کردی نامعتبره';
+    error = 'لطفا شماره رای را وارد کنید';
+  } else if (value.length < 2) {
+    error = 'باید بیشتر از 2 تا کاراکتر باشه';
+  }
+  return error;
+};
+const validateNameOrganization = (value) => {
+  let error;
+  if (!value) {
+    error = 'لطفا نام شرکت را وارد کنید';
+  } else if (value.length < 2) {
+    error = 'باید بیشتر از 2 تا کاراکتر باشه';
   }
   return error;
 };
 
-const validateNameOrganization = (value) => {
+const companyName = (value) => {
   let error;
   if (!value) {
     error = 'لطفا نام سازمان را وارد کنید';
@@ -36,11 +82,19 @@ const validateNameOrganization = (value) => {
   }
   return error;
 };
-
-const validatePassword = (value) => {
+const subjectActivity = (value) => {
   let error;
   if (!value) {
-    error = 'لطفا رمزت رو وارد کن';
+    error = 'لطفا موضوع فعالیت را وارد کنید';
+  } else if (value.length < 2) {
+    error = 'باید بیشتر از 2 تا کاراکتر باشه';
+  }
+  return error;
+};
+const nationalCode = (value) => {
+  let error;
+  if (!value) {
+    error = 'لطفا کدملی را وارد کنید';
   } else if (value.length < 6) {
     error = 'Password must be longer than 6 characters';
   }
@@ -49,8 +103,16 @@ const validatePassword = (value) => {
 const Layehe = ({ match, intl }) => {
   const forms = [createRef(null), createRef(null), createRef(null)];
   const [bottomNavHidden, setBottomNavHidden] = useState(false);
-  const [selectedOptionOrganization, setSelectedOptionOrganization] = useState('');
-  const [selectedOptionLO, setSelectedOptionLO] = useState('');
+  const [selectedOptionOrganization, setSelectedOptionOrganization] =
+    useState('');
+  const [selectedOptionTypeHayehe, setselectedOptionTypeHayehe] = useState('');
+  const [selectedOptionProtest, setselectedOptionProtest] = useState('');
+  const [selectedOptionDesiredReference, setselectedOptionDesiredReference] =
+    useState('');
+  const [selectedOptionProtestType, setselectedOptionProtestType] =
+    useState('');
+  const [selectedOptionCity, setselectedOptionCity] = useState('');
+  const [selectedOptionFiscalYear, setselectedOptionFiscalYear] = useState('');
   const [loading, setLoading] = useState(false);
   const [fields, setFields] = useState({
     name: '',
@@ -110,8 +172,13 @@ const Layehe = ({ match, intl }) => {
                 <Steps>
                   <Step
                     id="step1"
-                    name={messages['wizard.step-nameOrganization-1']}
-                    desc={messages['wizard.step-desc-1']}
+                    name={
+                      <i className="simple-icon-question d-block text-center" />
+                    }
+                    nameOrganization={
+                      messages['wizard.step-nameOrganization-1']
+                    }
+                    desc={messages['wizard.step-Summary-topic-question-1']}
                   >
                     <div className="wizard-basic-step">
                       <Formik
@@ -131,9 +198,11 @@ const Layehe = ({ match, intl }) => {
                                     components={{ Input: CustomSelectInput }}
                                     className="react-select"
                                     classNamePrefix="react-select"
-                                    name="form-field-organization"
+                                    name="form-field-name nameOrganization"
                                     value={selectedOptionOrganization}
-                                    onChange={(val) => setSelectedOptionOrganization(val)}
+                                    onChange={(val) =>
+                                      setSelectedOptionOrganization(val)
+                                    }
                                     options={selectData}
                                     placeholder=""
                                     validate={validateNameOrganization}
@@ -155,10 +224,12 @@ const Layehe = ({ match, intl }) => {
                                     components={{ Input: CustomSelectInput }}
                                     className="react-select"
                                     classNamePrefix="react-select"
-                                    name="form-field-organization"
-                                    value={selectedOptionLO}
-                                    onChange={(val) => setSelectedOptionLO(val)}
-                                    options={selectData}
+                                    name="form-field-name"
+                                    value={selectedOptionTypeHayehe}
+                                    onChange={(val) =>
+                                      setselectedOptionTypeHayehe(val)
+                                    }
+                                    options={selectDataTypeHayehe}
                                     placeholder=""
                                     validate={validateNameOrganization}
                                   />
@@ -179,10 +250,12 @@ const Layehe = ({ match, intl }) => {
                                     components={{ Input: CustomSelectInput }}
                                     className="react-select"
                                     classNamePrefix="react-select"
-                                    name="form-field-organization"
-                                    value={selectedOptionLO}
-                                    onChange={(val) => setSelectedOptionLO(val)}
-                                    options={selectData}
+                                    name="form-field-name"
+                                    value={selectedOptionProtestType}
+                                    onChange={(val) =>
+                                      setselectedOptionProtestType(val)
+                                    }
+                                    options={selectDataProtestType}
                                     placeholder=""
                                     validate={validateNameOrganization}
                                   />
@@ -203,10 +276,12 @@ const Layehe = ({ match, intl }) => {
                                     components={{ Input: CustomSelectInput }}
                                     className="react-select"
                                     classNamePrefix="react-select"
-                                    name="form-field-organization"
-                                    value={selectedOptionLO}
-                                    onChange={(val) => setSelectedOptionLO(val)}
-                                    options={selectData}
+                                    name="form-field-name"
+                                    value={selectedOptionProtest}
+                                    onChange={(val) =>
+                                      setselectedOptionProtest(val)
+                                    }
+                                    options={selectDataProtest}
                                     placeholder=""
                                     validate={validateNameOrganization}
                                   />
@@ -227,15 +302,17 @@ const Layehe = ({ match, intl }) => {
                                     components={{ Input: CustomSelectInput }}
                                     className="react-select"
                                     classNamePrefix="react-select"
-                                    name="form-field-organization"
-                                    value={selectedOptionLO}
-                                    onChange={(val) => setSelectedOptionLO(val)}
-                                    options={selectData}
+                                    name="form-field-name"
+                                    value={selectedOptionDesiredReference}
+                                    onChange={(val) =>
+                                      setselectedOptionDesiredReference(val)
+                                    }
+                                    options={selectDataDesiredReference}
                                     placeholder=""
                                     validate={validateNameOrganization}
                                   />
                                   <span>
-                                    <IntlMessages id="forms.authority-under-consideration" />
+                                    <IntlMessages id="forms.desired-reference" />
                                   </span>
                                   {errors.nameOrganization &&
                                     touched.nameOrganization && (
@@ -272,8 +349,8 @@ const Layehe = ({ match, intl }) => {
                   </Step>
                   <Step
                     id="step2"
-                    name={messages['wizard.step-name-2']}
-                    desc={messages['wizard.step-desc-2']}
+                    name={<i className="simple-icon-check   d-block text-center" />}
+                    desc={messages['wizard.step-Create-Layehe']}
                   >
                     <div className="wizard-basic-step">
                       <Formik
@@ -286,19 +363,170 @@ const Layehe = ({ match, intl }) => {
                       >
                         {({ errors, touched }) => (
                           <Form className="av-tooltip tooltip-label-right">
-                            <FormGroup>
-                              <Label>{messages['forms.email']}</Label>
-                              <Field
-                                className="form-control"
-                                name="email"
-                                validate={validateEmail}
-                              />
-                              {errors.email && touched.email && (
-                                <div className="invalid-feedback d-block">
-                                  {errors.email}
+                            <Row>
+                              <Colxx xxs="12" md="6">
+                                <div className="form-group has-float-label">
+                                  <Select
+                                    components={{ Input: CustomSelectInput }}
+                                    className="react-select"
+                                    classNamePrefix="react-select"
+                                    name="form-field-"
+                                    value={selectedOptionCity}
+                                    onChange={(val) =>
+                                      setselectedOptionCity(val)
+                                    }
+                                    options={selectDataProtest}
+                                    placeholder=""
+                                    validate={validateNameOrganization}
+                                  />
+                                  <span>
+                                    <IntlMessages id="forms.city-message" />
+                                  </span>
+                                  {errors.nameOrganization &&
+                                    touched.nameOrganization && (
+                                      <div className="invalid-feedback d-block">
+                                        {errors.nameOrganization}
+                                      </div>
+                                    )}
                                 </div>
-                              )}
-                            </FormGroup>
+                              </Colxx>
+                              <Colxx xxs="12" md="6">
+                                <div className="form-group has-float-label">
+                                  <Select
+                                    components={{ Input: CustomSelectInput }}
+                                    className="react-select"
+                                    classNamePrefix="react-select"
+                                    name="form-field-name"
+                                    value={selectedOptionProtest}
+                                    onChange={(val) =>
+                                      setselectedOptionProtest(val)
+                                    }
+                                    options={selectDatadesiredSection}
+                                    placeholder=""
+                                    validate={validateNameOrganization}
+                                  />
+                                  <span>
+                                    <IntlMessages id="forms.desired-section" />
+                                  </span>
+                                  {errors.nameOrganization &&
+                                    touched.nameOrganization && (
+                                      <div className="invalid-feedback d-block">
+                                        {errors.nameOrganization}
+                                      </div>
+                                    )}
+                                </div>
+                              </Colxx>
+                              <Colxx xxs="12" md="6">
+                                <div className="form-group has-float-label">
+                                  <Select
+                                    components={{ Input: CustomSelectInput }}
+                                    className="react-select"
+                                    classNamePrefix="react-select"
+                                    name="form-field-name"
+                                    value={selectedOptionFiscalYear}
+                                    onChange={(val) =>
+                                      setselectedOptionFiscalYear(val)
+                                    }
+                                    options={selectDataProtest}
+                                    placeholder=""
+                                    validate={validateNameOrganization}
+                                  />
+                                  <span>
+                                    <IntlMessages id="forms.fiscal-year" />
+                                  </span>
+                                  {errors.nameOrganization &&
+                                    touched.nameOrganization && (
+                                      <div className="invalid-feedback d-block">
+                                        {errors.nameOrganization}
+                                      </div>
+                                    )}
+                                </div>
+                              </Colxx>
+                              <Colxx xxs="12" md="6">
+                                <FormGroup>
+                                  <Label className="form-group has-float-label">
+                                    <Field
+                                     type="text"
+                                      className="form-control"
+                                      name="voteNumber"
+                                      validate={voteNumber}
+                                    />
+                                    <span>
+                                      <IntlMessages id="forms.vote-number" />
+                                    </span>
+                                  </Label>
+
+                                  {errors.voteNumber && touched.voteNumber && (
+                                    <div className="invalid-feedback d-block">
+                                      {errors.voteNumber}
+                                    </div>
+                                  )}
+                                </FormGroup>
+                              </Colxx>
+                              <Colxx xxs="12" md="6">
+                                <FormGroup>
+                                  <Label className="form-group has-float-label">
+                                    <Field
+                                       type="text"
+                                      className="form-control"
+                                      name="companyName"
+                                      validate={companyName}
+                                    />
+                                    <span>
+                                      <IntlMessages id="forms.company-name" />
+                                    </span>
+                                  </Label>
+
+                                  {errors.companyName && touched.companyName && (
+                                    <div className="invalid-feedback d-block">
+                                      {errors.companyName}
+                                    </div>
+                                  )}
+                                </FormGroup>
+                              </Colxx>
+                              <Colxx xxs="12" md="6">
+                                <FormGroup>
+                                  <Label className="form-group has-float-label">
+                                    <Field
+                                     type="text"
+                                      className="form-control"
+                                      name="subjectActivity"
+                                      validate={subjectActivity}
+                                    />
+                                    <span>
+                                      <IntlMessages id="forms.subject-activity" />
+                                    </span>
+                                  </Label>
+
+                                  {errors.subjectActivity && touched.subjectActivity && (
+                                    <div className="invalid-feedback d-block">
+                                      {errors.subjectActivity}
+                                    </div>
+                                  )}
+                                </FormGroup>
+                              </Colxx>
+                              <Colxx xxs="12" md="6">
+                                <FormGroup>
+                                  <Label className="form-group has-float-label">
+                                    <Field
+                                     type="text"
+                                      className="form-control"
+                                      name="nationalCode"
+                                      validate={nationalCode}
+                                    />
+                                    <span>
+                                      <IntlMessages id="forms.national-code" />
+                                    </span>
+                                  </Label>
+
+                                  {errors.nationalCode && touched.nationalCode && (
+                                    <div className="invalid-feedback d-block">
+                                      {errors.nationalCode}
+                                    </div>
+                                  )}
+                                </FormGroup>
+                              </Colxx>
+                            </Row>
                           </Form>
                         )}
                       </Formik>
@@ -306,6 +534,7 @@ const Layehe = ({ match, intl }) => {
                   </Step>
                   <Step
                     id="step3"
+                    hideTopNav
                     name={messages['wizard.step-name-3']}
                     desc={messages['wizard.step-desc-3']}
                   >
@@ -326,7 +555,7 @@ const Layehe = ({ match, intl }) => {
                                 className="form-control"
                                 name="password"
                                 type="password"
-                                validate={validatePassword}
+                                // validate={validatePassword}
                               />
                               {errors.password && touched.password && (
                                 <div className="invalid-feedback d-block">

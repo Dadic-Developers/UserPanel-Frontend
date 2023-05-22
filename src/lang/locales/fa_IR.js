@@ -545,8 +545,14 @@ module.exports = {
   'forms.layehe-type': 'نوع لایحه', // New Fatemeh added
   'forms.Protest-type': 'نوع اعتراض', // New Fatemeh added
   'forms.protest': 'اعتراض به', // New Fatemeh added
-  'forms.authority-under-consideration': 'مرجع مورد رسیدگی', // New Fatemeh added
+  'forms.desired-reference': 'مرجع مورد رسیدگی', // New Fatemeh added
   'forms.file-summary': 'خلاصه پرونده', // New Fatemeh added
+  'forms.desired-section': 'اداره مورد نظر', // New Fatemeh added
+  'forms.fiscal-year': 'سال مالی', // New Fatemeh added
+  'forms.vote-number': 'شماره رای/ برگه', // New Fatemeh added
+  'forms.company-name': 'نام شرکت/شخص', // New Fatemeh added
+  'forms.subject-activity': 'موضوع فعالیت', // New Fatemeh added
+  'forms.national-code': 'شناسه ملی/کد ملی', // New Fatemeh added
 
 
   /* 07.11.Form Components */
@@ -707,7 +713,10 @@ module.exports = {
   'wizard.next': 'بعدی',
   'wizard.prev': 'قبلی',
   'wizard.registered': 'ثبت نام شما با موفقیت انجام شد!',
+  'wizard.step-Summary-topic-question-1': 'خلاصه موضوع و طرح سوال', // New Fatemeh added
+  'wizard.step-Create-Layehe': 'ایجاد لایحه', // New Fatemeh added
   'wizard.async': 'Async save for 3 seconds!',
+
    /* 07.22.Search */
   'forms.advanced-search': 'فرم جستجوی پیشرفته',
   'forms.search.number': 'تعداد',
