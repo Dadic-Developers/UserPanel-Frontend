@@ -5,6 +5,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 const DashboardDefault = React.lazy(() =>
   import(/* webpackChunkName: "dashboard-default" */ './default')
 );
+
 const ContentDefault = React.lazy(() =>
   import(/* webpackChunkName: "dashboard-content" */ './content')
 );
@@ -19,6 +20,12 @@ const ProfileDefault = React.lazy(() =>
 );
 const Todo = React.lazy(() =>
   import(/* webpackChunkName: "applications-todo" */ '../applications/todo')
+);
+const Layehe = React.lazy(() =>
+  import(/* webpackChunkName: "dashboard-layehe" */ './layehe')
+);
+const Search = React.lazy(() =>
+  import(/* webpackChunkName: "dashboard-layehe" */ './search')
 );
 
 const Dashboards = ({ match }) => (
@@ -48,6 +55,14 @@ const Dashboards = ({ match }) => (
       <Route
         path={`${match.url}/todo`}
         render={(props) => <Todo {...props} />}
+      />
+       <Route
+        path={`${match.url}/layehe`}
+        render={(props) => <Layehe {...props} />}
+      />
+       <Route
+        path={`${match.url}/search`}
+        render={(props) => <Search {...props} />}
       />
 
       {/* 

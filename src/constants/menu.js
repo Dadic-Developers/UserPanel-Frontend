@@ -49,13 +49,14 @@ const data = [
     id: 'search',
     icon: 'iconsminds-magnifi-glass',
     label: 'menu.search',
-    to: `${adminRoot}/blank-page`,
+    to: `${adminRoot}/dashboards/search`,
   },
   {
     id: 'layehe',
     icon: 'iconsminds-open-book',
     label: 'menu.layehe',
-    to: `${adminRoot}/pages/miscellaneous/layehe`,
+    to: `${adminRoot}/dashboards/layehe`,
+    
   },
   {
     id: 'invoice',

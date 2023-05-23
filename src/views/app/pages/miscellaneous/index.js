@@ -18,12 +18,7 @@ const Mailing = React.lazy(() =>
 const Prices = React.lazy(() =>
   import(/* webpackChunkName: "miscellaneous-prices" */ './prices')
 );
-const Search = React.lazy(() =>
-  import(/* webpackChunkName: "miscellaneous-search" */ './search')
-);
-const Layehe = React.lazy(() =>
-  import(/* webpackChunkName: "miscellaneous-layehe" */ './layehe')
-);
+
 
 const PagesMiscellaneous = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
@@ -46,14 +41,7 @@ const PagesMiscellaneous = ({ match }) => (
         path={`${match.url}/prices`}
         render={(props) => <Prices {...props} />}
       />
-      <Route
-        path={`${match.url}/search`}
-        render={(props) => <Search {...props} />}
-      />
-      <Route
-        path={`${match.url}/layehe`}
-        render={(props) => <Layehe {...props} />}
-      />
+     
       <Redirect to="/error" />
     </Switch>
   </Suspense>
