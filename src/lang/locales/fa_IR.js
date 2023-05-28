@@ -552,6 +552,7 @@ module.exports = {
   'forms.vote-number': 'شماره رای/ برگه', // New Fatemeh added
   'forms.company-name': 'نام شرکت/شخص', // New Fatemeh added
   'forms.subject-activity': 'موضوع فعالیت', // New Fatemeh added
+  'forms.subject': 'موضوع', // New Fatemeh added
   'forms.national-code': 'شناسه ملی/کد ملی', // New Fatemeh added
 
 

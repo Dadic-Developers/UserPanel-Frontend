@@ -40,7 +40,7 @@ const selectDatadesiredSection = [
   { label: 'مودیان بزرگ', value: '6', key: 5 },
 ];
 const selectDataProtestType = [
-  { label: 'ماخذ دذآمد عملکرد', value: '1', key: 0 },
+  { label: 'ماخذ درآمد عملکرد', value: '1', key: 0 },
   { label: 'ارزش افزوده', value: '2', key: 1 },
   { label: 'ماده 169', value: '3', key: 2 },
   { label: 'حقوق', value: '4', key: 3 },
@@ -53,6 +53,14 @@ const selectDataDesiredReference = [
   { label: 'هیات تجدید نظر', value: '3', key: 2 },
   { label: 'شورای عالی مالیاتی', value: '4', key: 3 },
   { label: 'دیوان عالی اداری', value: '5', key: 4 },
+];
+const selectDataSubject = [
+  { label: 'ماخذ درآمد عملکرد', value: '1', key: 0 },
+  { label: 'ارزش افزوده', value: '2', key: 1 },
+  { label: 'ماده 169', value: '3', key: 2 },
+  { label: 'حقوق', value: '4', key: 3 },
+  { label: 'تکلیفی', value: '5', key: 4 },
+  { label: 'سایر', value: '6', key: 5 },
 ];
 const voteNumber = (value) => {
   let error;
@@ -113,6 +121,7 @@ const Layehe = ({ match, intl }) => {
     useState('');
   const [selectedOptionCity, setselectedOptionCity] = useState('');
   const [selectedOptionFiscalYear, setselectedOptionFiscalYear] = useState('');
+  const [selectedOptionSubject, setselectedOptionSubject] = useState('');
   const [loading, setLoading] = useState(false);
   const [fields, setFields] = useState({
     name: '',
@@ -244,104 +253,149 @@ const Layehe = ({ match, intl }) => {
                                     )}
                                 </div>
                               </Colxx>
-                              <Colxx xxs="12" md="6">
-                                <div className="form-group has-float-label">
-                                  <Select
-                                    components={{ Input: CustomSelectInput }}
-                                    className="react-select"
-                                    classNamePrefix="react-select"
-                                    name="form-field-name"
-                                    value={selectedOptionProtestType}
-                                    onChange={(val) =>
-                                      setselectedOptionProtestType(val)
-                                    }
-                                    options={selectDataProtestType}
-                                    placeholder=""
-                                    validate={validateNameOrganization}
-                                  />
-                                  <span>
-                                    <IntlMessages id="forms.Protest-type" />
-                                  </span>
-                                  {errors.nameOrganization &&
-                                    touched.nameOrganization && (
-                                      <div className="invalid-feedback d-block">
-                                        {errors.nameOrganization}
-                                      </div>
-                                    )}
-                                </div>
-                              </Colxx>
-                              <Colxx xxs="12" md="6">
-                                <div className="form-group has-float-label">
-                                  <Select
-                                    components={{ Input: CustomSelectInput }}
-                                    className="react-select"
-                                    classNamePrefix="react-select"
-                                    name="form-field-name"
-                                    value={selectedOptionProtest}
-                                    onChange={(val) =>
-                                      setselectedOptionProtest(val)
-                                    }
-                                    options={selectDataProtest}
-                                    placeholder=""
-                                    validate={validateNameOrganization}
-                                  />
-                                  <span>
-                                    <IntlMessages id="forms.protest" />
-                                  </span>
-                                  {errors.nameOrganization &&
-                                    touched.nameOrganization && (
-                                      <div className="invalid-feedback d-block">
-                                        {errors.nameOrganization}
-                                      </div>
-                                    )}
-                                </div>
-                              </Colxx>
-                              <Colxx xxs="12" md="6">
-                                <div className="form-group has-float-label">
-                                  <Select
-                                    components={{ Input: CustomSelectInput }}
-                                    className="react-select"
-                                    classNamePrefix="react-select"
-                                    name="form-field-name"
-                                    value={selectedOptionDesiredReference}
-                                    onChange={(val) =>
-                                      setselectedOptionDesiredReference(val)
-                                    }
-                                    options={selectDataDesiredReference}
-                                    placeholder=""
-                                    validate={validateNameOrganization}
-                                  />
-                                  <span>
-                                    <IntlMessages id="forms.desired-reference" />
-                                  </span>
-                                  {errors.nameOrganization &&
-                                    touched.nameOrganization && (
-                                      <div className="invalid-feedback d-block">
-                                        {errors.nameOrganization}
-                                      </div>
-                                    )}
-                                </div>
-                              </Colxx>
-                              <Colxx xxs="12">
-                                <FormGroup>
-                                  <Label className="form-group has-float-label">
-                                    <Field
-                                      className="form-control"
-                                      name="details"
-                                      component="textarea"
+                            </Row>
+                            {selectedOptionTypeHayehe &&
+                              selectedOptionTypeHayehe.value === '1' && (
+                                <Row>
+                                  <Colxx xxs="12" md="6">
+                                    <div className="form-group has-float-label">
+                                      <Select
+                                        components={{
+                                          Input: CustomSelectInput,
+                                        }}
+                                        className="react-select"
+                                        classNamePrefix="react-select"
+                                        name="form-field-name"
+                                        value={selectedOptionProtestType}
+                                        onChange={(val) =>
+                                          setselectedOptionProtestType(val)
+                                        }
+                                        options={selectDataProtestType}
+                                        placeholder=""
+                                        validate={validateNameOrganization}
+                                      />
+                                      <span>
+                                        <IntlMessages id="forms.Protest-type" />
+                                      </span>
+                                      {errors.nameOrganization &&
+                                        touched.nameOrganization && (
+                                          <div className="invalid-feedback d-block">
+                                            {errors.nameOrganization}
+                                          </div>
+                                        )}
+                                    </div>
+                                  </Colxx>
+
+                                  <Colxx xxs="12" md="6">
+                                    <div className="form-group has-float-label">
+                                      <Select
+                                        components={{
+                                          Input: CustomSelectInput,
+                                        }}
+                                        className="react-select"
+                                        classNamePrefix="react-select"
+                                        name="form-field-name"
+                                        value={selectedOptionProtest}
+                                        onChange={(val) =>
+                                          setselectedOptionProtest(val)
+                                        }
+                                        options={selectDataProtest}
+                                        placeholder=""
+                                        validate={validateNameOrganization}
+                                      />
+                                      <span>
+                                        <IntlMessages id="forms.protest" />
+                                      </span>
+                                      {errors.nameOrganization &&
+                                        touched.nameOrganization && (
+                                          <div className="invalid-feedback d-block">
+                                            {errors.nameOrganization}
+                                          </div>
+                                        )}
+                                    </div>
+                                  </Colxx>
+                                  <Colxx xxs="12" md="6">
+                                    <div className="form-group has-float-label">
+                                      <Select
+                                        components={{
+                                          Input: CustomSelectInput,
+                                        }}
+                                        className="react-select"
+                                        classNamePrefix="react-select"
+                                        name="form-field-name"
+                                        value={selectedOptionDesiredReference}
+                                        onChange={(val) =>
+                                          setselectedOptionDesiredReference(val)
+                                        }
+                                        options={selectDataDesiredReference}
+                                        placeholder=""
+                                        validate={validateNameOrganization}
+                                      />
+                                      <span>
+                                        <IntlMessages id="forms.desired-reference" />
+                                      </span>
+                                      {errors.nameOrganization &&
+                                        touched.nameOrganization && (
+                                          <div className="invalid-feedback d-block">
+                                            {errors.nameOrganization}
+                                          </div>
+                                        )}
+                                    </div>
+                                  </Colxx>
+                                  <Colxx xxs="12">
+                                    <FormGroup>
+                                      <Label className="form-group has-float-label">
+                                        <Field
+                                          className="form-control"
+                                          name="details"
+                                          component="textarea"
+                                        />
+                                        <span>
+                                          <IntlMessages id="forms.file-summary" />
+                                        </span>
+                                      </Label>
+                                      {errors.details && touched.details ? (
+                                        <div className="invalid-feedback d-block">
+                                          {errors.details}
+                                        </div>
+                                      ) : null}
+                                    </FormGroup>
+                                  </Colxx>
+                                </Row>
+                              )}
+                            {selectedOptionTypeHayehe &&
+                              ['2', '3', '4'].includes(
+                                selectedOptionTypeHayehe.value
+                              ) && (
+                                <Colxx xxs="12" md="6">
+                                  <div className="form-group has-float-label">
+                                    <Select
+                                      components={{
+                                        Input: CustomSelectInput,
+                                      }}
+                                      className="react-select"
+                                      classNamePrefix="react-select"
+                                      name="form-field-name"
+                                      value={selectedOptionSubject}
+                                      onChange={(val) =>
+                                        setselectedOptionSubject(val)
+                                      }
+                                      options={selectDataSubject}
+                                      placeholder=""
+                                      validate={validateNameOrganization}
                                     />
                                     <span>
-                                      <IntlMessages id="forms.file-summary" />
+                                      <IntlMessages id="forms.subject" />
                                     </span>
-                                  </Label>
-                                  {errors.details && touched.details ? (
-                                    <div className="invalid-feedback d-block">
-                                      {errors.details}
-                                    </div>
-                                  ) : null}
-                                </FormGroup>
-                              </Colxx>
-                            </Row>
+                                    {errors.nameOrganization &&
+                                      touched.nameOrganization && (
+                                        <div className="invalid-feedback d-block">
+                                          {errors.nameOrganization}
+                                        </div>
+                                      )}
+                                  </div>
+                                </Colxx>
+                              )}
                           </Form>
                         )}
                       </Formik>
@@ -349,7 +403,9 @@ const Layehe = ({ match, intl }) => {
                   </Step>
                   <Step
                     id="step2"
-                    name={<i className="simple-icon-check   d-block text-center" />}
+                    name={
+                      <i className="simple-icon-check   d-block text-center" />
+                    }
                     desc={messages['wizard.step-Create-Layehe']}
                   >
                     <div className="wizard-basic-step">
@@ -446,7 +502,7 @@ const Layehe = ({ match, intl }) => {
                                 <FormGroup>
                                   <Label className="form-group has-float-label">
                                     <Field
-                                     type="text"
+                                      type="text"
                                       className="form-control"
                                       name="voteNumber"
                                       validate={voteNumber}
@@ -467,7 +523,7 @@ const Layehe = ({ match, intl }) => {
                                 <FormGroup>
                                   <Label className="form-group has-float-label">
                                     <Field
-                                       type="text"
+                                      type="text"
                                       className="form-control"
                                       name="companyName"
                                       validate={companyName}
@@ -477,18 +533,19 @@ const Layehe = ({ match, intl }) => {
                                     </span>
                                   </Label>
 
-                                  {errors.companyName && touched.companyName && (
-                                    <div className="invalid-feedback d-block">
-                                      {errors.companyName}
-                                    </div>
-                                  )}
+                                  {errors.companyName &&
+                                    touched.companyName && (
+                                      <div className="invalid-feedback d-block">
+                                        {errors.companyName}
+                                      </div>
+                                    )}
                                 </FormGroup>
                               </Colxx>
                               <Colxx xxs="12" md="6">
                                 <FormGroup>
                                   <Label className="form-group has-float-label">
                                     <Field
-                                     type="text"
+                                      type="text"
                                       className="form-control"
                                       name="subjectActivity"
                                       validate={subjectActivity}
@@ -498,18 +555,19 @@ const Layehe = ({ match, intl }) => {
                                     </span>
                                   </Label>
 
-                                  {errors.subjectActivity && touched.subjectActivity && (
-                                    <div className="invalid-feedback d-block">
-                                      {errors.subjectActivity}
-                                    </div>
-                                  )}
+                                  {errors.subjectActivity &&
+                                    touched.subjectActivity && (
+                                      <div className="invalid-feedback d-block">
+                                        {errors.subjectActivity}
+                                      </div>
+                                    )}
                                 </FormGroup>
                               </Colxx>
                               <Colxx xxs="12" md="6">
                                 <FormGroup>
                                   <Label className="form-group has-float-label">
                                     <Field
-                                     type="text"
+                                      type="text"
                                       className="form-control"
                                       name="nationalCode"
                                       validate={nationalCode}
@@ -519,11 +577,12 @@ const Layehe = ({ match, intl }) => {
                                     </span>
                                   </Label>
 
-                                  {errors.nationalCode && touched.nationalCode && (
-                                    <div className="invalid-feedback d-block">
-                                      {errors.nationalCode}
-                                    </div>
-                                  )}
+                                  {errors.nationalCode &&
+                                    touched.nationalCode && (
+                                      <div className="invalid-feedback d-block">
+                                        {errors.nationalCode}
+                                      </div>
+                                    )}
                                 </FormGroup>
                               </Colxx>
                             </Row>

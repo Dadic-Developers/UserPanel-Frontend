@@ -58,6 +58,7 @@ const Search = ({ match }) => {
   const [numberOfInputsMinus, setNumberOfInputsMinus] = useState(0);
   const [isMinusDisabled, setIsMinusDisabled] = useState(true);
 
+
   function datePickerInput(props) {
     return <input className="popo form-control" {...props} />;
   }
@@ -79,14 +80,36 @@ const Search = ({ match }) => {
     setNumberOfInputsMinus(numberOfInputsMinus - 1);
   };
 
-  const optionsListSearch = LoadList.flatMap((listItem) => {
+  const optionsListSearch = [
+    {
+      label: 'سازمان امور مالیاتی کشور',
+      link: 'https://dotic.ir/cat/238',
+      id: 21,
+      slug: [],
+      suborj: [],
+    },
+    {
+      label: 'قوه قضائیه',
+      link: 'https://dotic.ir/cat/105',
+      id: 89,
+      slug: [],
+      suborg: [],
+    },
+    {
+      label: 'سازمان خصوصی سازی',
+      // "link": "https://dotic.ir/cat/105",
+      // "id": 89,
+      slug: [],
+      suborg: [],
+    },
+  ].concat(LoadList.flatMap((listItem) => {
     return listItem.Ejrai.flatMap((getItem) => {
       return getItem.suborg.map((setItem) => ({
         label: setItem.title,
         value: setItem.id,
       }));
     });
-  });
+  }));
   return (
     <>
       <Row>
